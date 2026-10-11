@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEMEX DeFi Protocol Exchange </title>
+    <title>MEMEX DeFi Protocol Exchange ⚡</title>
     <style>
         body {
             background-color: #090A0E;
@@ -13,7 +13,7 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            min-height: '100vh';
+            min-height: 100vh;
         }
         header {
             display: flex;
@@ -23,15 +23,10 @@
             background-color: #13141A;
             border-bottom: 1px solid #1C1D24;
         }
-        header .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letterSpacing: '-0.5px';
-        }
+        header .logo { font-size: 20px; font-weight: 800; }
         header .logo span { color: #C7F284; }
         header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
-        header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
-        header nav a:hover { color: #FFFFFF; }
+        header nav a { color: #9CA3AF; text-decoration: none; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
         main {
             display: flex;
@@ -41,66 +36,72 @@
             gap: 40px;
             padding: 50px 20px;
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
+            flex: 1;
         }
-        .container-box {
-            width: 100%;
-            max-width: 440px;
-            background: #13141A;
-            border-radius: 24px;
-            border: 1px solid #1C1D24;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            overflow: hidden;
-        }
-        .btn-jup {
-            display: block;
-            width: 100%;
-            background-color: #C7F284;
-            color: #090A0E;
-            text-align: center;
-            padding: 18px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 16px;
-            box-shadow: 0 4px 14px rgba(199, 242, 132, 0.4);
-            transition: 0.2s;
-        }
-        .btn-jup:hover { background-color: #bce674; transform: translateY(-1px); }
     </style>
+
+    <!-- ПОДКЛЮЧАЕМ ОФИЦИАЛЬНЫЙ ОНЛАЙН-ВИДЖЕТ JUPITER -->
+    <script src="https://jup.ag" defer></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            if (window.Jupiter) {
+                window.Jupiter.init({
+                    displayMode: "integrated",
+                    integratedTargetId: "jupiter-terminal-container",
+                    endpoint: "https://solana.com", // Подключение к блокчейну
+                    formProps: {
+                        initialInputMint: "So11111111111111111111111111111111111111112", // Начинаем с SOL
+                        initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" // Твой токен MEMEX по умолчанию
+                    },
+                    feeConfig: {
+                        feeBps: 30, // Вшиваем твою наценку ровно 0.3%
+                        feeAccounts: [
+                            // Твой подтвержденный ключ со скриншота для сбора прибыли:
+                            ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"]
+                        ]
+                    },
+                    theme: {
+                        palette: {
+                            mode: 'dark',
+                            background: '#13141A',
+                            primary: '#C7F284', // Салатовые гладкие кнопки, как у оригинального JUP
+                            secondary: '#1C1D24',
+                            text: '#FFFFFF'
+                        },
+                        shape: { borderRadius: '20px' }
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 
     <header>
         <div class="logo">MEMEX <span>DeFi</span></div>
         <nav>
-            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_blank">Whitepaper</a>
-            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_blank">MONUMENTAL MANIFESTO</a>
+            <a href="https://github.io" target="_blank">Whitepaper</a>
+            <a href="https://github.io" target="_blank">Airdrop Portal</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
 
     <main>
-        <!-- Живой темный график токена -->
+        <!-- Левая часть: Живой темный график твоего токена MEMEX -->
         <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24;">
-            <iframe src="https://dexscreener.com/solana/3t5wyfwbwsudqpv1h1qn7cv87aes3ej3qpzqrnjjstmy" style="width: 100%; height: 100%; border: none;"></iframe>
+            <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
 
-        <!-- Гладкий блок оригинального обмена Jupiter -->
+        <!-- Правая часть: Сюда код сам развернет космический встроенный терминал -->
         <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 440px;">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade directly through Jupiter router with 0.3% protocol fee supporting MEMEX.</p>
             </div>
             
-            <div class="container-box" style="padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
-                <div style="background-color: #1C1D24; padding: 16px; border-radius: 12px; border: 1px solid #2C2D35; text-align: center;">
-                    <p style="margin: 0; color: #9CA3AF; font-size: 14px;">To trade MEMEX with auto-applied fee, use our official aggregated router below.</p>
-                </div>
-                <!-- 💥 ПРЯМАЯ ОФИЦИАЛЬНАЯ ССЫЛКА НА ОБМЕН С ТВОЕЙ НАЦЕНКОЙ -->
-                <a href="https://jup.ag" target="_blank" class="btn-jup">
-                    Open Jupiter Exchange 
-                </a>
-            </div>
+            <!-- Контейнер для «гладкого» виджета -->
+            <div id="jupiter-terminal-container" style="width: 100%; min-height: 520px;"></div>
         </div>
     </main>
 
