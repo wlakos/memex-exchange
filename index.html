@@ -63,9 +63,27 @@
             padding: 6px;
             box-sizing: border-box;
         }
+        /* НАША ФИРМЕННАЯ СВЕТЯЩАЯСЯ ЗЕЛЕНАЯ КНОПКА */
+        .btn-jup {
+            display: block;
+            width: 100%;
+            background-color: #C7F284;
+            color: #090A0E;
+            text-align: center;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(199, 242, 132, 0.3);
+            transition: 0.2s;
+            box-sizing: border-box;
+            margin-top: 8px;
+        }
+        .btn-jup:hover { background-color: #bce674; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(199, 242, 132, 0.5); }
     </style>
 
-    <!-- ИСПРАВЛЕНО: Указана точная техническая ссылка на ядро загрузки виджета! -->
+    <!-- Указана точная техническая ссылка на ядро загрузки виджета Jupiter -->
     <script src="https://jup.ag" defer></script>
 
     <script>
@@ -125,12 +143,12 @@
     </header>
 
     <main>
-        <!-- Левая часть: Живой темный график твоего токена MEMEX -->
-        <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24; boxShadow: '0 20px 40px rgba(0,0,0,0.4)'">
+        <!-- Левая часть: Живой темный график твоего токена MEMEX с DexScreener -->
+        <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24; box-shadow: 0 20px 40px rgba(0,0,0,0.4)">
             <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
 
-        <!-- Правая часть: Блок обменника, куда плавно встанет виджет Юпитера -->
+        <!-- Правая часть: Блок обменника + наша резервная кнопка -->
         <div class="swap-wrapper">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
@@ -139,6 +157,11 @@
             
             <!-- Сюда встанет ультра-гладкий темный терминал -->
             <div id="jupiter-terminal-container"></div>
+
+            <!-- 💥 ТВОЯ ЗЕЛЕНАЯ КНОПКА-СНАРЯД С ПОЛНЫМ НАБОРОМ КЛЮЧЕЙ И НАЦЕНКОЙ 0.3% -->
+            <a href="https://jup.ag" target="_blank" class="btn-jup">
+                Open Jupiter Exchange ⚡
+            </a>
         </div>
     </main>
 
