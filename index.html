@@ -9,41 +9,45 @@ function App() {
     
     script.onload = () => {
       if ((window as any).Jupiter) {
-        (window as any).Jupiter.init({
-          displayMode: "integrated", 
-          integratedTargetId: "jupiter-terminal-container",
-          // Твоя личная выделенная скоростная RPC-нода от Helius
-          endpoint: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", 
+        try {
+          (window as any).Jupiter.init({
+            displayMode: "integrated", 
+            integratedTargetId: "jupiter-terminal-container",
+            // Твоя личная выделенная скоростная RPC-нода от Helius
+            endpoint: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", 
 
-          // Настройки токенов по умолчанию
-          formProps: {
-            initialInputMint: "So11111111111111111111111111111111111111112", // Начинаем обмен с SOL
-            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Твой токен MEMEX по умолчанию
-          },
-
-          // Настройка твоей личной комиссии (Platform Fee)
-          feeConfig: {
-            feeBps: 30, // Твоя комиссия 0.3% с каждого обмена на твоем сайте
-            feeAccounts: [
-              // Слева системный адрес SOL, справа твой личный Referral Key для сбора прибыли
-              ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"] 
-            ]
-          },
-
-          // ---- КРАСИВЫЙ СВЕТЛЫЙ DEFI ДИЗАЙН ВИДЖЕТА ----
-          theme: {
-            palette: {
-              mode: 'light',         // Внутренности виджета в светлом режиме
-              background: '#FFFFFF', // Чистый белый фон карточки обменника
-              primary: '#8B5CF6',    // Фиолетовый неоновый цвет главных Web3 кнопок
-              secondary: '#F3F4F6',  // Светло-серые аккуратные поля выбора токенов
-              text: '#1F2937',       // Темный легкочитаемый текст
+            // Настройки токенов по умолчанию
+            formProps: {
+              initialInputMint: "So11111111111111111111111111111111111111112", // Начинаем обмен с SOL
+              initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Твой токен MEMEX по умолчанию
             },
-            shape: {
-              borderRadius: '16px',
+
+            // Настройка твоей личной комиссии (Platform Fee)
+            feeConfig: {
+              feeBps: 30, // Твоя комиссия 0.3% с каждого обмена на твоем сайте
+              feeAccounts: [
+                // Слева системный адрес SOL, справа твой личный Referral Key для сбора прибыли
+                ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"] 
+              ]
             },
-          }
-        });
+
+            // ---- КРАСИВЫЙ СВЕТЛЫЙ DEFI ДИЗАЙН ВИДЖЕТА ----
+            theme: {
+              palette: {
+                mode: 'light',         // Внутренности виджета в светлом режиме
+                background: '#FFFFFF', // Чистый белый фон карточки обменника
+                primary: '#8B5CF6',    // Фиолетовый неоновый цвет главных Web3 кнопок
+                secondary: '#F3F4F6',  // Светло-серые аккуратные поля выбора токенов
+                text: '#1F2937',       // Темный легкочитаемый текст
+              },
+              shape: {
+                borderRadius: '16px',
+              },
+            }
+          });
+        } catch (error) {
+          console.error("Ошибка при инициализации виджета Jupiter:", error);
+        }
       }
     };
 
@@ -61,37 +65,42 @@ function App() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      padding: '40px 20px',
+      padding: '60px 20px',
       // ---- СВЕТЛЫЙ ФУТУРИСТИЧНЫЙ ФОН СТРАНИЦЫ ----
       background: 'linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%)',
       minHeight: '100vh',
-      fontFamily: 'sans-serif',
-      color: '#1f2937'
+      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      color: '#1f2937',
+      boxSizing: 'border-box'
     }}>
-      <h1 style={{ 
-        marginBottom: '8px', 
-        color: '#1f2937',
-        fontWeight: 'bold',
-        textShadow: '0 2px 4px rgba(0,0,0,0.05)'
-      }}>
-        MEMEX DeFi Protocol Exchange ⚡
-      </h1>
-      <p style={{ color: '#6b7280', marginBottom: '32px', textAlign: 'center', fontSize: '15px' }}>
-        Swap Solana tokens instantly at the best rates
-      </p>
+      <div style={{ textAlign: 'center', marginBottom: '32px', maxWidth: '440px' }}>
+        <h1 style={{ 
+          fontSize: '32px',
+          fontWeight: '800', 
+          color: '#1f2937',
+          margin: '0 0 8px 0',
+          letterSpacing: '-0.5px',
+          textShadow: '0 2px 4px rgba(0,0,0,0.02)'
+        }}>
+          MEMEX DeFi Protocol Exchange ⚡
+        </h1>
+        <p style={{ color: '#6b7280', margin: '0', fontSize: '15px', lineHeight: '1.5' }}>
+          Swap Solana tokens instantly at the best rates
+        </p>
+      </div>
       
-      {/* ИСПРАВЛЕННАЯ белая карточка-контейнер: overflow: hidden убран, чтобы виджет работал плавно и не сворачивался! */}
+      {/* ИДЕАЛЬНЫЙ РОНВЫЙ КОНТЕЙНЕР: Задана точная минимальная высота, чтобы убрать кашу! */}
       <div 
         id="jupiter-terminal-container" 
         style={{ 
           width: '100%', 
           maxWidth: '440px', 
-          borderRadius: '20px', 
-          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-          border: '1px solid rgba(255,255,255,0.7)',
+          minHeight: '580px', // Высота зафиксирована под размер оригинального виджета Юпитера
+          borderRadius: '24px', 
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+          border: '1px solid #E5E7EB',
           background: '#FFFFFF',
-          padding: '6px',
+          padding: '8px',
           boxSizing: 'border-box'
         }} 
       />
