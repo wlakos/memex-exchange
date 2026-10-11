@@ -12,20 +12,20 @@ function App() {
         (window as any).Jupiter.init({
           displayMode: "integrated", 
           integratedTargetId: "jupiter-terminal-container",
-          // Исправлено: указан рабочий публичный узел сети Solana
+          // Твоя личная выделенная скоростная RPC-нода от Helius
           endpoint: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", 
 
           // Настройки токенов по умолчанию
           formProps: {
             initialInputMint: "So11111111111111111111111111111111111111112", // Начинаем обмен с SOL
-            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Ваш токен MEMEX по умолчанию
+            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Твой токен MEMEX по умолчанию
           },
 
-          // Настройка вашей личной комиссии (Platform Fee)
+          // Настройка твоей личной комиссии (Platform Fee)
           feeConfig: {
-            feeBps: 30, // Ваша комиссия 0.3% с каждого обмена на вашем сайте
+            feeBps: 30, // Твоя комиссия 0.3% с каждого обмена на твоем сайте
             feeAccounts: [
-              // Исправлено: слева системный адрес SOL, справа ваш личный Referral Key
+              // Слева системный адрес SOL, справа твой личный Referral Key для сбора прибыли
               ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"] 
             ]
           },
@@ -33,7 +33,7 @@ function App() {
           // ---- КРАСИВЫЙ СВЕТЛЫЙ DEFI ДИЗАЙН ВИДЖЕТА ----
           theme: {
             palette: {
-              mode: 'light',         // Переключаем внутренности виджета в светлый режим
+              mode: 'light',         // Внутренности виджета в светлом режиме
               background: '#FFFFFF', // Чистый белый фон карточки обменника
               primary: '#8B5CF6',    // Фиолетовый неоновый цвет главных Web3 кнопок
               secondary: '#F3F4F6',  // Светло-серые аккуратные поля выбора токенов
@@ -50,7 +50,9 @@ function App() {
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, []);
 
@@ -73,22 +75,24 @@ function App() {
         fontWeight: 'bold',
         textShadow: '0 2px 4px rgba(0,0,0,0.05)'
       }}>
-        MEMEX DeFi Protocol Exchange 
+        MEMEX DeFi Protocol Exchange ⚡
       </h1>
       <p style={{ color: '#6b7280', marginBottom: '32px', textAlign: 'center', fontSize: '15px' }}>
-       
+        Swap Solana tokens instantly at the best rates
       </p>
       
-      {/* Белая карточка-контейнер с мягкой премиальной тенью */}
+      {/* ИСПРАВЛЕННАЯ белая карточка-контейнер: overflow: hidden убран, чтобы виджет работал плавно и не сворачивался! */}
       <div 
         id="jupiter-terminal-container" 
         style={{ 
           width: '100%', 
-          maxWidth: '420px', 
+          maxWidth: '440px', 
           borderRadius: '20px', 
-          overflow: 'hidden',
           boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-          border: '1px solid rgba(255,255,255,0.7)'
+          border: '1px solid rgba(255,255,255,0.7)',
+          background: '#FFFFFF',
+          padding: '6px',
+          boxSizing: 'border-box'
         }} 
       />
     </div>
