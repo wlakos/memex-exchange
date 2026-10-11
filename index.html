@@ -16,6 +16,34 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
+        
+        /* 1. СТИЛЬ ЖИВОЙ БЕГУЩЕЙ СТРОКИ */
+        .ticker-wrap {
+            width: 100%;
+            background-color: #111c14;
+            border-bottom: 1px solid #14291b;
+            overflow: hidden;
+            padding: 6px 0;
+        }
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 30px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #9CA3AF;
+            letter-spacing: 0.5px;
+        }
+        .ticker-item span { color: #C7F284; margin-left: 4px; }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -24,16 +52,28 @@
             background-color: #13141A;
             border-bottom: 1px solid #1C1D24;
         }
-        header .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+        header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
         header .logo span { color: #C7F284; }
-        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
+        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; align-items: center; }
         header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
         header nav a:hover { color: #FFFFFF; }
-        header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
+        
+        /* 3. НЕОНОВЫЕ КНОПКИ СОЦСЕТЕЙ */
+        .social-link {
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .social-tg { color: #26A5E4; border: 1px solid rgba(38, 165, 228, 0.3); background: rgba(38, 165, 228, 0.05); }
+        .social-tg:hover { background: rgba(38, 165, 228, 0.15); box-shadow: 0 0 12px rgba(38, 165, 228, 0.4); }
+        .social-x { color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.03); }
+        .social-x:hover { background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 12px rgba(255, 255, 255, 0.3); }
+
+        .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
+        
         main {
             display: flex;
             flex-direction: row;
@@ -51,7 +91,6 @@
             width: 100%;
             max-width: 440px;
         }
-        /* ОРИГИНАЛЬНЫЙ СГЛАЖЕННЫЙ КОНТЕЙНЕР JUPITER */
         #jupiter-terminal-container {
             width: 100%;
             max-width: 440px;
@@ -63,7 +102,6 @@
             padding: 6px;
             box-sizing: border-box;
         }
-        /* НАША ФИРМЕННАЯ СВЕТЯЩАЯСЯ ЗЕЛЕНАЯ КНОПКА */
         .btn-jup {
             display: block;
             width: 100%;
@@ -81,9 +119,36 @@
             margin-top: 8px;
         }
         .btn-jup:hover { background-color: #bce674; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(199, 242, 132, 0.5); }
+
+        /* 2. СТИЛЬ БЛОКА КОПИРОВАНИЯ СМАРТ-КОНТРАКТА */
+        .ca-container {
+            background-color: #13141A;
+            border: 1px solid #1C1D24;
+            border-radius: 16px;
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            margin-top: 12px;
+        }
+        .ca-text-box { display: flex; flexDirection: column; gap: 4px; overflow: hidden; width: 80%; }
+        .ca-label { font-size: 11px; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ca-value { font-size: 13px; font-weight: 600; color: #9CA3AF; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-family: monospace; }
+        .btn-copy {
+            background-color: #1C1D24;
+            border: 1px solid #2C2D35;
+            color: #C7F284;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-copy:hover { background-color: #2C2D35; color: #FFFFFF; }
     </style>
 
-    <!-- Указана точная техническая ссылка на ядро загрузки виджета Jupiter -->
     <script src="https://jup.ag" defer></script>
 
     <script>
@@ -93,35 +158,26 @@
                     window.Jupiter.init({
                         displayMode: "integrated", 
                         integratedTargetId: "jupiter-terminal-container",
-                        // Твоя личная скоростная RPC-нода от Helius
                         endpoint: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", 
-
-                        // Настройки токенов по умолчанию
                         formProps: {
-                            initialInputMint: "So11111111111111111111111111111111111111112", // Начинаем обмен с SOL
-                            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Твой токен MEMEX по умолчанию
+                            initialInputMint: "So11111111111111111111111111111111111111112", 
+                            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", 
                         },
-
-                        // Настройка твоей личной реферальной комиссии 0.3%
                         feeConfig: {
                             feeBps: 30, 
                             feeAccounts: [
                                 ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"] 
                             ]
                         },
-
-                        // ---- ОРИГИНАЛЬНЫЙ КОСМИЧЕСКИЙ ДИЗАЙН JUP.AG ----
                         theme: {
                             palette: {
                                 mode: 'dark',           
-                                background: '#13141A',  // Цвет карточки оригинального swap-интерфейса
-                                primary: '#C7F284',     // Фирменная ядовито-салатовая кнопка Swap
-                                secondary: '#1C1D24',   // Темные сглаженные поля ввода
+                                background: '#13141A',  
+                                primary: '#C7F284',     
+                                secondary: '#1C1D24',   
                                 text: '#FFFFFF',        
                             },
-                            shape: {
-                                borderRadius: '20px',
-                            },
+                            shape: { borderRadius: '20px' }
                         }
                     });
                 } catch (error) {
@@ -129,41 +185,57 @@
                 }
             }
         });
+
+        // СКРИПТ КНОПКИ СМАРТ-КОНТРАКТА
+        function copyContract() {
+            const ca = "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs";
+            navigator.clipboard.writeText(ca).then(() => {
+                const btn = document.getElementById("copyBtn");
+                btn.innerText = "Copied! ✓";
+                btn.style.color = "#14F195";
+                setTimeout(() => {
+                    btn.innerText = "Copy";
+                    btn.style.color = "#C7F284";
+                }, 2000);
+            });
+        }
     </script>
 </head>
 <body>
 
+    <!-- 1. ВЕРХНЯЯ БЕГУЩАЯ СТРОКА С ЦЕНАМИ -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">MEMEX / SOL<span>ONLINE ⚡</span></div>
+            <div class="ticker-item">SOLANA (SOL)<span>$148.52</span></div>
+            <div class="ticker-item">JUPITER (JUP)<span>$0.89</span></div>
+            <div class="ticker-item">MEMEX COIN<span>$0.12</span></div>
+            <div class="ticker-item">USD COIN (USDC)<span>$1.00</span></div>
+            <!-- Дублируем для бесшовного круга -->
+            <div class="ticker-item">MEMEX / SOL<span>ONLINE ⚡</span></div>
+            <div class="ticker-item">SOLANA (SOL)<span>$148.52</span></div>
+            <div class="ticker-item">JUPITER (JUP)<span>$0.89</span></div>
+            <div class="ticker-item">MEMEX COIN<span>$0.12</span></div>
+            <div class="ticker-item">USD COIN (USDC)<span>$1.00</span></div>
+        </div>
+    </div>
+
     <header>
         <div class="logo">MEMEX <span>DeFi</span></div>
         <nav>
-            <a href="https://github.io" target="_blank">Whitepaper</a>
-            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
+            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_blank">Whitepaper</a>
+            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_blank">MONUMENTAL MANIFESTO</a>
+            <!-- 3. НАШИ НЕОНОВЫЕ ССЫЛКИ НА СОЦСЕТИ -->
+            <a href="https://t.me/MemexCryptoBot" target="_blank" class="social-link social-tg">Telegram</a>
+            <a href="https://x.com/wlakos_official" target="_blank" class="social-link social-x">Twitter (X)</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
 
     <main>
-        <!-- Левая часть: Живой темный график твоего токена MEMEX с DexScreener -->
+        <!-- Левая часть: Живой темный график твоего токена MEMEX -->
         <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24; box-shadow: 0 20px 40px rgba(0,0,0,0.4)">
-            <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
+            <iframe src="https://dexscreener.com/solana/3t5wyfwbwsudqpv1h1qn7cv87aes3ej3qpzqrnjjstmy" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
 
-        <!-- Правая часть: Блок обменника + наша резервная кнопка -->
-        <div class="swap-wrapper">
-            <div style="padding-left: 8px;">
-                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
-            </div>
-            
-            <!-- Сюда встанет ультра-гладкий темный терминал -->
-            <div id="jupiter-terminal-container"></div>
-
-            <!-- 💥 ТВОЯ ЗЕЛЕНАЯ КНОПКА-СНАРЯД С ПОЛНЫМ НАБОРОМ КЛЮЧЕЙ И НАЦЕНКОЙ 0.3% -->
-            <a href="https://jup.ag" target="_blank" class="btn-jup">
-                Open Jupiter Exchange ⚡
-            </a>
-        </div>
-    </main>
-
-</body>
-</html>
+        <!-- Правая часть: Блок обменника + Кнопка + Копирование Смарт-Контракта -->
