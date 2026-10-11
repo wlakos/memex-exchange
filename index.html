@@ -8,52 +8,64 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
-            min-height: 100vh;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #1f2937;
+            background-color: #090A0E;
+            color: #FFFFFF;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            min-height: 100vh;
             box-sizing: border-box;
         }
-        .header-container {
-            text-align: center;
-            margin-top: 60px;
-            margin-bottom: 32px;
-            max-width: 440px;
-            padding: 0 20px;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background-color: #13141A;
+            border-bottom: 1px solid #1C1D24;
         }
-        .header-container h1 {
-            font-size: 32px;
+        header .logo {
+            font-size: 20px;
             font-weight: 800;
-            color: #1f2937;
-            margin: 0 0 8px 0;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        .header-container p {
-            color: #6b7280;
-            margin: 0;
-            font-size: 15px;
-            line-height: 1.5;
+        header .logo span { color: #C7F284; }
+        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
+        header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
+        header nav a:hover { color: #FFFFFF; }
+        header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
+        main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 50px 20px;
+            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
+            flex: 1;
         }
-        /* ИДЕАЛЬНЫЙ РОВНЫЙ КОНТЕЙНЕР ДЛЯ ВИДЖЕТА */
+        .swap-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 440px;
+        }
+        /* ОРИГИНАЛЬНЫЙ СГЛАЖЕННЫЙ КОНТЕЙНЕР JUPITER */
         #jupiter-terminal-container {
             width: 100%;
             max-width: 440px;
             min-height: 580px;
             border-radius: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            border: 1px solid #E5E7EB;
-            background: #FFFFFF;
-            padding: 8px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid #1C1D24;
+            background: #13141A;
+            padding: 6px;
             box-sizing: border-box;
-            margin-bottom: 40px;
         }
     </style>
 
-    <!-- ИСПРАВЛЕНО: Теперь тут стоит точный адрес технического облачного скрипта Jupiter Terminal -->
+    <!-- ИСПРАВЛЕНО: Указана точная техническая ссылка на ядро загрузки виджета! -->
     <script src="https://jup.ag" defer></script>
 
     <script>
@@ -63,35 +75,34 @@
                     window.Jupiter.init({
                         displayMode: "integrated", 
                         integratedTargetId: "jupiter-terminal-container",
-                        // Ваша личная выделенная скоростная RPC-нода от Helius
+                        // Твоя личная скоростная RPC-нода от Helius
                         endpoint: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", 
 
                         // Настройки токенов по умолчанию
                         formProps: {
                             initialInputMint: "So11111111111111111111111111111111111111112", // Начинаем обмен с SOL
-                            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Ваш токен MEMEX по умолчанию
+                            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Твой токен MEMEX по умолчанию
                         },
 
-                        // Настройка вашей личной комиссии (Platform Fee)
+                        // Настройка твоей личной реферальной комиссии 0.3%
                         feeConfig: {
-                            feeBps: 30, // Ваша комиссия 0.3% с каждого обмена на вашем сайте
+                            feeBps: 30, 
                             feeAccounts: [
-                                // Слева системный адрес SOL, справа ваш личный Referral Key для сбора прибыли
                                 ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"] 
                             ]
                         },
 
-                        // ---- КРАСИВЫЙ СВЕТЛЫЙ DEFI ДИЗАЙН ВИДЖЕТА ----
+                        // ---- ОРИГИНАЛЬНЫЙ КОСМИЧЕСКИЙ ДИЗАЙН JUP.AG ----
                         theme: {
                             palette: {
-                                mode: 'light',         // Внутренности виджета в светлом режиме
-                                background: '#FFFFFF', // Чистый белый фон карточки обменника
-                                primary: '#8B5CF6',    // Фиолетовый неоновый цвет главных Web3 кнопок
-                                secondary: '#F3F4F6',  // Светло-серые аккуратные поля выбора токенов
-                                text: '#1F2937',       // Темный легкочитаемый текст
+                                mode: 'dark',           
+                                background: '#13141A',  // Цвет карточки оригинального swap-интерфейса
+                                primary: '#C7F284',     // Фирменная ядовито-салатовая кнопка Swap
+                                secondary: '#1C1D24',   // Темные сглаженные поля ввода
+                                text: '#FFFFFF',        
                             },
                             shape: {
-                                borderRadius: '16px',
+                                borderRadius: '20px',
                             },
                         }
                     });
@@ -104,13 +115,32 @@
 </head>
 <body>
 
-    <div class="header-container">
-        <h1>MEMEX DeFi Protocol Exchange ⚡</h1>
-        <p>Swap Solana tokens instantly at the best rates</p>
-    </div>
-    
-    <!-- Сюда скрипт Jupiter автоматически и ровно развернет интерфейс обмена -->
-    <div id="jupiter-terminal-container"></div>
+    <header>
+        <div class="logo">MEMEX <span>DeFi</span></div>
+        <nav>
+            <a href="https://github.io" target="_blank">Whitepaper</a>
+            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
+        </nav>
+        <div class="status">● Solana Mainnet</div>
+    </header>
+
+    <main>
+        <!-- Левая часть: Живой темный график твоего токена MEMEX -->
+        <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24; boxShadow: '0 20px 40px rgba(0,0,0,0.4)'">
+            <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+
+        <!-- Правая часть: Блок обменника, куда плавно встанет виджет Юпитера -->
+        <div class="swap-wrapper">
+            <div style="padding-left: 8px;">
+                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
+            </div>
+            
+            <!-- Сюда встанет ультра-гладкий темный терминал -->
+            <div id="jupiter-terminal-container"></div>
+        </div>
+    </main>
 
 </body>
 </html>
