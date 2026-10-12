@@ -17,7 +17,7 @@
             box-sizing: border-box;
         }
         
-        /* 📈 СТИЛИ НАШЕЙ БЕГУЩЕЙ ЛЕНТЫ КУРСОВ КРИПТЫ */
+        /* БЕГУЩАЯ СТРОКА */
         .ticker-wrap {
             width: 100%;
             background-color: #111c14;
@@ -52,11 +52,7 @@
             background-color: #13141A;
             border-bottom: 1px solid #1C1D24;
         }
-        header .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+        header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
         header .logo span { color: #C7F284; }
         header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
         header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
@@ -89,7 +85,7 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
         }
-        /* НАША ФИРМЕННАЯ СВЕТЯЩАЯСЯ ЗЕЛЕНАЯ КНОПКА */
+        /* НАША ЯРКАЯ ЗЕЛЕНАЯ КНОПКА */
         .btn-jup {
             display: block;
             width: 100%;
@@ -105,51 +101,53 @@
             transition: 0.2s;
             box-sizing: border-box;
             margin-top: 8px;
+            cursor: pointer;
+            border: none;
         }
         .btn-jup:hover { background-color: #bce674; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(199, 242, 132, 0.5); }
+
+        /* ПОЛНОЭКРАННОЕ ОКНО ДЛЯ ХАК-СВОПА */
+        #fullscreen-jup-frame {
+            display: none;
+            width: 100%;
+            height: calc(100vh - 110px);
+            border: none;
+            background-color: #090A0E;
+        }
     </style>
 
-    <!-- ТЕХНИЧЕСКИЙ СКРИПТ ОНЧЕЙН-ЯДРА С ТВОИМИ КОНФИГУРАЦИЯМИ И КЛЮЧАМИ -->
-    <script src="https://jup.ag" defer></script>
     <script>
-        window.addEventListener('load', function() {
-            if (window.Jupiter) {
-                try {
-                    window.Jupiter.init({
-                        displayMode: "integrated", 
-                        integratedTargetId: "jupiter-terminal-container",
-                        endpoint: "https://helius-rpc.com", 
-                        formProps: {
-                            initialInputMint: "So11111111111111111111111111111111111111112", 
-                            initialOutputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", 
-                        },
-                        feeConfig: {
-                            feeBps: 30, 
-                            feeAccounts: [
-                                ["So11111111111111111111111111111111111111112", "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L"] 
-                            ]
-                        },
-                        theme: {
-                            palette: {
-                                mode: 'dark',           
-                                background: '#13141A',  
-                                primary: '#C7F284',     
-                                secondary: '#1C1D24',   
-                                text: '#FFFFFF',        
-                            },
-                            shape: { borderRadius: '20px' }
-                        }
-                    });
-                } catch (error) {
-                    console.error("Ошибка при инициализации виджета Jupiter:", error);
-                }
-            }
-        });
+        // 💥 НАШ ОНЧЕЙН-ХАК: ВСЕ ТВОИ КЛЮЧИ ТЕПЕРЬ НА САМОМ ВИДНОМ МЕСТЕ КРУПНЫМ ПЛАНOM!
+        const MY_CONFIG = {
+            buy_mint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Твой минт токена MEMEX
+            sell_mint: "So11111111111111111111111111111111111111112",    // Системный адрес Solana (Wrapped SOL)
+            fee_bps: "30",                                              // Размер твоей комиссии 0.3%
+            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой личный реферальный сейф
+            helius_node: "https://helius-rpc.com" // Твое скоростное такси Helius
+        };
+
+        // ХАКЕРСКИЙ СКРИПТ БЕСШОВНОГО ПЕРЕКЛЮЧЕНИЯ ЭКРАНОВ
+        function openJupiterInside() {
+            // Плавное скрытие графика и карточки
+            document.getElementById("normal-content").style.display = "none";
+            
+            // Показываем наше интерактивное зеркало
+            const frame = document.getElementById("fullscreen-jup-frame");
+            frame.style.display = "block";
+            
+            // Робот автоматически собирает ссылку из твоих вынесенных ключей и запускает обмен!
+            frame.src = "https://jup.ag" +
+                        "&buy=" + MY_CONFIG.buy_mint +
+                        "&sell=" + MY_CONFIG.sell_mint +
+                        "&feeBps=" + MY_CONFIG.fee_bps +
+                        "&feeAccount=" + MY_CONFIG.fee_account +
+                        "&endpoint=" + encodeURIComponent(MY_CONFIG.helius_node);
+        }
     </script>
 </head>
 <body>
 
-    <!-- 🌐 НАША БЕГУЩАЯ СТРОКА С КУРСАМИ КРИПТЫ В САМОМ ВЕРХУ -->
+    <!-- БЕГУЩАЯ СТРОКА С ЦЕНАМИ -->
     <div class="ticker-wrap">
         <div class="ticker">
             <div class="ticker-item">MEMEX / SOL<span>ONLINE ⚡</span></div>
@@ -157,7 +155,6 @@
             <div class="ticker-item">JUPITER (JUP)<span>$0.89</span></div>
             <div class="ticker-item">MEMEX COIN<span>$0.12</span></div>
             <div class="ticker-item">USD COIN (USDC)<span>$1.00</span></div>
-            <!-- Дублируем элементы для создания эффекта бесконечной бесшовной ленты -->
             <div class="ticker-item">MEMEX / SOL<span>ONLINE ⚡</span></div>
             <div class="ticker-item">SOLANA (SOL)<span>$148.52</span></div>
             <div class="ticker-item">JUPITER (JUP)<span>$0.89</span></div>
@@ -166,8 +163,9 @@
         </div>
     </div>
 
+    <!-- HEADER ВСЕГДА ОСТАЕТСЯ СВЕРХУ -->
     <header>
-        <div class="logo">MEMEX <span>DeFi</span></div>
+        <div class="logo" onclick="window.location.reload();" style="cursor: pointer;">MEMEX <span>DeFi</span></div>
         <nav>
             <a href="https://github.io" target="_blank">Whitepaper</a>
             <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
@@ -175,7 +173,8 @@
         <div class="status">● Solana Mainnet</div>
     </header>
 
-    <main>
+    <!-- ОСНОВНОЙ КОНТЕНТ (ГРАФИК + КАРТОЧКА С КНОПКОЙ) -->
+    <main id="normal-content">
         <!-- Левая часть: Живой темный график твоего токена MEMEX с DexScreener -->
         <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24; box-shadow: 0 20px 40px rgba(0,0,0,0.4)">
             <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
@@ -193,13 +192,16 @@
                     <p style="margin: 0; color: #9CA3AF; font-size: 14px;">To trade MEMEX with auto-applied fee, use our official aggregated router below.</p>
                 </div>
                 
-                <!-- ЗЕЛЕНАЯ КНОПКА ПОДНЯТА НА САМЫЙ ВЕРХ И ВСЕ КЛЮЧИ ТУТ -->
-                <a href="https://jup.ag/swap?inAmount=&buy=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&sell=So11111111111111111111111111111111111111112&feeBps=30&feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L&endpoint=https://helius-rpc.com" target="_blank" class="btn-jup">
+                <!-- КНОПКА ЗАПУСКАЕТ НАШ ОНЧЕЙН-ХАК ПО КЛИКУ -->
+                <button onclick="openJupiterInside()" class="btn-jup">
                     Open Jupiter Exchange ⚡
-                </a>
+                </button>
             </div>
         </div>
     </main>
+
+    <!-- ИНТЕРАКТИВНОЕ ЗЕРКАЛО ДЛЯ ОРИГИНАЛЬНОГО ЮПИТЕРА -->
+    <iframe id="fullscreen-jup-frame"></iframe>
 
 </body>
 </html>
