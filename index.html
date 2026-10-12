@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMEX DeFi Protocol Exchange ⚡</title>
-    <!-- FORCE CACHE RESET VERSION 7.7.7 -->
     <style>
         body {
             margin: 0;
@@ -18,7 +17,7 @@
             box-sizing: border-box;
         }
         
-        /* БЕГУЩАЯ СТРОКА */
+        /* БЕГУЩАЯ СТРОКА С ЦЕНАМИ */
         .ticker-wrap {
             width: 100%;
             background-color: #111c14;
@@ -59,7 +58,7 @@
         header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
         header nav a:hover { color: #FFFFFF; }
         
-        /* СОЦСЕТИ */
+        /* КНОПКИ СОЦСЕТЕЙ */
         .social-link {
             padding: 6px 14px;
             border-radius: 10px;
@@ -86,7 +85,7 @@
             flex: 1;
         }
 
-        /* КОЛОНКИ СТРАНИЦЫ */
+        /* ДВЕ ГЛАВНЫЕ КОЛОНКИ СЕТКИ */
         .left-column {
             display: flex;
             flex-direction: column;
@@ -94,7 +93,7 @@
             width: 100%;
             max-width: 720px;
         }
-        .swap-wrapper {
+        .right-column {
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -102,7 +101,7 @@
             max-width: 440px;
         }
 
-        /* КАРТОЧКИ СТАТИСТИКИ */
+        /* КАРТОЧКИ ТОКЕНОМИКИ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -121,6 +120,7 @@
         .stat-value { font-size: 16px; font-weight: 800; color: #FFFFFF; }
         .stat-value span { color: #14F195; }
 
+        /* КОНТЕЙНЕР ДЛЯ ВСТРОЕННОГО ЮПИТЕРА */
         #jupiter-terminal-container {
             width: 100%;
             max-width: 440px;
@@ -132,6 +132,8 @@
             padding: 6px;
             box-sizing: border-box;
         }
+        
+        /* НАША ЯРКАЯ ЗЕЛЕНАЯ КНОПКА ПЕРЕХОДА */
         .btn-jup {
             display: block;
             width: 100%;
@@ -179,7 +181,7 @@
         .btn-copy:hover { background-color: #2C2D35; color: #FFFFFF; }
     </style>
 
-    <!-- Подключаем скрипт Jupiter Terminal -->
+    <!-- Загрузка виджета Jupiter Terminal -->
     <script src="https://jup.ag" defer></script>
 
     <script>
