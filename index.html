@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMEX DeFi Protocol Exchange ⚡</title>
+    <!-- UPDATE VERSION 9.9.9 -->
     <style>
         body {
             margin: 0;
@@ -16,8 +17,6 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
-        
-        /* БЕГУЩАЯ СТРОКА С ЦЕНАМИ */
         .ticker-wrap {
             width: 100%;
             background-color: #111c14;
@@ -43,7 +42,6 @@
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
-
         header {
             display: flex;
             justify-content: space-between;
@@ -54,11 +52,10 @@
         }
         header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; }
         header .logo span { color: #C7F284; }
-        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; align-items: center; }
+        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
         header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
         header nav a:hover { color: #FFFFFF; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
-        
         main {
             display: flex;
             flex-direction: row;
@@ -85,7 +82,6 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
         }
-        /* НАША ФИРМЕННАЯ СВЕТЯЩАЯСЯ ЗЕЛЕНАЯ КНОПКА */
         .btn-jup {
             display: block;
             width: 100%;
@@ -108,26 +104,26 @@
     </style>
 
     <script>
-        // 💥 КОНФИГУРАЦИЯ ТВОИХ КЛЮЧЕЙ НА САМОМ ВИДНОМ МЕСТЕ ПРЯМЫМ ТЕКСТОМ
+        // 💥 ВСЕ ТВОИ КЛЮЧИ И МИНТЫ ТЕПЕРЬ ТУТ НА САМОМ ВИДНОМ МЕСТЕ ПРЯМЫМ ТЕКСТОМ!
         const MY_CONFIG = {
-            buy_mint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Твой минт токена MEMEX
-            sell_mint: "So11111111111111111111111111111111111111112",    // Системный адрес Solana (Wrapped SOL)
-            fee_bps: "30",                                              // Размер твоей комиссии 0.3%
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой личный реферальный сейф
-            helius_node: "https://helius-rpc.com" // Твоя нода Helius
+            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Твой минт MEMEX
+            sell_token: "So11111111111111111111111111111111111111112",    // Системный адрес SOL
+            fee_bps: "30",                                              // Твоя комиссия 0.3%
+            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой реферальный сейф
+            helius_rpc: "https://helius-rpc.com" // Твоя нода Helius
         };
 
-        // ТАКТИЧЕСКИЙ СКРИПТ БЕЗОПАСНОГО ПЕРЕХОДА (ПО КЛИКУ НА ЗЕЛЕНУЮ КНОПКУ)
-        function openJupiterDirect() {
-            const jupiterUrl = "https://jup.ag" +
-                               "&buy=" + MY_CONFIG.buy_mint +
-                               "&sell=" + MY_CONFIG.sell_mint +
-                               "&feeBps=" + MY_CONFIG.fee_bps +
-                               "&feeAccount=" + MY_CONFIG.fee_account +
-                               "&endpoint=" + encodeURIComponent(MY_CONFIG.helius_node);
+        // ХАКЕРСКИЙ СКРИПТ: Автоматически собирает ссылку без блокировок и перенаправляет в текущей вкладке!
+        function executeOnchainSwap() {
+            const baseRoute = "https://jup.ag";
+            const params = "?inAmount=" +
+                           "&buy=" + MY_CONFIG.buy_token +
+                           "&sell=" + MY_CONFIG.sell_token +
+                           "&feeBps=" + MY_CONFIG.fee_bps +
+                           "&feeAccount=" + MY_CONFIG.fee_account +
+                           "&endpoint=" + encodeURIComponent(MY_CONFIG.helius_rpc);
             
-            // Перенаправляем строго в этой вкладке
-            window.location.href = jupiterUrl;
+            window.location.href = baseRoute + params;
         }
     </script>
 </head>
@@ -150,7 +146,7 @@
     </div>
 
     <header>
-        <!-- ИСПРАВЛЕНО: Кнопка MEMEX DeFi теперь ведет СТРОГО на главную страницу твоего сайта (Кнопка спасения / Назад) -->
+        <!-- КНОПКА ВОЗВРАТА: Ведет строго на главную страницу твоего сайта и никуда больше! -->
         <a href="https://github.io" class="logo">
             MEMEX <span>DeFi</span>
         </a>
@@ -179,8 +175,8 @@
                     <p style="margin: 0; color: #9CA3AF; font-size: 14px;">To trade MEMEX with auto-applied fee, use our official aggregated router below.</p>
                 </div>
                 
-                <!-- ИСПРАВЛЕНО: Зеленая кнопка теперь четко привязана к скрипту ончейн-маршрута и отвечает мгновенно! -->
-                <button onclick="openJupiterDirect()" class="btn-jup">
+                <!-- ЗЕЛЕНАЯ КНОПКА: При клике запускает автоматическую сборку ссылки и плавный переход -->
+                <button onclick="executeOnchainSwap()" class="btn-jup">
                     Open Jupiter Exchange ⚡
                 </button>
             </div>
