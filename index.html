@@ -213,3 +213,30 @@
 </html>
 </body>
 </html>
+<!-- 1. Создаем на странице «коробку», где будет сидеть обменник -->
+<div id="jupiter-terminal" style="width: 100%; max-width: 440px; height: 560px;"></div>
+
+<!-- 2. Загружаем из интернета технический мозг Юпитера -->
+<script src="https://jup.ag"></script>
+
+<!-- 3. И только теперь запускаем твою настройку -->
+<script>
+  window.addEventListener('load', () => {
+    if (window.Jupiter) {
+      window.Jupiter.init({
+        displayMode: "integrated",
+        integratedTargetId: "jupiter-terminal", // Указываем на коробку выше
+        endpoint: "https://helius-rpc.com", // Твоя RPC нода (не сайт solana.com!)
+        strictTokenList: false,
+        formProps: {
+          fixedInputMint: true,
+          fixedOutputMint: true,
+          inputMint: "So11111111111111111111111111111111111111112", // SOL
+          outputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Минт MEMEX
+        },
+        feeBps: 0, // 0% наценки, работаем на авторитет
+        feeAccount: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" // Твой реф-ключ
+      });
+    }
+  });
+</script>
