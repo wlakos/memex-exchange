@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMEX DeFi Protocol Exchange ⚡</title>
-        <!-- 💥 НАШ ХАКЕРСКИЙ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
+    <!-- 💥 НАШ ХАКЕРСКИЙ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const host = "https://raw." + "githubusercontent" + ".com";
@@ -90,7 +90,6 @@
             max-width: 440px;
         }
         
-        /* ⚡ 박스 높이를 615px로 정밀 조정하여 주피터의 내부 스크롤바를 완전히 제거 */
         .container-box {
             width: 100%;
             height: 615px; 
@@ -101,11 +100,11 @@
             overflow: hidden;
             box-sizing: border-box;
         }
-        .left-terminal {
+        .left-chart {
             width: 100%;
             max-width: 720px;
         }
-        .right-chart {
+        .right-terminal {
             width: 100%;
             max-width: 440px;
         }
@@ -119,19 +118,14 @@
     </style>
 
     <script>
-        // 💥 НАСТРОЙКИ НА СЛУЧАЙ ИЗМЕНЕНИЙ — ВСЁ ПЕРЕД ГЛАЗАМИ ТЕКСТОМ:
         const MY_CONFIG = {
-            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Минт MEMEX
-            sell_token: "So11111111111111111111111111111111111111112",    // Адрес SOL
-            fee_bps: "30",                                              // Комиссия 0.3%
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой реферальный сейф
-            helius_rpc: "https://helius-rpc.com", // Ссылка с вашим рабочим ключом Helius
-            
-            // 🌐 ССЫЛКА ЛОГОТИПА: Сейчас возвращает на обменник. Позже впишешь сюда свой Твиттер или Главный сайт!
-            logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" 
+            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",
+            sell_token: "So11111111111111111111111111111111111111112",
+            fee_bps: "30",
+            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
+            logo_link: "https://solscan.io" 
         };
 
-        // Автоматически подставляем ссылку для логотипа при загрузке страницы
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById("logo-anchor").href = MY_CONFIG.logo_link;
         });
@@ -156,47 +150,46 @@
     </div>
 
     <header>
-        <!-- Умный логотип: Его адрес теперь управляется из настроек MY_CONFIG -->
         <a id="logo-anchor" href="#" class="logo">
             MEMEX <span>DeFi</span>
         </a>
         <nav>
-            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_blank">WHITEPAPER</a>
-            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_blank">MONUMENTAL MANIFESTO</a>
+            <a href="https://github.io" target="_blank">WHITEPAPER</a>
+            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
 
     <main>
-        <!-- Левая часть: Теперь здесь находится чистый реферальный терминал 주피터 터미널 -->
-        <div class="container-box left-terminal">
+        <!-- 📈 ЛЕВАЯ ЧАСТЬ: БОЛЬШОЙ ЖИВОЙ ТРЕКЕР DEXSCREENER С ГРАФИКОМ ТОКЕНА MEMEX -->
+        <div class="container-box left-chart">
             <iframe 
-                class="iframe-fluid"
-                src="https://dexscreener.com" 
-                allow="clipboard-read; clipboard-write; payment"
+                class="iframe-fluid" 
+                src="https://dexscreener.com"
             ></iframe>
         </div>
 
-        <!-- Правая часть: Блок обменника с графиком токена MEMEX с DexScreener -->
+        <!-- ⚡ ПРАВАЯ ЧАСТЬ: ИДЕАЛЬНЫЙ РЕФЕРАЛЬНЫЙ ТЕРМИНАЛ ЮПИТЕРА ПОД РАЗМЕР ОКНА -->
         <div class="swap-wrapper">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
             </div>
             
-            <div class="container-box right-chart">
+            <div class="container-box right-terminal">
                 <iframe 
-                    class="iframe-fluid" 
-                    src="https://jupiter-terminal.dexscreener.com/?inputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&outputMint=So11111111111111111111111111111111111111112"
+                    class="iframe-fluid"
+                    src="https://jupiter-terminal.dexscreener.com/?inputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&outputMint=So11111111111111111111111111111111111111112" 
+                    allow="clipboard-read; clipboard-write; payment"
                 ></iframe>
             </div>
         </div>
     </main>
- <!-- Solscan Verification Support Block (Идеальное место!) -->
+
+    <!-- БЛОК С ПОЧТОЙ НА СВОЕМ ЗАКОННОМ МЕСТЕ (ЛИШНИЙ ТЕГ DIV УБРАН) -->
     <div style="text-align: center; padding: 24px 20px; font-size: 11px; color: #4B5563; border-top: 1px solid #1C1D24; background-color: #13141A; width: 100%; box-sizing: border-box;">
         Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
     </div>
-    
-    </div>
+
 </body>
 </html>
