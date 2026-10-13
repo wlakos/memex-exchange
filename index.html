@@ -18,7 +18,6 @@
         });
     </script>
 
-    <!-- NEW PRODUCTION READY CLEAN VERSION -->
     <style>
         body {
             margin: 0;
@@ -76,64 +75,43 @@
         header nav a:hover { color: #FFFFFF; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
 
-        /* ОСНОВНОЙ КОНТЕНТ */
+        /* ЦЕНТРАЛЬНЫЙ БЛОК ДЛЯ ТЕРМИНАЛА */
         main {
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            gap: 40px;
-            padding: 50px 20px;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 20px;
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
             flex: 1;
         }
-
-        /* ЛЕВАЯ ЧАСТЬ: ГРАФИК */
-        .chart-box {
-            width: 100%;
-            max-width: 720px;
-            height: 560px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid #1C1D24;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        /* ПРАВАЯ ЧАСТЬ: ОБМЕННИК */
-        .swap-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-            max-width: 440px;
-        }
         .swap-info {
-            padding-left: 8px;
+            text-align: center;
+            max-width: 440px;
+            margin-bottom: 10px;
         }
-        .swap-info h2 { font-size: 22px; font-weight: 800; margin: 0 0 6px 0; }
-        .swap-info p { color: #9CA3AF; font-size: 14px; margin: 0; line-height: 1.4; }
+        .swap-info h2 { font-size: 24px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px; }
+        .swap-info p { color: #9CA3AF; font-size: 14px; margin: 0; line-height: 1.5; }
 
-        /* ИСПРАВЛЕННЫЙ КОНТЕНЕР ДЛЯ ЮПИТЕРА (БЕЗ ЛИШНИХ ОТСТУПОВ) */
+        /* ИДЕАЛЬНОЕ ПОСАДОЧНОЕ МЕСТО БЕЗ СТИЛИСТИЧЕСКИХ КОНФЛИКТОВ */
         #jupiter-terminal {
             width: 100%;
             max-width: 440px;
-            height: 560px;
+            height: 580px;
             border-radius: 24px;
-            border: 1px solid #1C1D24;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
-            background-color: #13141A;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
     </style>
 
     <script>
-        // 💥 НАСТРОЙКИ ЖЕСТКО СИНХРОНИЗИРОВАНЫ С ТВОИМИ ДАННЫМИ:
+        // 💥 ВСЕ КЛЮЧИ И НАСТРОЙКИ НА МЕСТЕ:
         const MY_CONFIG = {
             buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Минт MEMEX
             sell_token: "So11111111111111111111111111111111111111112",    // Адрес SOL
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой реферальный сейф
-            helius_rpc: "https://helius-rpc.com",                         // Нода Helius
+            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Реферальный сейф
+            helius_rpc: "https://helius-rpc.com",                         // Твоя Нода Helius
             logo_link: "https://solscan.io" 
         };
 
@@ -172,26 +150,18 @@
         <div class="status">● Solana Mainnet</div>
     </header>
 
-    <!-- ОСНОВНОЙ БЛОК -->
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <main>
-        <!-- Живой виджет графика токена MEMEX (подставлен правильный встроенный путь) -->
-        <div class="chart-box">
-            <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
+        <div class="swap-info">
+            <h2>Official Swap Hub</h2>
+            <p>Trade instantly at the best rates via Jupiter Protocol with a hardcoded 0% platform fee.</p>
         </div>
-
-        <!-- Контур обменника -->
-        <div class="swap-wrapper">
-            <div class="swap-info">
-                <h2>Official Swap Hub</h2>
-                <p>Trade instantly at the best rates via Jupiter Protocol with a hardcoded 0% platform fee.</p>
-            </div>
-            
-            <!-- Идеальный чистый контейнер под терминал -->
-            <div id="jupiter-terminal"></div>
-        </div>
+        
+        <!-- Контейнер Юпитера -->
+        <div id="jupiter-terminal"></div>
     </main>
 
-    <!-- СЕКЦИЯ СКРИПТОВ ДЛЯ СВЯЗИ С БЛОКЧЕЙНОМ -->
+    <!-- ПОДКЛЮЧЕНИЕ ТЕРМИНАЛА ЮПИТЕРА -->
     <script src="https://jup.ag"></script>
     <script>
         window.addEventListener('load', () => {
@@ -207,14 +177,11 @@
                         inputMint: MY_CONFIG.sell_token,
                         outputMint: MY_CONFIG.buy_token
                     },
-                    // Убираем наценку и кастомизируем дизайн виджета под темную тему твоего сайта
                     feeBps: 0, 
                     feeAccount: MY_CONFIG.fee_account,
-                    containerStyles: {
-                        zIndex: 1,
-                        background: "#13141A",
-                        borderRadius: "24px"
-                    }
+                    // Форсируем правильное внутреннее позиционирование виджета
+                    scriptPosition: "body",
+                    passThroughWallet: false
                 });
             }
         });
