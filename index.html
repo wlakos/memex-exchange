@@ -75,7 +75,7 @@
         header nav a:hover { color: #FFFFFF; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
 
-        /* ЦЕНТРАЛЬНЫЙ БЛОК ДЛЯ ТЕРМИНАЛА */
+        /* ЦЕНТРАЛЬНЫЙ БЛОК */
         main {
             display: flex;
             flex-direction: column;
@@ -94,7 +94,7 @@
         .swap-info h2 { font-size: 24px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px; }
         .swap-info p { color: #9CA3AF; font-size: 14px; margin: 0; line-height: 1.5; }
 
-        /* ИДЕАЛЬНОЕ ПОСАДОЧНОЕ МЕСТО БЕЗ СТИЛИСТИЧЕСКИХ КОНФЛИКТОВ */
+        /* ПОСАДОЧНОЕ МЕСТО ТЕРМИНАЛА */
         #jupiter-terminal {
             width: 100%;
             max-width: 440px;
@@ -102,16 +102,25 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            background-color: rgba(19, 20, 26, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loader-text {
+            color: #9CA3AF;
+            font-size: 14px;
+            font-weight: 600;
         }
     </style>
 
     <script>
-        // 💥 ВСЕ КЛЮЧИ И НАСТРОЙКИ НА МЕСТЕ:
+        // 💥 ТВОЙ СВЕЖИЙ ПРИВАТНЫЙ RPC-КЛЮЧ НАМЕРТВО ВШИТ СЮДА:
         const MY_CONFIG = {
             buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Минт MEMEX
             sell_token: "So11111111111111111111111111111111111111112",    // Адрес SOL
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Реферальный сейф
-            helius_rpc: "https://helius-rpc.com",                         // Твоя Нода Helius
+            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой реферальный сейф
+            helius_rpc: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", // Твой личный RPC коридор
             logo_link: "https://solscan.io" 
         };
 
@@ -158,7 +167,9 @@
         </div>
         
         <!-- Контейнер Юпитера -->
-        <div id="jupiter-terminal"></div>
+        <div id="jupiter-terminal">
+            <div id="terminal-loader" class="loader-text">Connecting to Solana network via Helius...</div>
+        </div>
     </main>
 
     <!-- ПОДКЛЮЧЕНИЕ ТЕРМИНАЛА ЮПИТЕРА -->
@@ -166,10 +177,13 @@
     <script>
         window.addEventListener('load', () => {
             if (window.Jupiter) {
+                const loader = document.getElementById('terminal-loader');
+                if(loader) loader.style.display = 'none';
+
                 window.Jupiter.init({
                     displayMode: "integrated",
                     integratedTargetId: "jupiter-terminal",
-                    endpoint: MY_CONFIG.helius_rpc,
+                    endpoint: MY_CONFIG.helius_rpc, // Подключаем приватную ноду
                     strictTokenList: false,
                     formProps: {
                         fixedInputMint: false,
@@ -178,11 +192,14 @@
                         outputMint: MY_CONFIG.buy_token
                     },
                     feeBps: 0, 
-                    feeAccount: MY_CONFIG.fee_account,
-                    // Форсируем правильное внутреннее позиционирование виджета
-                    scriptPosition: "body",
-                    passThroughWallet: false
+                    feeAccount: MY_CONFIG.fee_account
                 });
+            } else {
+                document.getElementById('jupiter-terminal').innerHTML = 
+                    "<div style='color:#ef4444; font-size:14px; text-align:center; padding:20px; font-weight:700;'>" +
+                    "❌ Jupiter script failed to load.<br>" +
+                    "<span style='font-size:12px; color:#9CA3AF; font-weight:400;'>Please check your deployment or console logs.</span>" +
+                    "</div>";
             }
         });
     </script>
