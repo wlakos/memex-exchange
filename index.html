@@ -19,90 +19,31 @@
 
     <!-- PRODUCTION READY VERSION 10.0 -->
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #090A0E;
-            color: #FFFFFF;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        .ticker-wrap {
-            width: 100%;
-            background-color: #111c14;
-            border-bottom: 1px solid #14291b;
-            overflow: hidden;
-            padding: 6px 0;
-        }
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: marquee 25s linear infinite;
-        }
-        .ticker-item {
-            display: inline-block;
-            padding: 0 30px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #9CA3AF;
-            letter-spacing: 0.5px;
-        }
-        .ticker-item span { color: #C7F284; margin-left: 4px; }
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 40px;
-            background-color: #13141A;
-            border-bottom: 1px solid #1C1D24;
-        }
-        header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; }
-        header .logo:hover { opacity: 0.8; }
-        header .logo span { color: #C7F284; }
-        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
-        header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
-        header nav a:hover { color: #FFFFFF; }
-        header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
-        main {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            padding: 50px 20px;
-            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
-            flex: 1;
-        }
+        /* СТИЛИ ОБНОВЛЕНЫ ДЛЯ ИДЕАЛЬНОГО ВЫРАВНИВАНИЯ И УБРАН СКРОЛЛ */
         .container-box {
             width: 100%;
+            height: 615px; /* Увеличили высоту, чтобы убрать прокрутку в Юпитере */
             border-radius: 24px;
             border: 1px solid #1C1D24;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
             background-color: #13141A;
+            box-sizing: border-box;
         }
         .left-terminal {
             width: 100%;
             max-width: 720px;
-            height: 540px;
         }
         .right-chart {
             width: 100%;
             max-width: 440px;
-            height: 540px;
         }
         .iframe-fluid {
             width: 100%;
             height: 100%;
             border: none;
             background: transparent;
+            display: block;
         }
     </style>
 
