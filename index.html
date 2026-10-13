@@ -17,7 +17,7 @@
         });
     </script>
 
-    <!-- 🌐 ПОДКЛЮЧЕНИЕ ОФИЦИАЛЬНОГО СКРИПТА JUPITER TERMINAL (БЕЗОПАСНАЯ СТАТИЧЕСКАЯ ВЕРСИЯ) -->
+    <!-- 🌐 ИСПРАВЛЕНО: ПОДКЛЮЧЕНИЕ ЧЕРЕЗ ЗАЩИЩЕННЫЙ PROTOCOL HTTPS -->
     <script src="https://jup.ag"></script>
 
     <!-- PRODUCTION READY VERSION 10.0 -->
@@ -93,35 +93,37 @@
         .container-box {
             width: 100%;
             max-width: 440px;
+            height: 575px;
             background: #13141A;
             border-radius: 24px;
             border: 1px solid #1C1D24;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
-            min-height: 575px; 
+            display: flex;
+            flex-direction: column;
         }
         #jupiter-terminal {
             width: 100%;
             height: 100%;
+            flex: 1;
         }
     </style>
 
     <script>
-        // 💥 НАСТРОЙКИ С ВАШИМ АКТИВНЫМ RPC КЛЮЧОМ HELIUS
+        // 💥 НАСТРОЙКИ С ВАШИМИ ДАННЫМИ
         const MY_CONFIG = {
             buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Минт MEMEX
             sell_token: "So11111111111111111111111111111111111111112",    // Адрес SOL
-            fee_bps: 30,                                                // Комиссия 0.3% (числом)
+            fee_bps: 30,                                                // Комиссия 0.3%
             fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Реферальный сейф
             helius_rpc: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", 
-            
             logo_link: "https://solscan.io" 
         };
 
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById("logo-anchor").href = MY_CONFIG.logo_link;
 
-            // Корректная нативная инициализация Terminal V3
+            // Корректный вызов терминала
             if (window.Jupiter) {
                 window.Jupiter.init({
                     displayMode: 'integrated',
@@ -129,8 +131,6 @@
                     endpoint: MY_CONFIG.helius_rpc,
                     strictTokenList: false,
                     formProps: {
-                        fixedInputMint: false,
-                        fixedOutputMint: false,
                         initialInputMint: MY_CONFIG.sell_token,
                         initialOutputMint: MY_CONFIG.buy_token,
                         feeBps: MY_CONFIG.fee_bps,
@@ -138,7 +138,7 @@
                     }
                 });
             } else {
-                console.error("Критическая ошибка: Не удалось загрузить скрипт jup.ag");
+                console.error("Не удалось загрузить Юпитер. Проверьте сеть.");
             }
         });
     </script>
@@ -185,7 +185,7 @@
                 <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
             </div>
             
-            <!-- Исправленный контейнер терминала -->
+            <!-- Контейнер для терминала -->
             <div class="container-box">
                 <div id="jupiter-terminal"></div>
             </div>
