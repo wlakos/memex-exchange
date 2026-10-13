@@ -90,31 +90,13 @@
         .container-box {
             width: 100%;
             max-width: 440px;
+            height: 560px; /* Фиксируем высоту под встроенный терминал Юпитера */
             background: #13141A;
             border-radius: 24px;
             border: 1px solid #1C1D24;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
         }
-        .btn-jup {
-            display: block;
-            width: 100%;
-            background-color: #C7F284;
-            color: #090A0E;
-            text-align: center;
-            padding: 16px;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 16px;
-            box-shadow: 0 4px 14px rgba(199, 242, 132, 0.3);
-            transition: 0.2s;
-            box-sizing: border-box;
-            margin-top: 8px;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-jup:hover { background-color: #bce674; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(199, 242, 132, 0.5); }
     </style>
 
     <script>
@@ -122,25 +104,13 @@
         const MY_CONFIG = {
             buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Минт MEMEX
             sell_token: "So11111111111111111111111111111111111111112",    // Адрес SOL
-            fee_bps: "30",                                              // Комиссия 0.3%
+            fee_bps: "30",                                              // Старый параметр для справки
             fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой реферальный сейф
-            helius_rpc: "https://helius-rpc.com", // Нода Helius
+            helius_rpc: "https://helius-rpc.com",                         // Нода Helius
             
             // 🌐 ССЫЛКА ЛОГОТИПА: Сейчас возвращает на обменник. Позже впишешь сюда свой Твиттер или Главный сайт!
             logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" 
         };
-
-        function executeOnchainSwap() {
-            const baseRoute = "https://jup.ag";
-            const params = "?inAmount=" +
-                           "&buy=" + MY_CONFIG.buy_token +
-                           "&sell=" + MY_CONFIG.sell_token +
-                           "&feeBps=" + MY_CONFIG.fee_bps +
-                           "&feeAccount=" + MY_CONFIG.fee_account +
-                           "&endpoint=" + encodeURIComponent(MY_CONFIG.helius_rpc);
-            
-            window.location.href = baseRoute + params;
-        }
 
         // Автоматически подставляем ссылку для логотипа при загрузке страницы
         window.addEventListener('DOMContentLoaded', () => {
@@ -188,55 +158,40 @@
         <div class="swap-wrapper">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade instantly at the best rates via Jupiter Protocol with a hardcoded 0% platform fee.</p>
             </div>
             
-            <div class="container-box" style="padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
-                <div style="background-color: #1C1D24; padding: 16px; border-radius: 12px; border: 1px solid #2C2D35; text-align: center;">
-                    <p style="margin: 0; color: #9CA3AF; font-size: 14px;">To trade MEMEX with auto-applied fee, use our official aggregated router below.</p>
-                </div>
-                
-                <button onclick="executeOnchainSwap()" class="btn-jup">
-                    Open Jupiter Exchange ⚡
-                </button>
-            </div>
+            <!-- Контейнер-коробка, куда скрипт Юпитера сам развернет красивый интерфейс -->
+            <div id="jupiter-terminal" class="container-box"></div>
         </div>
     </main>
-</main>
 
-    <!-- Solscan Verification Support Block (Идеальное место!) -->
-    <div style="text-align: center; padding: 24px 20px; font-size: 11px; color: #4B5563; border-top: 1px solid #1C1D24; background-color: #13141A; width: 100%; box-sizing: border-box;">
-        Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
-    </div>
+    <!-- 🛡️ БЕЗОПАСНАЯ ЗОНА ДЛЯ ТЯЖЕЛЫХ ВНЕШНИХ СКРИПТОВ (ПЕРЕД ЗАКРЫТИЕМ BODY) -->
+    
+    <!-- Подключаем официальное ядро Jupiter Terminal из CDN -->
+    <script src="https://jup.ag"></script>
 
+    <!-- Инициализация виджета обмена -->
+    <script>
+        window.addEventListener('load', () => {
+            if (window.Jupiter) {
+                window.Jupiter.init({
+                    displayMode: "integrated",
+                    integratedTargetId: "jupiter-terminal", // Монтируем строго в наш блок
+                    endpoint: MY_CONFIG.helius_rpc,         // Твоя приватная Helius RPC нода
+                    strictTokenList: false,
+                    formProps: {
+                        fixedInputMint: false,
+                        fixedOutputMint: true,
+                        inputMint: MY_CONFIG.sell_token,    // Исходный токен (SOL)
+                        outputMint: MY_CONFIG.buy_token     // Целевой токен (Твой MEMEX)
+                    },
+                    // Твоя 100% прозрачность перед инвесторами и комьюнити:
+                    feeBps: 0, 
+                    feeAccount: MY_CONFIG.fee_account
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-</body>
-</html>
-<!-- 1. Создаем на странице «коробку», где будет сидеть обменник -->
-<div id="jupiter-terminal" style="width: 100%; max-width: 440px; height: 560px;"></div>
-
-<!-- 2. Загружаем из интернета технический мозг Юпитера -->
-<script src="https://jup.ag"></script>
-
-<!-- 3. И только теперь запускаем твою настройку -->
-<script>
-  window.addEventListener('load', () => {
-    if (window.Jupiter) {
-      window.Jupiter.init({
-        displayMode: "integrated",
-        integratedTargetId: "jupiter-terminal", // Указываем на коробку выше
-        endpoint: "https://helius-rpc.com", // Твоя RPC нода (не сайт solana.com!)
-        strictTokenList: false,
-        formProps: {
-          fixedInputMint: true,
-          fixedOutputMint: true,
-          inputMint: "So11111111111111111111111111111111111111112", // SOL
-          outputMint: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs", // Минт MEMEX
-        },
-        feeBps: 0, // 0% наценки, работаем на авторитет
-        feeAccount: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" // Твой реф-ключ
-      });
-    }
-  });
-</script>
