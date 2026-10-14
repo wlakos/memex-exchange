@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMEX DeFi Protocol Exchange ⚡</title>
 
-    <!-- 🌟 ПРЯМОЕ ПОДКЛЮЧЕНИЕ ИКОНКИ ДЛЯ БРАУЗЕРОВ И ИСТОРИИ ИСПРАВЛЕНО -->
+    <!-- 🌟 ПРЯМОЕ ПОДКЛЮЧЕНИЕ ИКОНКИ ДЛЯ БРАУЗЕРОВ И ИСТОРИИ -->
     <link rel="icon" type="image/png" href="https://githubusercontent.com">
     <link rel="shortcut icon" type="image/png" href="https://githubusercontent.com">
 
-    <!-- 💥 НАШ ХАКЕРСКИЙ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
+    <!-- 💥 НАШ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const host = "https://raw." + "githubusercontent" + ".com";
@@ -26,7 +26,7 @@
     <style>
         body {
             margin: 0;
-            padding: 0 0 50px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
+            padding: 0 0 70px 0; /* Отступ снизу для зафиксированного подвала */
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -90,7 +90,7 @@
         .swap-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
             width: 100%;
             max-width: 440px;
         }
@@ -109,9 +109,13 @@
             width: 100%;
             max-width: 720px;
         }
-        .right-terminal {
+        .right-terminal-hub {
             width: 100%;
             max-width: 440px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         .iframe-fluid {
             width: 100%;
@@ -121,7 +125,55 @@
             display: block;
         }
 
-        /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
+        /* 🚀 СТИЛЬНЫЕ Web3 КНОПКИ ДЛЯ ПЕРЕХОДА */
+        .hub-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 18px 24px;
+            margin-top: 14px;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+        .btn-jupiter {
+            background-color: #C7F284;
+            color: #090A0E;
+            box-shadow: 0 4px 14px rgba(199, 242, 132, 0.2);
+        }
+        .btn-jupiter:hover {
+            background-color: #bce674;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199, 242, 132, 0.4);
+        }
+        .btn-raydium {
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 1px solid #1C1D24;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .btn-raydium:hover {
+            background-color: #1C1D24;
+            border-color: #4B5563;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+        }
+        .badge-fee {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+        .bg-jup-badge { background-color: rgba(9, 10, 14, 0.15); color: #090A0E; }
+        .bg-ray-badge { background-color: rgba(199, 242, 132, 0.1); color: #C7F284; }
+
+        /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА */
         .footer-fixed {
             position: fixed;
             bottom: 0;
@@ -134,19 +186,14 @@
             border-top: 1px solid #1C1D24;
             background-color: #13141A;
             box-sizing: border-box;
-            z-index: 9999; /* Чтобы подвал всегда был поверх фреймов */
+            z-index: 9999;
         }
     </style>
 
     <script>
         const MY_CONFIG = {
-            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",
-            sell_token: "So11111111111111111111111111111111111111112",
-            fee_bps: "10",
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
-            logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" 
+            logo_link: "https://solscan.io" 
         };
-
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById("logo-anchor").href = MY_CONFIG.logo_link;
         });
@@ -175,47 +222,32 @@
             MEMEX <span>DeFi</span>
         </a>
         <nav>
-            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_blank">WHITEPAPER</a>
-            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_blank">MONUMENTAL MANIFESTO</a>
+            <a href="https://github.io" target="_blank">WHITEPAPER</a>
+            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
 
     <main>
-        <!-- 📈 ЛЕВАЯ ЧАСТЬ: ИСПРАВЛЕННЫЙ ОФИЦИАЛЬНЫЙ РАЗРЕШЕННЫЙ ГРАФИК DEXSCREENER ДЛЯ ТОКЕНА MEMEX -->
+        <!-- 📈 ЛЕВАЯ ЧАСТЬ: БОЛЬШОЙ ЖИВОЙ ТРЕКЕР DEXSCREENER С ГРАФИКОМ ТОКЕНА MEMEX -->
         <div class="container-box left-chart">
             <iframe 
                 class="iframe-fluid" 
-                src="https://dexscreener.com/solana/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?embed=1&theme=dark&trades=0&info=0"
+                src="https://dexscreener.com"
             ></iframe>
         </div>
-    
-        <!-- ⚡ ДВОЙНОЙ Web3 ШЛЮЗ: ДВА ТЕРМИНАЛА НА ОДНОЙ СТРАНИЦЕ НА ВЫБОР -->
-        <div class="swap-wrapper" style="max-width: 460px; gap: 20px;">
+
+        <!-- ⚡ ПРАВАЯ ЧАСТЬ: ОФИЦИАЛЬНЫЙ НАВИГАЦИОННЫЙ ДЕПО-ХАБ С ВЫБОРОМ РОУТЕРОВ -->
+        <div class="swap-wrapper">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Select your preferred execution router. Trade any tokens with No Platform Fees and support MEMEX liquidity!</p>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Select your verified execution router. Trade assets instantly with No Platform Fees and support MEMEX protocol liquidity!</p>
             </div>
             
-            <!-- Вкладка 1: Терминал Jupiter -->
-            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER A: JUPITER PROTOCOL</div>
-            <div class="container-box right-terminal" style="height: 480px;">
-                <iframe class="iframe-fluid" src="https://jupiter-terminal.dexscreener.com/?inputMint=So11111111111111111111111111111111111111112&amp;outputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&amp;feeBps=10&amp;feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
-            </div>
-
-            <!-- Вкладка 2: Терминал Raydium -->
-            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER B: RAYDIUM PROTOCOL</div>
-            <div class="container-box right-terminal" style="height: 480px;">
-                <iframe class="iframe-fluid" src="https://raydium.io/swap/?inputMint=sol&amp;outputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&amp;referrer=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- 🔒 ИСПРАВЛЕННЫЙ И ПРИЖАТЫЙ К ЭКРАНУ ПОДВАЛ С ВАШЕЙ ПОЧТОЙ -->
-    <div class="footer-fixed">
-        Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
-    </div>
-
-</body>
-</html>
+            <!-- Монолитная панель со шлюзами -->
+            <div class="container-box right-terminal-hub">
+                <div style="font-size: 11px; font-weight: 700; color: #4B5563; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 5px;">Verified Cross-Chain &amp; Swap Routes</div>
+                <div style="color: #9CA3AF; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">To ensure seamless execution across mobile wallets (Phantom, Trust), launch the certified terminals via the secure gateway buttons below.</div>
+                
+                <!-- 🔗 КНОПКА ШЛЮЗА А: JUPITER PROTOCOL -->
+                <div style="font-size: 12px; font-weight: 700; color: #9CA3AF; margin-top: 10px; padding-left: 4px;">ROUTE A: JUPITER SPOT ROUTER</div>
