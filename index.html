@@ -21,7 +21,7 @@
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 0 0 50px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -78,7 +78,7 @@
             justify-content: center;
             align-items: flex-start;
             gap: 40px;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
             flex: 1;
         }
@@ -114,6 +114,22 @@
             border: none;
             background: transparent;
             display: block;
+        }
+
+        /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
+        .footer-fixed {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 11px;
+            color: #4B5563;
+            border-top: 1px solid #1C1D24;
+            background-color: #13141A;
+            box-sizing: border-box;
+            z-index: 9999; /* Чтобы подвал всегда был поверх фреймов */
         }
     </style>
 
@@ -161,7 +177,7 @@
     </header>
 
     <main>
-        <!-- 📈 ЛЕВАЯ ЧАСТЬ: БОЛЬШОЙ ЖИВОЙ ТРЕКЕР DEXSCREENER С ГРАФИКОМ ТОКЕНА MEMEX -->
+        <!-- 📈 ЛЕВАЯ ЧАСТЬ: БОЛЬШОЙ ЖИВОЙ ТРЕКЕР DEXSCREENER -->
         <div class="container-box left-chart">
             <iframe 
                 class="iframe-fluid" 
@@ -169,7 +185,7 @@
             ></iframe>
         </div>
 
-        <!-- ⚡ ПРАВАЯ ЧАСТЬ: ИДЕАЛЬНЫЙ РЕФЕРАЛЬНЫЙ ТЕРМИНАЛ ЮПИТЕРА ПОД РАЗМЕР ОКНА -->
+        <!-- ⚡ ПРАВАЯ ЧАСТЬ: ТЕРМИНАЛ ЮПИТЕРА В ИДЕАЛЬНОМ УЗКОМ ФОРМАТЕ БЕЗ ЛИШНИХ ПОЛЕЙ -->
         <div class="swap-wrapper">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
@@ -186,8 +202,8 @@
         </div>
     </main>
 
-    <!-- БЛОК С ПОЧТОЙ НА СВОЕМ ЗАКОННОМ МЕСТЕ (ЛИШНИЙ ТЕГ DIV УБРАН) -->
-    <div style="text-align: center; padding: 24px 20px; font-size: 11px; color: #4B5563; border-top: 1px solid #1C1D24; background-color: #13141A; width: 100%; box-sizing: border-box;">
+    <!-- 🔒 ИСПРАВЛЕННЫЙ И ПРИЖАТЫЙ К ЭКРАНУ ПОДВАЛ С ВАШЕЙ ПОЧТОЙ -->
+    <div class="footer-fixed">
         Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
     </div>
 
