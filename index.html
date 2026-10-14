@@ -189,20 +189,24 @@
                 src="https://dexscreener.com/solana/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?embed=1&theme=dark&trades=0&info=0"
             ></iframe>
         </div>
-
-        <!-- ⚡ ПРАВАЯ ЧАСТЬ: ТЕРМИНАЛ ЮПИТЕРА С ВАШИМ РЕФЕРАЛЬНЫМ КОДОМ И ПРАВИЛЬНЫМИ НАСТРОЙКАМИ ПАРЫ -->
-        <div class="swap-wrapper">
+    
+        <!-- ⚡ ДВОЙНОЙ Web3 ШЛЮЗ: ДВА ТЕРМИНАЛА НА ОДНОЙ СТРАНИЦЕ НА ВЫБОР -->
+        <div class="swap-wrapper" style="max-width: 460px; gap: 20px;">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol No fee. Buy MEMEX and support DeFi Protocol liquidity today</p>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Select your preferred execution router. Trade any tokens with No Platform Fees and support MEMEX liquidity!</p>
             </div>
             
-            <div class="container-box right-terminal">
-                <iframe 
-    class="iframe-fluid"
-    src="https://jupiter-terminal.dexscreener.com/?inputMint=So11111111111111111111111111111111111111112&outputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&feeBps=10&feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" 
-    allow="clipboard-read; clipboard-write; payment"
-></iframe>
+            <!-- Вкладка 1: Терминал Jupiter -->
+            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER A: JUPITER PROTOCOL</div>
+            <div class="container-box right-terminal" style="height: 480px;">
+                <iframe class="iframe-fluid" src="https://jupiter-terminal.dexscreener.com/?inputMint=So11111111111111111111111111111111111111112&amp;outputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&amp;feeBps=10&amp;feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
+            </div>
+
+            <!-- Вкладка 2: Терминал Raydium -->
+            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER B: RAYDIUM PROTOCOL</div>
+            <div class="container-box right-terminal" style="height: 480px;">
+                <iframe class="iframe-fluid" src="https://raydium.io/swap/?inputMint=sol&amp;outputMint=FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs&amp;referrer=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
 
             </div>
         </div>
