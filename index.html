@@ -22,11 +22,11 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
+    <!-- PRODUCTION READY VERSION 12.1 (FIXED IFRAME CRASH) -->
     <style>
         body {
             margin: 0;
-            padding: 0 0 50px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
+            padding: 0 0 70px 0; /* Добавили отступ снизу для фиксации подвала */
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -119,7 +119,7 @@
             width: 100%;
             height: 100%;
             border: none;
-            background: transparent;
+            background: #13141A;
             display: block;
         }
 
@@ -156,7 +156,7 @@
 </head>
 <body>
 
-    <!-- БЕГУЩАЯ СТРОКА С ЦЕНАМИ (БЕЗ ДВОЙНОГО ОТРАЖЕНИЯ) -->
+    <!-- БЕГУЩАЯ СТРОКА С ЦЕНАМИ -->
     <div class="ticker-wrap">
         <div class="ticker">
             <div class="ticker-item">MEMEX / SOL<span>ONLINE ⚡</span></div>
@@ -179,7 +179,7 @@
     </header>
 
     <main>
-        <!-- 📈 ЛЕВАЯ ЧАСТЬ: ИСПРАВЛЕННЫЙ ОФИЦИАЛЬНЫЙ РАЗРЕШЕННЫЙ ГРАФИК DEXSCREENER ДЛЯ ТОКЕНА MEMEX -->
+        <!-- 📈 ЛЕВАЯ ЧАСТЬ: ИСПРАВЛЕННЫЙ РАЗРЕШЕННЫЙ ГРАФИК (ИСПОЛЬЗУЕМ EMBED ССЫЛКУ СЕТИ SOLANA) -->
         <div class="container-box left-chart">
             <iframe 
                 class="iframe-fluid" 
