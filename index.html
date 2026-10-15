@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMEX DeFi Protocol Exchange ⚡</title>
-        <!-- 💥 НАШ ХАКЕРСКИЙ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
+
+    <!-- 🌟 ПРЯМОЕ ПОДКЛЮЧЕНИЕ ИКОНКИ ДЛЯ БРАУЗЕРОВ И ИСТОРИИ ИСПРАВЛЕНО -->
+    <link rel="icon" type="image/png" href="https://githubusercontent.com">
+    <link rel="shortcut icon" type="image/png" href="https://githubusercontent.com">
+
+    <!-- 💥 НАШ ХАКЕРСКИЙ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const host = "https://raw." + "githubusercontent" + ".com";
@@ -21,7 +26,7 @@
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 0 0 50px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -70,13 +75,15 @@
         header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
         header nav a:hover { color: #FFFFFF; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
+        
         main {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: flex-start;
             gap: 40px;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
             flex: 1;
         }
@@ -87,62 +94,59 @@
             width: 100%;
             max-width: 440px;
         }
+        
         .container-box {
             width: 100%;
-            max-width: 440px;
+            height: 615px; 
             background: #13141A;
             border-radius: 24px;
             border: 1px solid #1C1D24;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             overflow: hidden;
-        }
-        .btn-jup {
-            display: block;
-            width: 100%;
-            background-color: #C7F284;
-            color: #090A0E;
-            text-align: center;
-            padding: 16px;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 16px;
-            box-shadow: 0 4px 14px rgba(199, 242, 132, 0.3);
-            transition: 0.2s;
             box-sizing: border-box;
-            margin-top: 8px;
-            cursor: pointer;
-            border: none;
         }
-        .btn-jup:hover { background-color: #bce674; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(199, 242, 132, 0.5); }
+        .left-chart {
+            width: 100%;
+            max-width: 720px;
+        }
+        .right-terminal {
+            width: 100%;
+            max-width: 440px;
+        }
+        .iframe-fluid {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            display: block;
+        }
+
+        /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
+        .footer-fixed {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 11px;
+            color: #4B5563;
+            border-top: 1px solid #1C1D24;
+            background-color: #13141A;
+            box-sizing: border-box;
+            z-index: 9999; /* Чтобы подвал всегда был поверх фреймов */
+        }
     </style>
 
     <script>
-        // 💥 НАСТРОЙКИ НА СЛУЧАЙ ИЗМЕНЕНИЙ — ВСЁ ПЕРЕД ГЛАЗАМИ ТЕКСТОМ:
         const MY_CONFIG = {
-            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",     // Минт MEMEX
-            sell_token: "So11111111111111111111111111111111111111112",    // Адрес SOL
-            fee_bps: "30",                                              // Комиссия 0.3%
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",  // Твой реферальный сейф
-            helius_rpc: "https://mainnet.helius-rpc.com/?api-key=2e43f4b0-9f40-4b30-ab45-90e65d58191d", // Нода Helius
-            
-            // 🌐 ССЫЛКА ЛОГОТИПА: Сейчас возвращает на обменник. Позже впишешь сюда свой Твиттер или Главный сайт!
+            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",
+            sell_token: "So11111111111111111111111111111111111111112",
+            fee_bps: "10",
+            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
             logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" 
         };
 
-        function executeOnchainSwap() {
-            const baseRoute = "https://jup.ag";
-            const params = "?inAmount=" +
-                           "&buy=" + MY_CONFIG.buy_token +
-                           "&sell=" + MY_CONFIG.sell_token +
-                           "&feeBps=" + MY_CONFIG.fee_bps +
-                           "&feeAccount=" + MY_CONFIG.fee_account +
-                           "&endpoint=" + encodeURIComponent(MY_CONFIG.helius_rpc);
-            
-            window.location.href = baseRoute + params;
-        }
-
-        // Автоматически подставляем ссылку для логотипа при загрузке страницы
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById("logo-anchor").href = MY_CONFIG.logo_link;
         });
@@ -167,7 +171,6 @@
     </div>
 
     <header>
-        <!-- Умный логотип: Его адрес теперь управляется из настроек MY_CONFIG -->
         <a id="logo-anchor" href="#" class="logo">
             MEMEX <span>DeFi</span>
         </a>
@@ -179,37 +182,40 @@
     </header>
 
     <main>
-        <!-- Левая часть: Живой темный график токена MEMEX с DexScreener -->
-        <div style="width: 100%; max-width: 720px; height: 540px; border-radius: 20px; overflow: hidden; border: 1px solid #1C1D24; box-shadow: 0 20px 40px rgba(0,0,0,0.4)">
-            <iframe src="https://dexscreener.com" style="width: 100%; height: 100%; border: none;"></iframe>
+        <!-- 📈 ЛЕВАЯ ЧАСТЬ: ИСПРАВЛЕННЫЙ ОФИЦИАЛЬНЫЙ РАЗРЕШЕННЫЙ ГРАФИК DEXSCREENER ДЛЯ ТОКЕНА MEMEX -->
+        <div class="container-box left-chart">
+            <iframe 
+                class="iframe-fluid" 
+                src="https://dexscreener.com/solana/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?embed=1&theme=dark&trades=0&info=0"
+            ></iframe>
         </div>
-
-        <!-- Правая часть: Блок обменника -->
-        <div class="swap-wrapper">
+    
+        <!-- ⚡ ДВОЙНОЙ Web3 ШЛЮЗ: ДВА ТЕРМИНАЛА НА ОДНОЙ СТРАНИЦЕ НА ВЫБОР -->
+        <div class="swap-wrapper" style="max-width: 460px; gap: 20px;">
             <div style="padding-left: 8px;">
                 <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol with a built-in 0.3% fee supporting MEMEX liquidity.</p>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Select your preferred execution router. Trade any tokens with No Platform Fees and support MEMEX liquidity!</p>
             </div>
             
-            <div class="container-box" style="padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
-                <div style="background-color: #1C1D24; padding: 16px; border-radius: 12px; border: 1px solid #2C2D35; text-align: center;">
-                    <p style="margin: 0; color: #9CA3AF; font-size: 14px;">To trade MEMEX with auto-applied fee, use our official aggregated router below.</p>
-                </div>
-                
-                <button onclick="executeOnchainSwap()" class="btn-jup">
-                    Open Jupiter Exchange ⚡
-                </button>
+            <!-- Вкладка 1: Терминал Jupiter -->
+            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER A: JUPITER PROTOCOL</div>
+            <div class="container-box right-terminal" style="height: 480px;">
+                <iframe class="iframe-fluid" src="https://jup.ag/swap/SOL-FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?feeBps=10&feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
+            </div>
+
+            <!-- Вкладка 2: Терминал Raydium -->
+            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER B: RAYDIUM PROTOCOL</div>
+            <div class="container-box right-terminal" style="height: 480px;">
+                <iframe class="iframe-fluid" src="https://raydium.io/swap/?inputMint=sol&outputMint=Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB&referrer=3ntDiLs2kg8c7NdtBDvsRw3h5DiDQi3ajK5JPVZEdc6u" allow="clipboard-read; clipboard-write; payment"></iframe>
+
             </div>
         </div>
     </main>
-</main>
 
-    <!-- Solscan Verification Support Block (Идеальное место!) -->
-    <div style="text-align: center; padding: 24px 20px; font-size: 11px; color: #4B5563; border-top: 1px solid #1C1D24; background-color: #13141A; width: 100%; box-sizing: border-box;">
+    <!-- 🔒 ИСПРАВЛЕННЫЙ И ПРИЖАТЫЙ К ЭКРАНУ ПОДВАЛ С ВАШЕЙ ПОЧТОЙ -->
+    <div class="footer-fixed">
         Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
     </div>
 
-</body>
-</html>
 </body>
 </html>
