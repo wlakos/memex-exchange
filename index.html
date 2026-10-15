@@ -22,11 +22,11 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.0 -->
+    <!-- PRODUCTION READY VERSION 11.0 (CLEAN WITH LINK REBATE) -->
     <style>
         body {
             margin: 0;
-            padding: 0 0 70px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
+            padding: 0 0 50px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -90,9 +90,15 @@
         .swap-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 24px;
             width: 100%;
             max-width: 440px;
+            background: #13141A;
+            border-radius: 24px;
+            border: 1px solid #1C1D24;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            box-sizing: border-box;
         }
         
         .container-box {
@@ -109,14 +115,6 @@
             width: 100%;
             max-width: 720px;
         }
-        .right-terminal-hub {
-            width: 100%;
-            max-width: 440px;
-            padding: 35px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
         .iframe-fluid {
             width: 100%;
             height: 100%;
@@ -125,53 +123,34 @@
             display: block;
         }
 
-        /* 🚀 СТИЛЬНЫЕ Web3 КНОПКИ ДЛЯ DIRECT-ПЕРЕХОДА */
-        .hub-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* 🚀 СТИЛЬНАЯ КНОПКА Web3 ПЕРЕХОДА БЕЗ НОВОЙ ВКЛАДКИ */
+        .web3-btn {
+            display: block;
             width: 100%;
-            padding: 18px 24px;
-            margin-top: 14px;
-            border-radius: 16px;
-            font-size: 15px;
-            font-weight: 800;
-            text-decoration: none;
-            box-sizing: border-box;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-            letter-spacing: 0.3px;
-        }
-        .btn-jupiter {
-            background-color: transparent;
-            color: #FFFFFF;
-            border: 1px solid #1C1D24;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .btn-jupiter:hover {
-            background-color: #1C1D24;
-            border-color: #4B5563;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-        }
-        .btn-raydium {
-            background-color: #C7F284;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #C7F284 0%, #95D334 100%);
             color: #090A0E;
-            box-shadow: 0 4px 14px rgba(199, 242, 132, 0.2);
+            font-size: 16px;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(199, 242, 132, 0.3);
+            transition: all 0.2s ease-in-out;
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
         }
-        .btn-raydium:hover {
-            background-color: #bce674;
+        .web3-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(199, 242, 132, 0.4);
+            box-shadow: 0 6px 24px rgba(199, 242, 132, 0.5);
+            background: linear-gradient(135deg, #d4f79d 0%, #a4e343 100%);
         }
-        .badge-fee {
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 8px;
-            font-weight: 700;
+        .web3-btn:active {
+            transform: translateY(1px);
         }
-        .bg-jup-badge { background-color: rgba(199, 242, 132, 0.1); color: #C7F284; }
-        .bg-ray-badge { background-color: rgba(9, 10, 14, 0.15); color: #090A0E; }
 
         /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
         .footer-fixed {
@@ -242,13 +221,34 @@
             ></iframe>
         </div>
     
-        <!-- ⚡ НАВИГАЦИОННЫЙ ДЕПО-ХАБ: DIRECT Web3 ССЫЛКИ ДЛЯ СТАБИЛЬНЫХ НАЧИСЛЕНИЙ -->
+        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ RAYDIUM (БЕЗ ФРЕЙМОВ) -->
         <div class="swap-wrapper">
-            <div style="padding-left: 8px;">
-                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Trade any tokens at the best rates via Jupiter Protocol No fee. Buy MEMEX and support DeFi Protocol liquidity today!</p>
+            <div>
+                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0; color: #FFFFFF;">Official Swap Hub</h2>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0 0 16px 0; line-height: 1.4;">
+                    Click below to open the secure dApp Gateway via Raydium Protocol. Trade USDC / SOL with no additional platform fees and receive instant 1% rebate tracking.
+                </p>
             </div>
             
-            <!-- Монолитная панель управления маршрутизаторами -->
-            <div class="container-box right-terminal-hub">
-                <div style="font-size: 11px; font-weight: 700; color: #4B5563; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 5px;">Verified dApp Gateway &amp; Swap Routes</div>
+            <!-- КНОПКА С ПЕРЕХОДОМ В ЭТОЙ ЖЕ ВКЛАДКЕ (target="_self") -->
+            <a 
+                href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=sol&referrer=3ntDiLs2kg8c7NdtBDvsRw3h5DiDQi3ajK5JPVZEdc6u" 
+                target="_self" 
+                class="web3-btn"
+            >
+                🚀 Start Official Swap
+            </a>
+            
+            <div style="font-size: 11px; color: #4B5563; text-align: center; border-top: 1px solid #1C1D24; padding-top: 12px; margin-top: 5px;">
+                Verified Raydium Smart Contract Route Active
+            </div>
+        </div>
+    </main>
+
+    <!-- 🔒 ИСПРАВЛЕННЫЙ И ПРИЖАТЫЙ К ЭКРАНУ ПОДВАЛ С ВАШЕЙ ПОЧТОЙ -->
+    <div class="footer-fixed">
+        Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
+    </div>
+
+</body>
+</html>
