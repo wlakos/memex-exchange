@@ -22,7 +22,7 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
+    <!-- PRODUCTION READY VERSION 11.0 (CLEAN WITH LINK REBATE) -->
     <style>
         body {
             margin: 0;
@@ -123,6 +123,35 @@
             display: block;
         }
 
+        /* 🚀 СТИЛЬНАЯ КНОПКА Web3 ПЕРЕХОДА БЕЗ НОВОЙ ВКЛАДКИ */
+        .web3-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #C7F284 0%, #95D334 100%);
+            color: #090A0E;
+            font-size: 16px;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(199, 242, 132, 0.3);
+            transition: all 0.2s ease-in-out;
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+        }
+        .web3-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(199, 242, 132, 0.5);
+            background: linear-gradient(135deg, #d4f79d 0%, #a4e343 100%);
+        }
+        .web3-btn:active {
+            transform: translateY(1px);
+        }
+
         /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
         .footer-fixed {
             position: fixed;
@@ -193,10 +222,10 @@
         </div>
     
         <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ В СТИЛЕ RAYDIUM -->
-        <div class="swap-wrapper">
+        <div class="swap-wrapper" style="background: #13141A; border-radius: 24px; border: 1px solid #1C1D24; padding: 30px; width: 100%; max-width: 440px; box-shadow: 0 30px 60px rgba(0,0,0,0.6); box-sizing: border-box;">
             
             <!-- Неоново-зеленый заголовок в точности как на фото -->
-            <div style="font-size: 13px; font-weight: 800; color: #C7F284; letter-spacing: 0.5px; margin-bottom: 2px; text-transform: uppercase;">
+            <div style="font-size: 13px; font-weight: 800; color: #C7F284; letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase;">
                 ROUTER B: RAYDIUM PROTOCOL
             </div>
             
@@ -240,3 +269,20 @@
                     <circle cx="72" cy="28" r="4" fill="#39dcff" />
                 </svg>
                 
+                <!-- Текст кнопки как в dApp -->
+                <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px;">Swap</span>
+            </a>
+            
+            <div style="font-size: 11px; color: #374151; text-align: center; border-top: 1px solid #1C1D24; padding-top: 14px; margin-top: 14px;">
+                Verified Raydium Smart Contract Route Active
+            </div>
+        </div>
+    </main>
+
+    <!-- 🔒 ИСПРАВЛЕННЫЙ И ПРИЖАТЫЙ К ЭКРАНУ ПОДВАЛ С ВАШЕЙ ПОЧТОЙ -->
+    <div class="footer-fixed">
+        Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
+    </div>
+
+</body>
+</html>
