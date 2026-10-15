@@ -1,193 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEMEX DeFi Protocol Exchange ⚡</title>
-
-    <!-- 🌟 ПРЯМОЕ ПОДКЛЮЧЕНИЕ ИКОНКИ ДЛЯ БРАУЗЕРОВ И ИСТОРИИ ИСПРАВЛЕНО -->
-    <link rel="icon" type="image/png" href="https://githubusercontent.com">
-    <link rel="shortcut icon" type="image/png" href="https://githubusercontent.com">
-
-    <!-- 💥 НАШ ХАКЕРСКИЙ СКРИПТ ДЛЯ ИКОНКИ ВКЛАДКИ -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const host = "https://raw." + "githubusercontent" + ".com";
-            const path = "/wlakos/memes-assets/main/MEMEX.png?v=3";
-            const link = document.createElement('link');
-            link.rel = 'icon';
-            link.type = 'image/png';
-            link.href = host + path;
-            document.head.appendChild(link);
-        });
-    </script>
-
-    <!-- PRODUCTION READY VERSION 12.1 (FIXED IFRAME CRASH) -->
-    <style>
-        body {
-            margin: 0;
-            padding: 0 0 70px 0; /* Добавили отступ снизу для фиксации подвала */
-            background-color: #090A0E;
-            color: #FFFFFF;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        .ticker-wrap {
-            width: 100%;
-            background-color: #111c14;
-            border-bottom: 1px solid #14291b;
-            overflow: hidden;
-            padding: 6px 0;
-        }
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: marquee 25s linear infinite;
-        }
-        .ticker-item {
-            display: inline-block;
-            padding: 0 30px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #9CA3AF;
-            letter-spacing: 0.5px;
-        }
-        .ticker-item span { color: #C7F284; margin-left: 4px; }
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 40px;
-            background-color: #13141A;
-            border-bottom: 1px solid #1C1D24;
-        }
-        header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; }
-        header .logo:hover { opacity: 0.8; }
-        header .logo span { color: #C7F284; }
-        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
-        header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
-        header nav a:hover { color: #FFFFFF; }
-        header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
-        
-        main {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 40px;
-            padding: 40px 20px;
-            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
-            flex: 1;
-        }
-        .swap-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            width: 100%;
-            max-width: 440px;
-            background: #13141A;
-            border-radius: 24px;
-            border: 1px solid #1C1D24;
-            padding: 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            box-sizing: border-box;
-        }
-        
-        .container-box {
-            width: 100%;
-            height: 615px; 
-            background: #13141A;
-            border-radius: 24px;
-            border: 1px solid #1C1D24;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-        .left-chart {
-            width: 100%;
-            max-width: 720px;
-        }
-        .iframe-fluid {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: #13141A;
-            display: block;
-        }
-
-        /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
-        .footer-fixed {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            padding: 14px 20px;
-            font-size: 11px;
-            color: #4B5563;
-            border-top: 1px solid #1C1D24;
-            background-color: #13141A;
-            box-sizing: border-box;
-            z-index: 9999;
-        }
-    </style>
-
-    <script>
-        const MY_CONFIG = {
-            buy_token: "FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs",
-            sell_token: "So11111111111111111111111111111111111111112",
-            fee_bps: "10",
-            fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
-            logo_link: "https://solscan.io" 
-        };
-
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById("logo-anchor").href = MY_CONFIG.logo_link;
-        });
-    </script>
-</head>
-<body>
-
-    <!-- БЕГУЩАЯ СТРОКА С ЦЕНАМИ -->
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item">MEMEX / SOL<span>ONLINE ⚡</span></div>
-            <div class="ticker-item">SOLANA (SOL)<span>$148.52</span></div>
-            <div class="ticker-item">JUPITER (JUP)<span>$0.89</span></div>
-            <div class="ticker-item">MEMEX COIN<span>$0.12</span></div>
-            <div class="ticker-item">USD COIN (USDC)<span>$1.00</span></div>
-        </div>
-    </div>
-
-    <header>
-        <a id="logo-anchor" href="#" class="logo">
-            MEMEX <span>DeFi</span>
-        </a>
-        <nav>
-            <a href="https://github.io" target="_blank">WHITEPAPER</a>
-            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
-        </nav>
-        <div class="status">● Solana Mainnet</div>
-    </header>
-
-    <main>
-        <!-- 📈 ЛЕВАЯ ЧАСТЬ: ИСПРАВЛЕННЫЙ РАЗРЕШЕННЫЙ ГРАФИК (ИСПОЛЬЗУЕМ EMBED ССЫЛКУ СЕТИ SOLANA) -->
-        <div class="container-box left-chart">
-            <iframe 
-                class="iframe-fluid" 
-                src="https://dexscreener.com"
-            ></iframe>
-        </div>
-    
-        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЛОГОТИПОМ SOLANA И КНОПКОЙ SWAP -->
+        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЛОГОТИПОМ SOLANA -->
         <div class="swap-wrapper">
             
             <!-- Заголовок с добавлением иконки Solana по правому краю -->
@@ -242,3 +53,27 @@
                     box-sizing: border-box;
                     cursor: pointer;
                 "
+                onmouseover="this.style.background='linear-gradient(135deg, #22263a 0%, #17192c 100%)'; this.style.borderColor='rgba(171, 196, 255, 0.3)'; this.style.transform='translateY(-1px)';"
+                onmouseout="this.style.background='linear-gradient(135deg, #1b1e2e 0%, #111322 100%)'; this.style.borderColor='rgba(171, 196, 255, 0.15)'; this.style.transform='translateY(0)';"
+            >
+                <!-- Векторный точный логотип Райдиума с градиентом -->
+                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block;">
+                    <defs>
+                        <linearGradient id="rayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#39dcff" />
+                            <stop offset="100%" stop-color="#9a4bfa" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 5L90 28.1V74.4L50 97.5L10 74.4V28.1L50 5Z" stroke="url(#rayGradient)" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M36 32V68M36 32H54C60 32 64 35 64 41C64 47 60 50 54 50H36M50 50L64 68" stroke="url(#rayGradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="72" cy="28" r="4" fill="#39dcff" />
+                </svg>
+                
+                <!-- Текст кнопки как в dApp -->
+                <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px;">Swap</span>
+            </a>
+            
+            <div style="font-size: 11px; color: #374151; text-align: center; border-top: 1px solid #1C1D24; padding-top: 14px; margin-top: 14px;">
+                Verified Raydium Smart Contract Route Active
+            </div>
+        </div>
