@@ -22,7 +22,7 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 11.0 (CLEAN WITH LINK REBATE) -->
+    <!-- PRODUCTION READY VERSION 10.0 -->
     <style>
         body {
             margin: 0;
@@ -90,15 +90,9 @@
         .swap-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px;
             width: 100%;
             max-width: 440px;
-            background: #13141A;
-            border-radius: 24px;
-            border: 1px solid #1C1D24;
-            padding: 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            box-sizing: border-box;
         }
         
         .container-box {
@@ -115,41 +109,16 @@
             width: 100%;
             max-width: 720px;
         }
+        .right-terminal {
+            width: 100%;
+            max-width: 440px;
+        }
         .iframe-fluid {
             width: 100%;
             height: 100%;
             border: none;
             background: transparent;
             display: block;
-        }
-
-        /* 🚀 СТИЛЬНАЯ КНОПКА Web3 ПЕРЕХОДА БЕЗ НОВОЙ ВКЛАДКИ */
-        .web3-btn {
-            display: block;
-            width: 100%;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, #C7F284 0%, #95D334 100%);
-            color: #090A0E;
-            font-size: 16px;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 14px;
-            box-shadow: 0 4px 20px rgba(199, 242, 132, 0.3);
-            transition: all 0.2s ease-in-out;
-            box-sizing: border-box;
-            border: none;
-            cursor: pointer;
-        }
-        .web3-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(199, 242, 132, 0.5);
-            background: linear-gradient(135deg, #d4f79d 0%, #a4e343 100%);
-        }
-        .web3-btn:active {
-            transform: translateY(1px);
         }
 
         /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
@@ -175,7 +144,7 @@
             sell_token: "So11111111111111111111111111111111111111112",
             fee_bps: "10",
             fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
-            logo_link: "https://solscan.io" 
+            logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" 
         };
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -206,8 +175,8 @@
             MEMEX <span>DeFi</span>
         </a>
         <nav>
-            <a href="https://github.io" target="_blank">WHITEPAPER</a>
-            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
+            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_blank">WHITEPAPER</a>
+            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_blank">MONUMENTAL MANIFESTO</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
@@ -217,30 +186,28 @@
         <div class="container-box left-chart">
             <iframe 
                 class="iframe-fluid" 
-                src="https://dexscreener.com"
+                src="https://dexscreener.com/solana/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?embed=1&theme=dark&trades=0&info=0"
             ></iframe>
         </div>
     
-        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ RAYDIUM (БЕЗ ФРЕЙМОВ) -->
-        <div class="swap-wrapper">
-            <div>
-                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0; color: #FFFFFF;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0 0 16px 0; line-height: 1.4;">
-                    Click below to open the secure dApp Gateway via Raydium Protocol. Trade USDC / SOL with no additional platform fees and receive instant 1% rebate tracking.
-                </p>
+        <!-- ⚡ ДВОЙНОЙ Web3 ШЛЮЗ: ДВА ТЕРМИНАЛА НА ОДНОЙ СТРАНИЦЕ НА ВЫБОР -->
+        <div class="swap-wrapper" style="max-width: 460px; gap: 20px;">
+            <div style="padding-left: 8px;">
+                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
+                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Select your preferred execution router. Trade any tokens with No Platform Fees and support MEMEX liquidity!</p>
             </div>
             
-            <!-- КНОПКА С ПЕРЕХОДОМ В ЭТОЙ ЖЕ ВКЛАДКЕ (target="_self") -->
-            <a 
-                href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=sol&referrer=3ntDiLs2kg8c7NdtBDvsRw3h5DiDQi3ajK5JPVZEdc6u" 
-                target="_self" 
-                class="web3-btn"
-            >
-                🚀 Start Official Swap
-            </a>
-            
-            <div style="font-size: 11px; color: #4B5563; text-align: center; border-top: 1px solid #1C1D24; padding-top: 12px; margin-top: 5px;">
-                Verified Raydium Smart Contract Route Active
+            <!-- Вкладка 1: Терминал Jupiter -->
+            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER A: JUPITER PROTOCOL</div>
+            <div class="container-box right-terminal" style="height: 480px;">
+                <iframe class="iframe-fluid" src="https://jup.ag/swap/SOL-FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?feeBps=10&feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
+            </div>
+
+            <!-- Вкладка 2: Терминал Raydium -->
+            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER B: RAYDIUM PROTOCOL</div>
+            <div class="container-box right-terminal" style="height: 480px;">
+                <iframe class="iframe-fluid" src="https://raydium.io/swap/?inputMint=sol&outputMint=Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB&referrer=3ntDiLs2kg8c7NdtBDvsRw3h5DiDQi3ajK5JPVZEdc6u" allow="clipboard-read; clipboard-write; payment"></iframe>
+
             </div>
         </div>
     </main>
