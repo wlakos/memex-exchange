@@ -22,7 +22,7 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 10.0 -->
+    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
     <style>
         body {
             margin: 0;
@@ -90,9 +90,15 @@
         .swap-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 24px;
             width: 100%;
             max-width: 440px;
+            background: #13141A;
+            border-radius: 24px;
+            border: 1px solid #1C1D24;
+            padding: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            box-sizing: border-box;
         }
         
         .container-box {
@@ -108,10 +114,6 @@
         .left-chart {
             width: 100%;
             max-width: 720px;
-        }
-        .right-terminal {
-            width: 100%;
-            max-width: 440px;
         }
         .iframe-fluid {
             width: 100%;
@@ -144,7 +146,7 @@
             sell_token: "So11111111111111111111111111111111111111112",
             fee_bps: "10",
             fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
-            logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs" 
+            logo_link: "https://solscan.io" 
         };
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -175,8 +177,8 @@
             MEMEX <span>DeFi</span>
         </a>
         <nav>
-            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_blank">WHITEPAPER</a>
-            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_blank">MONUMENTAL MANIFESTO</a>
+            <a href="https://github.io" target="_blank">WHITEPAPER</a>
+            <a href="https://github.io" target="_blank">MONUMENTAL MANIFESTO</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
@@ -186,36 +188,55 @@
         <div class="container-box left-chart">
             <iframe 
                 class="iframe-fluid" 
-                src="https://dexscreener.com/solana/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?embed=1&theme=dark&trades=0&info=0"
+                src="https://dexscreener.com"
             ></iframe>
         </div>
     
-        <!-- ⚡ ДВОЙНОЙ Web3 ШЛЮЗ: ДВА ТЕРМИНАЛА НА ОДНОЙ СТРАНИЦЕ НА ВЫБОР -->
-        <div class="swap-wrapper" style="max-width: 460px; gap: 20px;">
-            <div style="padding-left: 8px;">
-                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 6px 0;">Official Swap Hub</h2>
-                <p style="color: #9CA3AF; font-size: 14px; margin: 0;">Select your preferred execution router. Trade any tokens with No Platform Fees and support MEMEX liquidity!</p>
+        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ В СТИЛЕ RAYDIUM -->
+        <div class="swap-wrapper">
+            
+            <!-- Неоново-зеленый заголовок в точности как на фото -->
+            <div style="font-size: 13px; font-weight: 800; color: #C7F284; letter-spacing: 0.5px; margin-bottom: 2px; text-transform: uppercase;">
+                ROUTER B: RAYDIUM PROTOCOL
             </div>
             
-            <!-- Вкладка 1: Терминал Jupiter -->
-            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER A: JUPITER PROTOCOL</div>
-            <div class="container-box right-terminal" style="height: 480px;">
-                <iframe class="iframe-fluid" src="https://jup.ag/swap/SOL-FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs?feeBps=10&feeAccount=D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L" allow="clipboard-read; clipboard-write; payment"></iframe>
-            </div>
-
-            <!-- Вкладка 2: Терминал Raydium -->
-            <div style="font-size: 12px; font-weight: 700; color: #C7F284; margin-bottom: -10px; padding-left: 8px;">ROUTER B: RAYDIUM PROTOCOL</div>
-            <div class="container-box right-terminal" style="height: 480px;">
-                <iframe class="iframe-fluid" src="https://raydium.io/swap/?inputMint=sol&outputMint=Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB&referrer=3ntDiLs2kg8c7NdtBDvsRw3h5DiDQi3ajK5JPVZEdc6u" allow="clipboard-read; clipboard-write; payment"></iframe>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- 🔒 ИСПРАВЛЕННЫЙ И ПРИЖАТЫЙ К ЭКРАНУ ПОДВАЛ С ВАШЕЙ ПОЧТОЙ -->
-    <div class="footer-fixed">
-        Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none;">30051977wlakos@gmail.com</a> | Ecosystem: app.memex.gg
-    </div>
-
-</body>
-</html>
+            <!-- КНОПКА, ПОЛНОСТЬЮ СООТВЕТСТВУЮЩАЯ ТЕРМИНАЛУ РАЙДИУМА (target="_self") -->
+            <a 
+                href="https://raydium.io" 
+                target="_self" 
+                style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                    width: 100%;
+                    padding: 14px 24px;
+                    background: linear-gradient(135deg, #1b1e2e 0%, #111322 100%);
+                    color: #abc4ff;
+                    font-size: 19px;
+                    font-weight: 600;
+                    text-align: center;
+                    text-decoration: none;
+                    border-radius: 14px;
+                    border: 1px solid rgba(171, 196, 255, 0.15);
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+                    transition: all 0.2s ease-in-out;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                "
+                onmouseover="this.style.background='linear-gradient(135deg, #22263a 0%, #17192c 100%)'; this.style.borderColor='rgba(171, 196, 255, 0.3)'; this.style.transform='translateY(-1px)';"
+                onmouseout="this.style.background='linear-gradient(135deg, #1b1e2e 0%, #111322 100%)'; this.style.borderColor='rgba(171, 196, 255, 0.15)'; this.style.transform='translateY(0)';"
+            >
+                <!-- Векторный точный логотип Райдиума с градиентом -->
+                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block;">
+                    <defs>
+                        <linearGradient id="rayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#39dcff" />
+                            <stop offset="100%" stop-color="#9a4bfa" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 5L90 28.1V74.4L50 97.5L10 74.4V28.1L50 5Z" stroke="url(#rayGradient)" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M36 32V68M36 32H54C60 32 64 35 64 41C64 47 60 50 54 50H36M50 50L64 68" stroke="url(#rayGradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="72" cy="28" r="4" fill="#39dcff" />
+                </svg>
+                
