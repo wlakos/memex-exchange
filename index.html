@@ -192,34 +192,58 @@
                 src="https://dexscreener.com"
             ></iframe>
         </div>
-        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЛОГОТИПОМ SOLANA -->
-        <div class="swap-wrapper">
-            
-            <!-- Заголовок с добавлением иконки Solana по правому краю -->
+        
+                    <!-- ⚡ ОБНОВЛЕННЫЙ ЗАГОЛОВОК С ПОСТОЯННО ПЕРЕЛИВАЮЩИМСЯ НЕОНОВЫМ ТЕКСТОМ И ИКОНКОЙ МЕНЮ -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
-                <div style="font-size: 13px; font-weight: 800; color: #C7F284; letter-spacing: 0.5px; text-transform: uppercase;">
-                    ROUTER: MEMEX DeFi PROTOCOL
+                
+                <!-- 🌈 CSS-стили для создания эффекта бесконечного градиентного перелива текста -->
+                <style>
+                    .gradient-animated-text {
+                        font-size: 13px;
+                        font-weight: 800;
+                        letter-spacing: 0.5px;
+                        text-transform: uppercase;
+                        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+                        
+                        /* Включаем градиент для текста */
+                        background: linear-gradient(90deg, #C7F284, #00FFA3, #00AEEF, #A846FA, #FF3E94, #C7F284);
+                        background-size: 400% 100%;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                        
+                        /* Запуск плавной анимации */
+                        animation: textGradientShift 8s linear infinite;
+                    }
+
+                    @keyframes textGradientShift {
+                        0% { background-position: 0% 50%; }
+                        100% { background-position: 400% 50%; }
+                    }
+                </style>
+
+                <!-- Сам переливающийся текст -->
+                <div class="gradient-animated-text">
+                    ROUTER: MEMEX DEFI PROTOCOL
                 </div>
-                <!-- Векторная круглая иконка Solana -->
-                <svg width="18" height="18" viewBox="0 0 397 397" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.9;">
-                    <circle cx="198.5" cy="198.5" r="198.5" fill="black"/>
-                    <path d="M72 110.5H325L289 146.5H36L72 110.5Z" fill="url(#solanaGradient1)"/>
-                    <path d="M108 180.5H361L325 216.5H72L108 180.5Z" fill="url(#solanaGradient2)"/>
-                    <path d="M289 250.5H36L72 286.5H325L289 250.5Z" fill="url(#solanaGradient3)"/>
+                
+                <!-- ☰ ТОЧНАЯ ВЕКТОРНАЯ ИКОНКА МЕНЮ (ТРИ НЕОНОВЫЕ ЛИНИИ В КРУГЕ) КАК НА КАРТИНКЕ -->
+                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95;">
+                    <!-- Темный круг-подложка -->
+                    <circle cx="50" cy="50" r="48" fill="#0A0B0E" stroke="#1C1D24" stroke-width="2"/>
                     <defs>
-                        <linearGradient id="solanaGradient1" x1="36" y1="128.5" x2="325" y2="128.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00FFA3"/>
-                            <stop offset="1" stop-color="#DC1FFF"/>
-                        </linearGradient>
-                        <linearGradient id="solanaGradient2" x1="72" y1="198.5" x2="361" y2="198.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00FFA3"/>
-                            <stop offset="1" stop-color="#DC1FFF"/>
-                        </linearGradient>
-                        <linearGradient id="solanaGradient3" x1="36" y1="268.5" x2="325" y2="268.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00FFA3"/>
-                            <stop offset="1" stop-color="#DC1FFF"/>
+                        <!-- Горизонтальный неоновый градиент для линий меню -->
+                        <linearGradient id="menuLinesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#00FFA3" />
+                            <stop offset="50%" stop-color="#00AEEF" />
+                            <stop offset="100%" stop-color="#A846FA" />
                         </linearGradient>
                     </defs>
+                    <!-- Три скругленные неоновые линии -->
+                    <rect x="26" y="34" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
+                    <rect x="26" y="47" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
+                    <rect x="26" y="60" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
                 </svg>
             </div>
             
