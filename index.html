@@ -356,9 +356,10 @@
                 
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">OKX Wallet</span>
             </a>
-            <!-- КНОПКА 3: SUSHISWAP С ИНТЕГРИРОВАННЫМИ ЗВЕЗДАМИ -->
+            
+                        <!-- КНОПКА 3: SUSHISWAP С ТОЧНЫМ ГРАДИЕНТНЫМ ЛОГОТИПОМ И ЗВЕЗДАМИ -->
             <a 
-                href="https://www.sushi.com/ethereum/swap?referrer=0xC90bdCf2aE8C318Beb74EfcB92298EbFedB94e80" 
+                href="https://sushi.com" 
                 target="_self" 
                 class="quick-stars-btn"
                 style="margin-top: 12px;"
@@ -372,12 +373,33 @@
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
 
-                <!-- 🍣 ВЕКТОРНЫЙ ЛОГОТИП SUSHISWAP -->
-                <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
-                    <path d="M44 26C44 34.8366 35.0457 42 24 42C12.9543 42 4 34.8366 4 26C4 23.5 6 19.5 10 17.5C14 15.5 19 15 24 15C34 15 44 19.5 44 26Z" fill="#FA5252"/>
-                    <path d="M38 23C38 29 31.732 34 24 34C16.268 34 10 29 10 23C10 20.5 12 18.5 15.5 17.5C19 16.5 21.5 16.5 24 16.5C31 16.5 38 19 38 23Z" fill="#FFE3E3"/>
-                    <path d="M31 22C31 25.3137 27.866 28 24 28C20.134 28 17 25.3137 17 22C17 19.5 19 18.5 21 18C23 17.5 25 17.5 26.5 18C29 18.5 31 19.5 31 22Z" fill="#FFA94D"/>
-                    <path d="M6 25C10 31.5 16.5 34.5 24 34.5C31.5 34.5 38 31.5 42 25C37.5 21.5 31.5 20 24 20C16.5 20 10.5 21.5 6 25Z" fill="#E9ECEF" opacity="0.3"/>
+                <!-- 🍣 ТОЧНЫЙ ТРЁХМЕРНЫЙ ЛОГОТИП SUSHI С ГРАДИЕНТОМ ИЗ ИЗОБРАЖЕНИЯ -->
+                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0; transform: rotate(-5deg);">
+                    <defs>
+                        <!-- Плавный неоновый градиент боковой стороны ролла -->
+                        <linearGradient id="sushiSideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4e73df" />
+                            <stop offset="40%" stop-color="#9a4bfa" />
+                            <stop offset="100%" stop-color="#ff3b8b" />
+                        </linearGradient>
+                        <!-- Небольшая тень для объема на срезе -->
+                        <linearGradient id="sushiInnerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4e66d6" />
+                            <stop offset="100%" stop-color="#3649a8" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Объемное тело-цилиндр ролла -->
+                    <path d="M20,35 C15,45 15,65 35,80 C55,95 75,90 80,80 L80,55 C75,65 55,70 35,55 C15,40 20,35 20,35 Z" fill="url(#sushiSideGrad)"/>
+                    
+                    <!-- Белая рисовая прослойка (срез ролла) -->
+                    <ellipse cx="48" cy="46" rx="32" ry="22" fill="#FFFFFF" transform="rotate(-32 48 46)" stroke="url(#sushiSideGrad)" stroke-width="1.5"/>
+                    
+                    <!-- Темная внутренняя начинка (нори/рыба) -->
+                    <ellipse cx="48" cy="46" rx="18" ry="12" fill="url(#sushiInnerGrad)" transform="rotate(-32 48 46)"/>
+                    
+                    <!-- Самый центр начинки (светлая сердцевина) -->
+                    <ellipse cx="48" cy="46" rx="10" ry="6" fill="#FFFFFF" transform="rotate(-32 48 46)" opacity="0.9"/>
                 </svg>
                 
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">Sushiswap</span>
