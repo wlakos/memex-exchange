@@ -357,7 +357,7 @@
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">OKX Wallet</span>
             </a>
             
-                        <!-- КНОПКА 3: SUSHISWAP С ТОЧНЫМ ГРАДИЕНТНЫМ ЛОГОТИПОМ И ЗВЕЗДАМИ -->
+                                    <!-- КНОПКА 3: SUSHISWAP С ТОЧНЫМ НАПРАВЛЕНИЕМ ЛОГОТИПА И ЗВЕЗДАМИ -->
             <a 
                 href="https://sushi.com" 
                 target="_self" 
@@ -373,33 +373,33 @@
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
 
-                <!-- 🍣 ТОЧНЫЙ ТРЁХМЕРНЫЙ ЛОГОТИП SUSHI С ГРАДИЕНТОМ ИЗ ИЗОБРАЖЕНИЯ -->
-                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0; transform: rotate(-5deg);">
+                <!-- 🍣 ОФИЦИАЛЬНЫЙ ЛОГОТИП SUSHI С ТОЧНЫМ НАКЛОНОМ КАК НА КАРТИНКЕ -->
+                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
                     <defs>
-                        <!-- Плавный неоновый градиент боковой стороны ролла -->
-                        <linearGradient id="sushiSideGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#4e73df" />
-                            <stop offset="40%" stop-color="#9a4bfa" />
-                            <stop offset="100%" stop-color="#ff3b8b" />
+                        <!-- Линейный градиент корпуса ролла: от синего к розовому слева направо по диагонали -->
+                        <linearGradient id="sushiGradPerfect" x1="15%" y1="15%" x2="85%" y2="85%">
+                            <stop offset="0%" stop-color="#3B66F5" />
+                            <stop offset="45%" stop-color="#A846FA" />
+                            <stop offset="100%" stop-color="#FF3E94" />
                         </linearGradient>
-                        <!-- Небольшая тень для объема на срезе -->
-                        <linearGradient id="sushiInnerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#4e66d6" />
-                            <stop offset="100%" stop-color="#3649a8" />
+                        <!-- Внутренний градиент тени для глубины нори -->
+                        <linearGradient id="sushiNoriGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#2D3A8A" />
+                            <stop offset="100%" stop-color="#4A5CC4" />
                         </linearGradient>
                     </defs>
                     
-                    <!-- Объемное тело-цилиндр ролла -->
-                    <path d="M20,35 C15,45 15,65 35,80 C55,95 75,90 80,80 L80,55 C75,65 55,70 35,55 C15,40 20,35 20,35 Z" fill="url(#sushiSideGrad)"/>
+                    <!-- Объемный наклонный корпус ролла (смотрит срезом вверх и влево) -->
+                    <path d="M80,35 C85,45 85,65 65,80 C45,95 25,90 20,80 L20,55 C25,65 45,70 65,55 C85,40 80,35 80,35 Z" fill="url(#sushiGradPerfect)"/>
                     
-                    <!-- Белая рисовая прослойка (срез ролла) -->
-                    <ellipse cx="48" cy="46" rx="32" ry="22" fill="#FFFFFF" transform="rotate(-32 48 46)" stroke="url(#sushiSideGrad)" stroke-width="1.5"/>
+                    <!-- Рисовая овальная основа среза ролла -->
+                    <ellipse cx="52" cy="46" rx="32" ry="22" fill="#FFFFFF" transform="rotate(32 52 46)" stroke="url(#sushiGradPerfect)" stroke-width="1.5"/>
                     
-                    <!-- Темная внутренняя начинка (нори/рыба) -->
-                    <ellipse cx="48" cy="46" rx="18" ry="12" fill="url(#sushiInnerGrad)" transform="rotate(-32 48 46)"/>
+                    <!-- Синяя начинка (нори) -->
+                    <ellipse cx="52" cy="46" rx="18" ry="12" fill="url(#sushiNoriGrad)" transform="rotate(32 52 46)"/>
                     
-                    <!-- Самый центр начинки (светлая сердцевина) -->
-                    <ellipse cx="48" cy="46" rx="10" ry="6" fill="#FFFFFF" transform="rotate(-32 48 46)" opacity="0.9"/>
+                    <!-- Светлый центр ролла -->
+                    <ellipse cx="52" cy="46" rx="10" ry="6" fill="#FFFFFF" transform="rotate(32 52 46)"/>
                 </svg>
                 
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">Sushiswap</span>
