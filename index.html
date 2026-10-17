@@ -193,10 +193,13 @@
             ></iframe>
         </div>
         
-                        <!-- ⚡ ЗАГОЛОВОК С ЭПИЧЕСКИМИ РАКЕТАМИ, ШЛЕЙФОМ И ДОЛГИМ МОЩНЫМ ВЗРЫВОМ -->
-            <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; width: 100%; position: relative; height: 30px;">
+                       <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЖЕСТКОЙ ФИКСАЦИЕЙ КНОПОК И ДОЛГИМ САЛЮТОМ -->
+        <div class="swap-wrapper" style="height: auto; min-height: auto; display: flex; flex-direction: column; gap: 12px; position: relative;">
+            
+            <!-- Заголовок с анимацией вылетающих ракет и мощного взрыва -->
+            <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; width: 100%; position: relative; height: 30px;">
                 
-                <!-- 🎆 БЛОК СТИЛЕЙ: РЕАЛИСТИЧНЫЙ ВЫЛЕТ И ЗАМЕДЛЕННЫЙ РАЗЛЕТ САЛЮТА -->
+                <!-- 🎆 БЛОК СТИЛЕЙ: ФИКСАЦИЯ И ДОЛГИЙ ЭПИЧЕСКИЙ САЛЮТ -->
                 <style>
                     .router-header-wrap {
                         position: relative;
@@ -226,16 +229,25 @@
                         100% { background-position: 200% 50%; }
                     }
 
+                    /* Изолированный контейнер для частиц, исключающий влияние на верстку */
+                    .firework-container {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        z-index: 4;
+                    }
+
                     /* Базовые свойства частиц */
                     .fw-particle {
                         position: absolute;
-                        bottom: -40px; /* Исходная точка запуска под текстом */
+                        top: 40px; /* Позиционирование строго из одной точки без раздвигания блоков */
                         width: 4px;
                         height: 4px;
                         border-radius: 50%;
                         opacity: 0;
-                        pointer-events: none;
-                        z-index: 4;
                     }
 
                     /* 🔥 АКТИВАЦИЯ ПРИ НАВЕДЕНИИ КУРСОРА: Запуск ракет + Долгий взрыв */
@@ -244,42 +256,42 @@
                     }
 
                     /* 🚀 Настройки траектории и цвета для трех независимых залпов фейерверка */
-                    /* Слева: Ракета №1 (Взрывается широким неоновым кольцом) */
+                    /* Слева: Ракета №1 */
                     .p-1  { left: 15%; background: #F4E85B; --tx: -70px;  --ty: -80px;  animation-delay: 0.0s; }
                     .p-2  { left: 15%; background: #FFFFFF; --tx: -110px; --ty: -40px;  animation-delay: 0.03s; }
                     .p-3  { left: 15%; background: #00FFA3; --tx: -30px;  --ty: -110px; animation-delay: 0.06s; }
                     .p-4  { left: 15%; background: #FF3E94; --tx: -90px;  --ty: -15px;  animation-delay: 0.02s; }
                     .p-5  { left: 15%; background: #00AEEF; --tx: -50px;  --ty: -60px;  animation-delay: 0.05s; }
 
-                    /* Центр: Ракета №2 (Вылетает выше всех и мощно детонирует) */
+                    /* Центр: Ракета №2 */
                     .p-6  { left: 48%; background: #00FFA3; --tx: -40px;  --ty: -130px; animation-delay: 0.15s; }
                     .p-7  { left: 48%; background: #F4E85B; --tx: 40px;   --ty: -140px; animation-delay: 0.18s; }
                     .p-8  { left: 48%; background: #FFFFFF; --tx: 0px;    --ty: -80px;  animation-delay: 0.21s; }
                     .p-9  { left: 48%; background: #FFEB3B; --tx: -80px;  --ty: -95px;  animation-delay: 0.16s; }
                     .p-10 { left: 48%; background: #A846FA; --tx: 80px;   --ty: -105px; animation-delay: 0.19s; }
 
-                    /* Справа: Ракета №3 (Разлетается длинными шлейфами) */
+                    /* Справа: Ракета №3 */
                     .p-11 { left: 78%; background: #FF3E94; --tx: 80px;   --ty: -45px;  animation-delay: 0.08s; }
                     .p-12 { left: 78%; background: #00AEEF; --tx: 110px;  --ty: -85px;  animation-delay: 0.11s; }
                     .p-13 { left: 78%; background: #F4E85B; --tx: 40px;   --ty: -115px; animation-delay: 0.14s; }
                     .p-14 { left: 78%; background: #FFFFFF; --tx: 95px;   --ty: -20px;  animation-delay: 0.09s; }
                     .p-15 { left: 78%; background: #00FFA3; --tx: 55px;   --ty: -65px;  animation-delay: 0.12s; }
 
-                    /* 💥 СЛОЖНАЯ ТРЕХЭТАПНАЯ АНИМАЦИЯ: Вылет с хвостом -> Вспышка -> Медленное угасание осколков */
+                    /* 💥 СЛОЖНАЯ ТРЕХЭТАПНАЯ АНИМАЦИЯ */
                     @keyframes fireworkEpicLaunch {
                         0% {
                             transform: translateY(0);
                             opacity: 0;
                         }
-                        /* 1. ЭТАП: Стремительный вертикальный взлет. Точки вытягиваются в светящиеся линии-хвосты ракет */
+                        /* 1. ЭТАП: Вертикальный взлет со светящимся шлейфом */
                         50% {
                             transform: translateY(-40px);
                             opacity: 1;
-                            height: 25px; /* Длина огненного шлейфа ракеты */
+                            height: 25px;
                             width: 3px;
                             border-radius: 2px;
                         }
-                        /* 2. ЭТАП: Точка детонации на уровне текста. Ракета сжимается в шар и ослепительно вспыхивает */
+                        /* 2. ЭТАП: Точка детонации и яркая вспышка */
                         53% {
                             transform: translateY(-44px) scale(3.5);
                             opacity: 1;
@@ -287,7 +299,7 @@
                             width: 4px;
                             border-radius: 50%;
                         }
-                        /* 3. ЭТАП: Огромный, долгий и плавный разлет множества осколков во все стороны света */
+                        /* 3. ЭТАП: Долгий и широкий разлет осколков салюта */
                         100% {
                             transform: translate(var(--tx), var(--ty)) scale(2.0);
                             opacity: 0;
@@ -300,10 +312,12 @@
                     ROUTER: MEMEX DEFI PROTOCOL
                 </div>
 
-                <!-- Набор системных элементов для отрисовки трех физических ракет -->
-                <div class="fw-particle p-1"></div><div class="fw-particle p-2"></div><div class="fw-particle p-3"></div><div class="fw-particle p-4"></div><div class="fw-particle p-5"></div>
-                <div class="fw-particle p-6"></div><div class="fw-particle p-7"></div><div class="fw-particle p-8"></div><div class="fw-particle p-9"></div><div class="fw-particle p-10"></div>
-                <div class="fw-particle p-11"></div><div class="fw-particle p-12"></div><div class="fw-particle p-13"></div><div class="fw-particle p-14"></div><div class="fw-particle p-15"></div>
+                <!-- Изолированный слой ракет и салютов -->
+                <div class="firework-container">
+                    <div class="fw-particle p-1"></div><div class="fw-particle p-2"></div><div class="fw-particle p-3"></div><div class="fw-particle p-4"></div><div class="fw-particle p-5"></div>
+                    <div class="fw-particle p-6"></div><div class="fw-particle p-7"></div><div class="fw-particle p-8"></div><div class="fw-particle p-9"></div><div class="fw-particle p-10"></div>
+                    <div class="fw-particle p-11"></div><div class="fw-particle p-12"></div><div class="fw-particle p-13"></div><div class="fw-particle p-14"></div><div class="fw-particle p-15"></div>
+                </div>
                 
                 <!-- ☰ Точная векторная иконка меню -->
                 <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95; position: relative; z-index: 5;">
