@@ -193,46 +193,98 @@
             ></iframe>
         </div>
         
-                              <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ДВУХЦВЕТНЫМ ПЕРЕЛИВОМ (ЖЁЛТЫЙ И БЕЛЫЙ) -->
-        <div class="swap-wrapper" style="height: auto; min-height: auto;">
-            
-            <!-- Заголовок с постоянно переливающимся текстом и иконкой меню -->
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                                        <!-- ⚡ ЗАГОЛОВОК С ЛИМОННО-БЕЛЫМ ПЕРЕЛИВОМ И ЭФФЕКТАМИ ВЗРЫВАЮЩИХСЯ САЛЮТОВ -->
+            <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; width: 100%; position: relative;">
                 
-                <!-- 🌈 CSS-стили для плавного зелёно-белого перелива (120 секунд) -->
+                <!-- 🎆 БЛОК СТИЛЕЙ: АНИМАЦИЯ ПЕРЕЛИВА И ВЗРЫВА САЛЮТОВ -->
                 <style>
+                    /* Контейнер для фиксации области взрыва */
+                    .router-header-wrap {
+                        position: relative;
+                    }
+
+                    /* 🌈 Перелив текста (Лимонный + Белый на 60 секунд) */
                     .gradient-animated-text {
                         font-size: 13px;
                         font-weight: 800;
                         letter-spacing: 0.5px;
                         text-transform: uppercase;
                         font-family: 'Inter', system-ui, -apple-system, sans-serif;
-                        
-                        /* Палитра строго двухцветная: Лимонныый (#F4E85B) и Белый (#FFFFFF) */
-                        background: linear-gradient(90deg, #F4E85B, #FFFFFF);
+                        background: linear-gradient(90deg, #F4E85B, #FFFFFF, #F4E85B);
                         background-size: 200% 100%;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         background-clip: text;
                         text-fill-color: transparent;
-                        
-                        /* Плавный переход на 120 секунд */
-                        animation: textGradientShift 120s linear infinite;
+                        animation: textGradientShift 60s linear infinite;
+                        cursor: pointer;
+                        position: relative;
+                        z-index: 5;
                     }
 
                     @keyframes textGradientShift {
                         0% { background-position: 0% 50%; }
                         100% { background-position: 200% 50%; }
                     }
+
+                    /* Базовый контейнер для искр салюта */
+                    .firework-spark {
+                        position: absolute;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        opacity: 0;
+                        pointer-events: none;
+                        z-index: 4;
+                    }
+
+                    /* Анимация запускается ПРИ НАВЕДЕНИИ МЫШКИ на весь заголовок */
+                    .router-header-wrap:hover .firework-spark {
+                        animation: fireworkExplode 0.6s ease-out forwards;
+                    }
+
+                    /* Геометрия разлета искр в разные стороны (взрыв) */
+                    .spark-1 { top: 20%; left: 10%; background: #F4E85B; --dx: -25px; --dy: -20px; }
+                    .spark-2 { top: 10%; left: 30%; background: #FFFFFF; --dx: -10px; --dy: -30px; }
+                    .spark-3 { top: 30%; left: 50%; background: #00FFA3; --dx: 15px; --dy: -25px; }
+                    .spark-4 { top: 15%; left: 70%; background: #F4E85B; --dx: 30px; --dy: -20px; }
+                    .spark-5 { top: 40%; left: 85%; background: #FFFFFF; --dx: 25px; --dy: 15px; }
+                    .spark-6 { top: 70%; left: 20%; background: #00FFA3; --dx: -20px; --dy: 25px; }
+                    .spark-7 { top: 80%; left: 45%; background: #F4E85B; --dx: 0px; --dy: 30px; }
+                    .spark-8 { top: 65%; left: 75%; background: #FFFFFF; --dx: -25px; --dy: -25px; }
+
+                    @keyframes fireworkExplode {
+                        0% {
+                            transform: translate(0, 0) scale(1);
+                            opacity: 1;
+                        }
+                        80% {
+                            opacity: 0.8;
+                        }
+                        100% {
+                            transform: translate(var(--dx), var(--dy)) scale(1.8);
+                            opacity: 0;
+                        }
+                    }
                 </style>
 
-                <!-- Сам переливающийся текст -->
+                <!-- Сам переливающийся текст-триггер для взрыва -->
                 <div class="gradient-animated-text">
                     ROUTER: MEMEX DEFI PROTOCOL
                 </div>
+
+                <!-- Набор искр для эффекта салюта -->
+                <div class="firework-spark spark-1"></div>
+                <div class="firework-spark spark-2"></div>
+                <div class="firework-spark spark-3"></div>
+                <div class="firework-spark spark-4"></div>
+                <div class="firework-spark spark-5"></div>
+                <div class="firework-spark spark-6"></div>
+                <div class="firework-spark spark-7"></div>
+                <div class="firework-spark spark-8"></div>
                 
                 <!-- ☰ Точная векторная иконка меню -->
-                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95;">
+                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95; position: relative; z-index: 5;">
                     <circle cx="50" cy="50" r="48" fill="#0A0B0E" stroke="#1C1D24" stroke-width="2"/>
                     <defs>
                         <linearGradient id="menuLinesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
