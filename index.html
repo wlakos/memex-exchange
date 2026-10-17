@@ -193,17 +193,19 @@
             ></iframe>
         </div>
         
-                                        <!-- ⚡ ЗАГОЛОВОК С ЛИМОННО-БЕЛЫМ ПЕРЕЛИВОМ И ЭФФЕКТАМИ ВЗРЫВАЮЩИХСЯ САЛЮТОВ -->
-            <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; width: 100%; position: relative;">
+                                     <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ВЫЛЕТАЮЩИМИ И МОЩНО ВЗРЫВАЮЩИМИСЯ САЛЮТАМИ -->
+        <div class="swap-wrapper" style="height: auto; min-height: auto; display: flex; flex-direction: column; gap: 24px;">
+            
+            <!-- Заголовок с анимацией вылетающих ракет и мощного взрыва -->
+            <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; width: 100%; position: relative; height: 30px;">
                 
-                <!-- 🎆 БЛОК СТИЛЕЙ: АНИМАЦИЯ ПЕРЕЛИВА И ВЗРЫВА САЛЮТОВ -->
+                <!-- 🎆 БЛОК СТИЛЕЙ: ВЫЛЕТАЮЩИЕ РАКЕТЫ И СВЕРХМОЩНЫЙ ВЗРЫВ -->
                 <style>
-                    /* Контейнер для фиксации области взрыва */
                     .router-header-wrap {
                         position: relative;
                     }
 
-                    /* 🌈 Перелив текста (Лимонный + Белый на 60 секунд) */
+                    /* 🌈 Лимонно-белый перелив текста (60 секунд) */
                     .gradient-animated-text {
                         font-size: 13px;
                         font-weight: 800;
@@ -227,61 +229,82 @@
                         100% { background-position: 200% 50%; }
                     }
 
-                    /* Базовый контейнер для искр салюта */
-                    .firework-spark {
+                    /* Базовые свойства осколков и ракет фейерверка */
+                    .fw-particle {
                         position: absolute;
-                        width: 4px;
-                        height: 4px;
+                        bottom: -40px; /* Старт вылета снизу */
+                        left: 50%;
+                        width: 5px;
+                        height: 5px;
                         border-radius: 50%;
                         opacity: 0;
                         pointer-events: none;
                         z-index: 4;
                     }
 
-                    /* Анимация запускается ПРИ НАВЕДЕНИИ МЫШКИ на весь заголовок */
-                    .router-header-wrap:hover .firework-spark {
-                        animation: fireworkExplode 0.6s ease-out forwards;
+                    /* 🔥 ЭФФЕКТ ПРИ НАВЕДЕНИИ: Вылет ракеты вверх + Сверхмощный разлет частиц во все стороны */
+                    .router-header-wrap:hover .fw-particle {
+                        animation: fireworkRocketLaunch 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
                     }
 
-                    /* Геометрия разлета искр в разные стороны (взрыв) */
-                    .spark-1 { top: 20%; left: 10%; background: #F4E85B; --dx: -25px; --dy: -20px; }
-                    .spark-2 { top: 10%; left: 30%; background: #FFFFFF; --dx: -10px; --dy: -30px; }
-                    .spark-3 { top: 30%; left: 50%; background: #00FFA3; --dx: 15px; --dy: -25px; }
-                    .spark-4 { top: 15%; left: 70%; background: #F4E85B; --dx: 30px; --dy: -20px; }
-                    .spark-5 { top: 40%; left: 85%; background: #FFFFFF; --dx: 25px; --dy: 15px; }
-                    .spark-6 { top: 70%; left: 20%; background: #00FFA3; --dx: -20px; --dy: 25px; }
-                    .spark-7 { top: 80%; left: 45%; background: #F4E85B; --dx: 0px; --dy: 30px; }
-                    .spark-8 { top: 65%; left: 75%; background: #FFFFFF; --dx: -25px; --dy: -25px; }
+                    /* 🚀 Геометрия вылета и мощного эпичного взрыва для каждой группы частиц */
+                    /* Левая ракета и её взрыв */
+                    .p-1  { left: 20%; background: #F4E85B; --tx: -40px;  --ty: -45px; animation-delay: 0.0s; }
+                    .p-2  { left: 20%; background: #FFFFFF; --tx: -65px;  --ty: -25px; animation-delay: 0.02s; }
+                    .p-3  { left: 20%; background: #00FFA3; --tx: -15px;  --ty: -60px; animation-delay: 0.04s; }
+                    .p-4  { left: 20%; background: #FF3E94; --tx: -50px;  --ty: -10px; animation-delay: 0.01s; }
+                    .p-5  { left: 20%; background: #00AEEF; --tx: -30px;  --ty: -35px; animation-delay: 0.03s; }
 
-                    @keyframes fireworkExplode {
+                    /* Центральная ракета и её взрыв */
+                    .p-6  { left: 50%; background: #00FFA3; --tx: -20px;  --ty: -55px; animation-delay: 0.1s; }
+                    .p-7  { left: 50%; background: #F4E85B; --tx: 20px;   --ty: -60px; animation-delay: 0.12s; }
+                    .p-8  { left: 50%; background: #FFFFFF; --tx: 0px;    --ty: -35px; animation-delay: 0.14s; }
+                    .p-9  { left: 50%; background: #FFEB3B; --tx: -40px;  --ty: -40px; animation-delay: 0.11s; }
+                    .p-10 { left: 50%; background: #A846FA; --tx: 40px;   --ty: -45px; animation-delay: 0.13s; }
+
+                    /* Правая ракета и её взрыв */
+                    .p-11 { left: 75%; background: #FF3E94; --tx: 45px;   --ty: -25px; animation-delay: 0.05s; }
+                    .p-12 { left: 75%; background: #00AEEF; --tx: 65px;   --ty: -45px; animation-delay: 0.07s; }
+                    .p-13 { left: 75%; background: #F4E85B; --tx: 20px;   --ty: -55px; animation-delay: 0.09s; }
+                    .p-14 { left: 75%; background: #FFFFFF; --tx: 50px;   --ty: -15px; animation-delay: 0.06s; }
+                    .p-15 { left: 75%; background: #00FFA3; --tx: 30px;   --ty: -35px; animation-delay: 0.08s; }
+
+                    /* Сводная анимация: сначала ракета летит вверх, затем превращается в мощный салют */
+                    @keyframes fireworkRocketLaunch {
                         0% {
-                            transform: translate(0, 0) scale(1);
+                            transform: translateY(0) scale(1.5);
+                            opacity: 1;
+                            border-radius: 30% 30% 50% 50%; /* Форма ракеты */
+                            height: 12px; /* Хвост ракеты */
+                        }
+                        40% {
+                            transform: translateY(-40px) scale(1);
+                            opacity: 1;
+                            height: 5px;
+                            border-radius: 50%;
+                        }
+                        45% {
+                            /* Момент детонации (вспышка) */
+                            transform: translateY(-42px) scale(2.5);
                             opacity: 1;
                         }
-                        80% {
-                            opacity: 0.8;
-                        }
                         100% {
-                            transform: translate(var(--dx), var(--dy)) scale(1.8);
+                            /* Мощный разлет осколков фейерверка */
+                            transform: translate(var(--tx), var(--ty)) scale(2.2);
                             opacity: 0;
                         }
                     }
                 </style>
 
-                <!-- Сам переливающийся текст-триггер для взрыва -->
+                <!-- Текст заголовка -->
                 <div class="gradient-animated-text">
                     ROUTER: MEMEX DEFI PROTOCOL
                 </div>
 
-                <!-- Набор искр для эффекта салюта -->
-                <div class="firework-spark spark-1"></div>
-                <div class="firework-spark spark-2"></div>
-                <div class="firework-spark spark-3"></div>
-                <div class="firework-spark spark-4"></div>
-                <div class="firework-spark spark-5"></div>
-                <div class="firework-spark spark-6"></div>
-                <div class="firework-spark spark-7"></div>
-                <div class="firework-spark spark-8"></div>
+                <!-- 15 Осколков, формирующих 3 вылетающие и мощно взрывающиеся ракеты -->
+                <div class="fw-particle p-1"></div><div class="fw-particle p-2"></div><div class="fw-particle p-3"></div><div class="fw-particle p-4"></div><div class="fw-particle p-5"></div>
+                <div class="fw-particle p-6"></div><div class="fw-particle p-7"></div><div class="fw-particle p-8"></div><div class="fw-particle p-9"></div><div class="fw-particle p-10"></div>
+                <div class="fw-particle p-11"></div><div class="fw-particle p-12"></div><div class="fw-particle p-13"></div><div class="fw-particle p-14"></div><div class="fw-particle p-15"></div>
                 
                 <!-- ☰ Точная векторная иконка меню -->
                 <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95; position: relative; z-index: 5;">
