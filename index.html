@@ -193,10 +193,13 @@
             ></iframe>
         </div>
         
-                               <!-- ⚡ ОБНОВЛЕННЫЙ ЗАГОЛОВОК С ПЕРЕЛИВОМ (БЕЛО-ЗЕЛЕНО-СИНЕ-ЖЕЛТО-КРАСНЫЙ) -->
+                              <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ДВУХЦВЕТНЫМ ПЕРЕЛИВОМ (ЗЕЛЕНЫЙ И БЕЛЫЙ) -->
+        <div class="swap-wrapper" style="height: auto; min-height: auto;">
+            
+            <!-- Заголовок с постоянно переливающимся текстом и иконкой меню -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
                 
-                <!-- 🌈 Новые CSS-стили под вашу цветовую палитру -->
+                <!-- 🌈 CSS-стили для плавного зелёно-белого перелива (60 секунд) -->
                 <style>
                     .gradient-animated-text {
                         font-size: 13px;
@@ -205,9 +208,9 @@
                         text-transform: uppercase;
                         font-family: 'Inter', system-ui, -apple-system, sans-serif;
                         
-                        /* Палитра: Белый (#FFFFFF), Зеленый (#00FFA3), Синий (#3B66F5), Желтый (#FFEB3b), Красный (#FF3E94) */
-                        background: linear-gradient(90deg, #FFFFFF, #00FFA3, #3B66F5, #FFEB3B, #FF3E94, #FFFFFF);
-                        background-size: 400% 100%;
+                        /* Палитра строго двухцветная: Зеленый (#00FFA3) и Белый (#FFFFFF) */
+                        background: linear-gradient(90deg, #00FFA3, #FFFFFF, #00FFA3);
+                        background-size: 200% 100%;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         background-clip: text;
@@ -219,7 +222,7 @@
 
                     @keyframes textGradientShift {
                         0% { background-position: 0% 50%; }
-                        100% { background-position: 400% 50%; }
+                        100% { background-position: 200% 50%; }
                     }
                 </style>
 
