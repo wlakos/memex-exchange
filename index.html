@@ -256,29 +256,69 @@
             }
         </style>
     </header>
+                       <!-- СКОРРЕКТИРОВАННЫЙ БЛОК ДЛЯ СМАРТФОНОВ -->
+   <header style="display: flex; flex-direction: column; width: 100%; box-sizing: border-box; background-color: #13141A; border-bottom: 1px solid #1C1D24; padding: 0;">
+        
+        <!-- Верхняя навигационная линия -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; width: 100%; box-sizing: border-box; gap: 15px;">
+            <a id="logo-anchor" href="#" class="logo" style="font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; flex-shrink: 0;">
+                MEMEX <span>DeFi</span>
+            </a>
+            <nav style="display: flex; gap: 32px; font-size: 14px; font-weight: 600; align-items: center;">
+                <a href="https://github.io" target="_self" style="color: #9CA3AF; text-decoration: none; transition: 0.2s; padding: 10px 12px; display: inline-block;">WHITEPAPER</a>
+                <a href="https://github.io" target="_self" style="color: #9CA3AF; text-decoration: none; transition: 0.2s; padding: 10px 12px; display: inline-block;">MONUMENTAL MANIFESTO</a>
+            </nav>
+            
+            <a href="https://jup.ag" target="_self" class="status" style="
+                text-decoration: none;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+            " onmouseover="this.style.background='rgba(199, 242, 132, 0.2)'; this.style.boxShadow='0 0 12px rgba(199, 242, 132, 0.3)';" onmouseout="this.style.background='rgba(199, 242, 132, 0.1)'; this.style.boxShadow='none';">
+                <span style="animation: statusBlink 2s infinite;">●</span> Buy MEMEX / SOL
+            </a>
+        </div>
 
-    <!-- СКОРРЕКТИРОВАННЫЙ БЛОК ДЛЯ СМАРТФОНОВ -->
-    <div style="
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        width: 100% !important;
-        margin-top: 10px !important;    
-        margin-bottom: 0px !important;   
-        padding: 0 20px !important;
-        box-sizing: border-box !important;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-    ">
-        <div style="color: #FFFFFF !important; font-size: 16px !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 1px !important; margin: 0 !important; padding: 0 !important;">
-            Official SWAP Hub
-        </div>
-        <div style="color: #C7F284 !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 1.5px !important; margin-top: 4px !important; opacity: 0.95 !important;">
-            ALL ASSETS • ALL CROSS-CHAIN • ALL AGGREGATORS
-        </div>
-    </div>
-    <main>
+        <!-- Нижняя кликабельная линия хаба, намертво запертая внутри шапки -->
+        <a href="https://github.com" target="_self" class="official-hub-link" style="
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            width: 100% !important;
+            padding: 12px 20px 16px 20px !important; 
+            box-sizing: border-box !important;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            background: radial-gradient(circle at 50% 100%, rgba(30, 27, 75, 0.4) 0%, transparent 80%) !important;
+            transition: opacity 0.2s ease-in-out !important;
+            border-top: 1px solid rgba(28, 29, 36, 0.5);
+        " onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">
+            
+            <!-- Строка 1: Крупные белые буквы -->
+            <div style="color: #FFFFFF !important; font-size: 16px !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 1px !important; margin: 0 !important; padding: 0 !important;">
+                Official SWAP Hub
+            </div>
+
+            <!-- Строка 2: Фирменный салатовый цвет спецификации -->
+            <div style="color: #C7F284 !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 1.5px !important; margin-top: 4px !important;">
+                ALL ASSETS • ALL CROSS-CHAIN • ALL AGGREGATORS
+            </div>
+        </a>
+
+        <!-- Системная CSS-анимация точки -->
+        <style>
+            @keyframes statusBlink {
+                0% { opacity: 0.4; }
+                50% { opacity: 1; }
+                100% { opacity: 0.4; }
+            }
+        </style>
+    </header>
      
         <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С АДАПТИВНОСТЬЮ -->
         <div class="swap-wrapper">
