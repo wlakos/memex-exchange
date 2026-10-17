@@ -193,13 +193,10 @@
             ></iframe>
         </div>
         
-                    <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С МЕДЛЕННЫМ ПЕРЕЛИВОМ (120 СЕКУНД) -->
-        <div class="swap-wrapper" style="height: auto; min-height: auto;">
-            
-            <!-- Заголовок с постоянно переливающимся текстом и иконкой меню -->
+                               <!-- ⚡ ОБНОВЛЕННЫЙ ЗАГОЛОВОК С ПЕРЕЛИВОМ (БЕЛО-ЗЕЛЕНО-СИНЕ-ЖЕЛТО-КРАСНЫЙ) -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
                 
-                <!-- 🌈 CSS-стили для очень медленного градиентного перелива текста (120 секунд) -->
+                <!-- 🌈 Новые CSS-стили под вашу цветовую палитру -->
                 <style>
                     .gradient-animated-text {
                         font-size: 13px;
@@ -208,16 +205,16 @@
                         text-transform: uppercase;
                         font-family: 'Inter', system-ui, -apple-system, sans-serif;
                         
-                        /* Включаем градиент для текста */
-                        background: linear-gradient(90deg, #C7F284, #00FFA3, #00AEEF, #A846FA, #FF3E94, #C7F284);
+                        /* Палитра: Белый (#FFFFFF), Зеленый (#00FFA3), Синий (#3B66F5), Желтый (#FFEB3b), Красный (#FF3E94) */
+                        background: linear-gradient(90deg, #FFFFFF, #00FFA3, #3B66F5, #FFEB3B, #FF3E94, #FFFFFF);
                         background-size: 400% 100%;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         background-clip: text;
                         text-fill-color: transparent;
                         
-                        /* Запуск плавной анимации на 120 секунд */
-                        animation: textGradientShift 120s linear infinite;
+                        /* Плавный переход на 60 секунд */
+                        animation: textGradientShift 60s linear infinite;
                     }
 
                     @keyframes textGradientShift {
