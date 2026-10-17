@@ -252,7 +252,7 @@
 
                     /* 🔥 АКТИВАЦИЯ ПРИ НАВЕДЕНИИ КУРСОРА: Запуск ракет + Долгий взрыв */
                     .router-header-wrap:hover .fw-particle {
-                        animation: fireworkEpicLaunch 1.0s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
+                        animation: fireworkEpicLaunch 0.8s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
                     }
 
                     /* 🚀 Настройки траектории и цвета для трех независимых залпов фейерверка */
@@ -284,7 +284,7 @@
                             opacity: 0;
                         }
                         /* 1. ЭТАП: Вертикальный взлет со светящимся шлейфом */
-                        50% {
+                        20% {
                             transform: translateY(-40px);
                             opacity: 1;
                             height: 25px;
@@ -292,7 +292,7 @@
                             border-radius: 2px;
                         }
                         /* 2. ЭТАП: Точка детонации и яркая вспышка */
-                        53% {
+                        23% {
                             transform: translateY(-44px) scale(3.5);
                             opacity: 1;
                             height: 4px;
