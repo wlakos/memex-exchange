@@ -192,34 +192,145 @@
                 src="https://dexscreener.com"
             ></iframe>
         </div>
-        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЛОГОТИПОМ SOLANA -->
-        <div class="swap-wrapper">
+        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЖЕСТКОЙ ФИКСАЦИЕЙ КНОПОК И ДОЛГИМ САЛЮТОМ -->
+        <div class="swap-wrapper" style="height: auto; min-height: auto; display: flex; flex-direction: column; gap: 12px; position: relative;">
             
-            <!-- Заголовок с добавлением иконки Solana по правому краю -->
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
-                <div style="font-size: 13px; font-weight: 800; color: #C7F284; letter-spacing: 0.5px; text-transform: uppercase;">
-                    ROUTER: MEMEX DeFi PROTOCOL
+            <!-- Заголовок с анимацией вылетающих ракет и мощного взрыва -->
+            <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; width: 100%; position: relative; height: 30px;">
+                
+                <!-- 🎆 БЛОК СТИЛЕЙ: ФИКСАЦИЯ И ДОЛГИЙ ЭПИЧЕСКИЙ САЛЮТ -->
+                <style>
+                    .router-header-wrap {
+                        position: relative;
+                    }
+
+                    /* 🌈 Лимонно-белый перелив текста (60 секунд) */
+                    .gradient-animated-text {
+                        font-size: 13px;
+                        font-weight: 800;
+                        letter-spacing: 0.5px;
+                        text-transform: uppercase;
+                        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+                        background: linear-gradient(90deg, #FFFFFF, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284, #C7F284);
+                        background-size: 200% 100%;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                        animation: textGradientShift 60s linear infinite;
+                        cursor: pointer;
+                        position: relative;
+                        z-index: 5;
+                    }
+
+                    @keyframes textGradientShift {
+                        0% { background-position: 0% 50%; }
+                        100% { background-position: 200% 50%; }
+                    }
+
+                    /* Изолированный контейнер для частиц, исключающий влияние на верстку */
+                    .firework-container {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        z-index: 4;
+                    }
+
+                    /* Базовые свойства частиц */
+                    .fw-particle {
+                        position: absolute;
+                        top: 40px; /* Позиционирование строго из одной точки без раздвигания блоков */
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        opacity: 0;
+                    }
+
+                    /* 🔥 АКТИВАЦИЯ ПРИ НАВЕДЕНИИ КУРСОРА: Запуск ракет + Долгий взрыв */
+                    .router-header-wrap:hover .fw-particle {
+                        animation: fireworkEpicLaunch 0.5s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
+                    }
+
+                    /* 🚀 Настройки траектории и цвета для трех независимых залпов фейерверка */
+                    /* Слева: Ракета №1 */
+                    .p-1  { left: 15%; background: #F4E85B; --tx: -70px;  --ty: -80px;  animation-delay: 0.0s; }
+                    .p-2  { left: 15%; background: #FFFFFF; --tx: -110px; --ty: -40px;  animation-delay: 0.03s; }
+                    .p-3  { left: 15%; background: #00FFA3; --tx: -30px;  --ty: -110px; animation-delay: 0.06s; }
+                    .p-4  { left: 15%; background: #FF3E94; --tx: -90px;  --ty: -15px;  animation-delay: 0.02s; }
+                    .p-5  { left: 15%; background: #00AEEF; --tx: -50px;  --ty: -60px;  animation-delay: 0.05s; }
+
+                    /* Центр: Ракета №2 */
+                    .p-6  { left: 48%; background: #00FFA3; --tx: -40px;  --ty: -130px; animation-delay: 0.15s; }
+                    .p-7  { left: 48%; background: #F4E85B; --tx: 40px;   --ty: -140px; animation-delay: 0.18s; }
+                    .p-8  { left: 48%; background: #FFFFFF; --tx: 0px;    --ty: -80px;  animation-delay: 0.21s; }
+                    .p-9  { left: 48%; background: #FFEB3B; --tx: -80px;  --ty: -95px;  animation-delay: 0.16s; }
+                    .p-10 { left: 48%; background: #A846FA; --tx: 80px;   --ty: -105px; animation-delay: 0.19s; }
+
+                    /* Справа: Ракета №3 */
+                    .p-11 { left: 78%; background: #FF3E94; --tx: 80px;   --ty: -45px;  animation-delay: 0.08s; }
+                    .p-12 { left: 78%; background: #00AEEF; --tx: 110px;  --ty: -85px;  animation-delay: 0.11s; }
+                    .p-13 { left: 78%; background: #F4E85B; --tx: 40px;   --ty: -115px; animation-delay: 0.14s; }
+                    .p-14 { left: 78%; background: #FFFFFF; --tx: 95px;   --ty: -20px;  animation-delay: 0.09s; }
+                    .p-15 { left: 78%; background: #00FFA3; --tx: 55px;   --ty: -65px;  animation-delay: 0.12s; }
+
+                    /* 💥 СЛОЖНАЯ ТРЕХЭТАПНАЯ АНИМАЦИЯ */
+                    @keyframes fireworkEpicLaunch {
+                        0% {
+                            transform: translateY(0);
+                            opacity: 0;
+                        }
+                        /* 1. ЭТАП: Вертикальный взлет со светящимся шлейфом */
+                        20% {
+                            transform: translateY(-40px);
+                            opacity: 1;
+                            height: 25px;
+                            width: 3px;
+                            border-radius: 2px;
+                        }
+                        /* 2. ЭТАП: Точка детонации и яркая вспышка */
+                        23% {
+                            transform: translateY(-44px) scale(3.5);
+                            opacity: 1;
+                            height: 4px;
+                            width: 4px;
+                            border-radius: 50%;
+                        }
+                        /* 3. ЭТАП: Долгий и широкий разлет осколков салюта */
+                        100% {
+                            transform: translate(var(--tx), var(--ty)) scale(2.0);
+                            opacity: 0;
+                        }
+                    }
+                </style>
+
+                <!-- Текст заголовка -->
+                <div class="gradient-animated-text">
+                    ROUTER: MEMEX DEFI PROTOCOL
                 </div>
-                <!-- Векторная круглая иконка Solana -->
-                <svg width="18" height="18" viewBox="0 0 397 397" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.9;">
-                    <circle cx="198.5" cy="198.5" r="198.5" fill="black"/>
-                    <path d="M72 110.5H325L289 146.5H36L72 110.5Z" fill="url(#solanaGradient1)"/>
-                    <path d="M108 180.5H361L325 216.5H72L108 180.5Z" fill="url(#solanaGradient2)"/>
-                    <path d="M289 250.5H36L72 286.5H325L289 250.5Z" fill="url(#solanaGradient3)"/>
+
+                <!-- Изолированный слой ракет и салютов -->
+                <div class="firework-container">
+                    <div class="fw-particle p-1"></div><div class="fw-particle p-2"></div><div class="fw-particle p-3"></div><div class="fw-particle p-4"></div><div class="fw-particle p-5"></div>
+                    <div class="fw-particle p-6"></div><div class="fw-particle p-7"></div><div class="fw-particle p-8"></div><div class="fw-particle p-9"></div><div class="fw-particle p-10"></div>
+                    <div class="fw-particle p-11"></div><div class="fw-particle p-12"></div><div class="fw-particle p-13"></div><div class="fw-particle p-14"></div><div class="fw-particle p-15"></div>
+                </div>
+                
+                <!-- ☰ Точная векторная иконка меню -->
+                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95; position: relative; z-index: 5;">
+                    <circle cx="50" cy="50" r="48" fill="#0A0B0E" stroke="#1C1D24" stroke-width="2"/>
                     <defs>
-                        <linearGradient id="solanaGradient1" x1="36" y1="128.5" x2="325" y2="128.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00FFA3"/>
-                            <stop offset="1" stop-color="#DC1FFF"/>
-                        </linearGradient>
-                        <linearGradient id="solanaGradient2" x1="72" y1="198.5" x2="361" y2="198.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00FFA3"/>
-                            <stop offset="1" stop-color="#DC1FFF"/>
-                        </linearGradient>
-                        <linearGradient id="solanaGradient3" x1="36" y1="268.5" x2="325" y2="268.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00FFA3"/>
-                            <stop offset="1" stop-color="#DC1FFF"/>
+                        <linearGradient id="menuLinesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#00FFA3" />
+                            <stop offset="50%" stop-color="#00AEEF" />
+                            <stop offset="100%" stop-color="#A846FA" />
                         </linearGradient>
                     </defs>
+                    <rect x="26" y="34" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
+                    <rect x="26" y="47" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
+                    <rect x="26" y="60" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
                 </svg>
             </div>
             
