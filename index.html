@@ -257,28 +257,48 @@
         </style>
     </header>
 
-    <!-- СКОРРЕКТИРОВАННЫЙ БЛОК ДЛЯ СМАРТФОНОВ -->
-    <div style="
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
+    <!-- 🌟 КЛИКАБЕЛЬНЫЙ И АДАПТИВНЫЙ БЛОК ХАБА (СТРОГО ПО ЦЕНТРУ) -->
+    <a href="https://github.com" target="_self" class="official-hub-link" style="
+        display: block !important;
         width: 100% !important;
         margin-top: 10px !important;    
         margin-bottom: 0px !important;   
-        padding: 0 20px !important;
+        padding: 10px 20px !important;
         box-sizing: border-box !important;
         font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
-    ">
-        <div style="color: #FFFFFF !important; font-size: 16px !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 1px !important; margin: 0 !important; padding: 0 !important;">
+        text-decoration: none !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        transition: opacity 0.2s ease-in-out !important;
+    " onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">
+        
+        <!-- Строка 1: Крупные белые буквы -->
+        <div style="
+            color: #FFFFFF !important; 
+            font-size: 16px !important; 
+            font-weight: 800 !important; 
+            text-transform: uppercase !important; 
+            letter-spacing: 1px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+        ">
             Official SWAP Hub
         </div>
-        <div style="color: #C7F284 !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 1.5px !important; margin-top: 4px !important; opacity: 0.95 !important;">
+
+        <!-- Строка 2: Фирменный салатовый цвет спецификации -->
+        <div style="
+            color: #C7F284 !important; 
+            font-size: 12px !important; 
+            font-weight: 700 !important; 
+            text-transform: uppercase !important; 
+            letter-spacing: 1.5px !important;
+            margin-top: 4px !important; 
+            display: block !important;
+        ">
             ALL ASSETS • ALL CROSS-CHAIN • ALL AGGREGATORS
         </div>
-    </div>
-    <main>
+    </a>
      
         <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С АДАПТИВНОСТЬЮ -->
         <div class="swap-wrapper">
