@@ -193,10 +193,13 @@
             ></iframe>
         </div>
         
-                    <!-- ⚡ ОБНОВЛЕННЫЙ ЗАГОЛОВОК С ПОСТОЯННО ПЕРЕЛИВАЮЩИМСЯ НЕОНОВЫМ ТЕКСТОМ И ИКОНКОЙ МЕНЮ -->
+                    <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С МЕДЛЕННЫМ ПЕРЕЛИВОМ (60 СЕКУНД) -->
+        <div class="swap-wrapper" style="height: auto; min-height: auto;">
+            
+            <!-- Заголовок с постоянно переливающимся текстом и иконкой меню -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
                 
-                <!-- 🌈 CSS-стили для создания эффекта бесконечного градиентного перелива текста -->
+                <!-- 🌈 CSS-стили для очень медленного градиентного перелива текста (60 секунд) -->
                 <style>
                     .gradient-animated-text {
                         font-size: 13px;
@@ -213,8 +216,8 @@
                         background-clip: text;
                         text-fill-color: transparent;
                         
-                        /* Запуск плавной анимации */
-                        animation: textGradientShift 8s linear infinite;
+                        /* Запуск плавной анимации на 60 секунд */
+                        animation: textGradientShift 60s linear infinite;
                     }
 
                     @keyframes textGradientShift {
@@ -228,19 +231,16 @@
                     ROUTER: MEMEX DEFI PROTOCOL
                 </div>
                 
-                <!-- ☰ ТОЧНАЯ ВЕКТОРНАЯ ИКОНКА МЕНЮ (ТРИ НЕОНОВЫЕ ЛИНИИ В КРУГЕ) КАК НА КАРТИНКЕ -->
+                <!-- ☰ Точная векторная иконка меню -->
                 <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95;">
-                    <!-- Темный круг-подложка -->
                     <circle cx="50" cy="50" r="48" fill="#0A0B0E" stroke="#1C1D24" stroke-width="2"/>
                     <defs>
-                        <!-- Горизонтальный неоновый градиент для линий меню -->
                         <linearGradient id="menuLinesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#00FFA3" />
                             <stop offset="50%" stop-color="#00AEEF" />
                             <stop offset="100%" stop-color="#A846FA" />
                         </linearGradient>
                     </defs>
-                    <!-- Три скругленные неоновые линии -->
                     <rect x="26" y="34" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
                     <rect x="26" y="47" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
                     <rect x="26" y="60" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
