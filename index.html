@@ -151,14 +151,20 @@
                 padding: 15px 20px;
                 flex-direction: column;
                 text-align: center;
-                gap: 12px;
+                gap: 16px; /* Увеличили общий зазор между элементами шапки */
             }
             header nav {
                 flex-direction: row;
                 justify-content: center;
-                gap: 18px;
+                gap: 24px; /* 👈 Увеличили расстояние между WHITEPAPER и MANIFESTO */
                 font-size: 12px;
                 width: 100%;
+            }
+            /* 🌟 Увеличиваем зону клика для ссылок, чтобы пальцу было удобно */
+            header nav a {
+                padding: 10px 12px; /* Добавляет невидимое защитное поле вокруг каждой ссылки */
+                display: inline-block;
+                letter-spacing: 0.5px;
             }
             main {
                 padding: 20px 12px;
