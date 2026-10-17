@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MEMEX DeFi Protocol Exchange ⚡</title>
 
-    <!-- 🌟 ПРЯМОЕ ПОДКЛЮЧЕНИЕ ИКОНКИ ДЛЯ БРАУЗЕРОВ И ИСТОРИИ ИСПРАВЛЕНО -->
+    <!-- 🌟 ПРЯМОЕ ПОДКЛЮЧЕНИЕ ИКОНКИ ДЛЯ БРАУЗЕРОВ И ИСТОРИИ -->
     <link rel="icon" type="image/png" href="https://githubusercontent.com">
     <link rel="shortcut icon" type="image/png" href="https://githubusercontent.com">
 
@@ -26,7 +26,7 @@
     <style>
         body {
             margin: 0;
-            padding: 0 0 50px 0; /* Добавили отступ снизу, чтобы подвал не перекрывал контент */
+            padding: 0 0 60px 0;
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -34,6 +34,8 @@
             flex-direction: column;
             min-height: 100vh;
             box-sizing: border-box;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
         .ticker-wrap {
             width: 100%;
@@ -67,14 +69,15 @@
             padding: 18px 40px;
             background-color: #13141A;
             border-bottom: 1px solid #1C1D24;
+            gap: 15px;
         }
-        header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; }
+        header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; flex-shrink: 0; }
         header .logo:hover { opacity: 0.8; }
         header .logo span { color: #C7F284; }
-        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; }
+        header nav { display: flex; gap: 32px; font-size: 14px; font-weight: 600; align-items: center; }
         header nav a { color: #9CA3AF; text-decoration: none; transition: 0.2s; }
         header nav a:hover { color: #FFFFFF; }
-        header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); }
+        header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); white-space: nowrap; }
         
         main {
             display: flex;
@@ -86,11 +89,13 @@
             padding: 40px 20px;
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
             flex: 1;
+            width: 100%;
+            box-sizing: border-box;
         }
         .swap-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 12px;
             width: 100%;
             max-width: 440px;
             background: #13141A;
@@ -99,6 +104,8 @@
             padding: 30px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             box-sizing: border-box;
+            position: relative;
+            height: auto;
         }
         
         .container-box {
@@ -123,7 +130,6 @@
             display: block;
         }
 
-        /* 🔒 ЖЕСТКАЯ ФИКСАЦИЯ ПОДВАЛА ДЛЯ ОТОБРАЖЕНИЯ ПОЧТЫ */
         .footer-fixed {
             position: fixed;
             bottom: 0;
@@ -136,7 +142,47 @@
             border-top: 1px solid #1C1D24;
             background-color: #13141A;
             box-sizing: border-box;
-            z-index: 9999; /* Чтобы подвал всегда был поверх фреймов */
+            z-index: 9999;
+        }
+
+        /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ ДЛЯ ВСЕХ ТЕЛЕФОНОВ В МИРЕ */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            header nav {
+                flex-direction: row;
+                justify-content: center;
+                gap: 18px;
+                font-size: 12px;
+                width: 100%;
+            }
+            main {
+                padding: 20px 12px;
+                gap: 24px;
+            }
+            .swap-wrapper {
+                padding: 20px 15px;
+            }
+            .gradient-animated-text {
+                font-size: 11px !important;
+            }
+            .quick-stars-btn {
+                font-size: 16px !important;
+                padding: 12px 16px !important;
+            }
+            .footer-fixed {
+                position: static;
+                border-top: 1px solid #1C1D24;
+                padding: 20px 12px;
+                font-size: 10px;
+            }
+            body {
+                padding: 0;
+            }
         }
     </style>
 
@@ -146,7 +192,7 @@
             sell_token: "So11111111111111111111111111111111111111112",
             fee_bps: "100",
             fee_account: "D7B1prmuB7izhvBWAhNMCaGbonH6WTrBpTuAZn1sMd7L",
-            logo_link: "https://solscan.io/token/FLCZBRXSHcaRExB9dFgPDyjJWM1Angbr6z8sCqRxZeXs#metadata" 
+            logo_link: "https://solscan.io" 
         };
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -173,21 +219,19 @@
         </div>
     </div>
 
+    <!-- АДАПТИВНАЯ ШАПКА САЙТА -->
     <header>
         <a id="logo-anchor" href="#" class="logo">
             MEMEX <span>DeFi</span>
         </a>
         <nav>
-            <a href="https://wlakos.github.io/memes-assets/index-en.html" target="_self">WHITEPAPER</a>
-            <a href="https://wlakos.github.io/memes-assets/manifest-en.html" target="_self">MONUMENTAL MANIFESTO</a>
+            <a href="https://github.io" target="_self">WHITEPAPER</a>
+            <a href="https://github.io" target="_self">MONUMENTAL MANIFESTO</a>
         </nav>
         <div class="status">● Solana Mainnet</div>
     </header>
 
-      </header>
-    <!-- 👆 КОНЕЦ ВАШЕГО РОДНОГО ТЕГА HEADER (НИЧЕГО В НЕМ НЕ МЕНЯЕМ) -->
-
-    <!-- 🌟 СКОРРЕКТИРОВАННЫЙ БЛОК: УМЕНЬШЕНЫ ОТСТУПЫ, ЧТОБЫ ПОДНЯТЬ ГРАФИК И КНОПКИ НАВЕРХ -->
+    <!-- СКОРРЕКТИРОВАННЫЙ БЛОК ДЛЯ СМАРТФОНОВ -->
     <div style="
         display: flex !important;
         flex-direction: column !important;
@@ -195,54 +239,29 @@
         justify-content: center !important;
         text-align: center !important;
         width: 100% !important;
-        margin-top: 10px !important;    /* 👈 Уменьшили отступ сверху, прижав к шапке */
-        margin-bottom: 0px !important;   /* 👈 Убрали отступ снизу, подтянув main наверх */
+        margin-top: 10px !important;    
+        margin-bottom: 0px !important;   
         padding: 0 20px !important;
         box-sizing: border-box !important;
         font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
     ">
-        <!-- Строка 1: Крупные белые буквы -->
-        <div style="
-            color: #FFFFFF !important; 
-            font-size: 16px !important; 
-            font-weight: 800 !important; 
-            text-transform: uppercase !important; 
-            letter-spacing: 1px !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        ">
+        <div style="color: #FFFFFF !important; font-size: 16px !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 1px !important; margin: 0 !important; padding: 0 !important;">
             Official SWAP Hub
         </div>
-
-        <!-- Строка 2: Фирменный салатовый цвет спецификации -->
-        <div style="
-            color: #C7F284 !important; 
-            font-size: 12px !important; 
-            font-weight: 700 !important; 
-            text-transform: uppercase !important; 
-            letter-spacing: 1.5px !important;
-            margin-top: 4px !important; /* 👈 Сделали промежуток между строками текста чуть плотнее */
-            opacity: 0.95 !important;
-        ">
+        <div style="color: #C7F284 !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 1.5px !important; margin-top: 4px !important; opacity: 0.95 !important;">
             ALL ASSETS • ALL CROSS-CHAIN • ALL AGGREGATORS
         </div>
     </div>
-
     <main>
      
-        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С ЖЕСТКОЙ ФИКСАЦИЕЙ КНОПОК И ДОЛГИМ САЛЮТОМ -->
-        <div class="swap-wrapper" style="height: auto; min-height: auto; display: flex; flex-direction: column; gap: 12px; position: relative;">
+        <!-- ⚡ ОБНОВЛЕННЫЙ РЕФЕРАЛЬНЫЙ ШЛЮЗ С АДАПТИВНОСТЬЮ -->
+        <div class="swap-wrapper">
             
             <!-- Заголовок с анимацией вылетающих ракет и мощного взрыва -->
             <div class="router-header-wrap" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; width: 100%; position: relative; height: 30px;">
                 
-                <!-- 🎆 БЛОК СТИЛЕЙ: ФИКСАЦИЯ И ДОЛГИЙ ЭПИЧЕСКИЙ САЛЮТ -->
                 <style>
-                    .router-header-wrap {
-                        position: relative;
-                    }
-
-                    /* 🌈 Лимонно-белый перелив текста (60 секунд) */
+                    .router-header-wrap { position: relative; }
                     .gradient-animated-text {
                         font-size: 13px;
                         font-weight: 800;
@@ -260,13 +279,10 @@
                         position: relative;
                         z-index: 5;
                     }
-
                     @keyframes textGradientShift {
                         0% { background-position: 0% 50%; }
                         100% { background-position: 200% 50%; }
                     }
-
-                    /* Изолированный контейнер для частиц, исключающий влияние на верстку */
                     .firework-container {
                         position: absolute;
                         top: 0;
@@ -276,104 +292,59 @@
                         pointer-events: none;
                         z-index: 4;
                     }
-
-                    /* Базовые свойства частиц */
                     .fw-particle {
                         position: absolute;
-                        top: 40px; /* Позиционирование строго из одной точки без раздвигания блоков */
+                        top: 40px; 
                         width: 4px;
                         height: 4px;
                         border-radius: 50%;
                         opacity: 0;
                     }
-
-                    /* 🔥 АКТИВАЦИЯ ПРИ НАВЕДЕНИИ КУРСОРА: Запуск ракет + Долгий взрыв */
                     .router-header-wrap:hover .fw-particle {
                         animation: fireworkEpicLaunch 0.5s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
                     }
-
-                    /* 🚀 Настройки траектории и цвета для трех независимых залпов фейерверка */
-                    /* Слева: Ракета №1 */
                     .p-1  { left: 15%; background: #F4E85B; --tx: -70px;  --ty: -80px;  animation-delay: 0.0s; }
                     .p-2  { left: 15%; background: #FFFFFF; --tx: -110px; --ty: -40px;  animation-delay: 0.03s; }
                     .p-3  { left: 15%; background: #00FFA3; --tx: -30px;  --ty: -110px; animation-delay: 0.06s; }
                     .p-4  { left: 15%; background: #FF3E94; --tx: -90px;  --ty: -15px;  animation-delay: 0.02s; }
                     .p-5  { left: 15%; background: #00AEEF; --tx: -50px;  --ty: -60px;  animation-delay: 0.05s; }
 
-                    /* Центр: Ракета №2 */
                     .p-6  { left: 48%; background: #00FFA3; --tx: -40px;  --ty: -130px; animation-delay: 0.15s; }
                     .p-7  { left: 48%; background: #F4E85B; --tx: 40px;   --ty: -140px; animation-delay: 0.18s; }
                     .p-8  { left: 48%; background: #FFFFFF; --tx: 0px;    --ty: -80px;  animation-delay: 0.21s; }
                     .p-9  { left: 48%; background: #FFEB3B; --tx: -80px;  --ty: -95px;  animation-delay: 0.16s; }
                     .p-10 { left: 48%; background: #A846FA; --tx: 80px;   --ty: -105px; animation-delay: 0.19s; }
 
-                    /* Справа: Ракета №3 */
                     .p-11 { left: 78%; background: #FF3E94; --tx: 80px;   --ty: -45px;  animation-delay: 0.08s; }
                     .p-12 { left: 78%; background: #00AEEF; --tx: 110px;  --ty: -85px;  animation-delay: 0.11s; }
                     .p-13 { left: 78%; background: #F4E85B; --tx: 40px;   --ty: -115px; animation-delay: 0.14s; }
                     .p-14 { left: 78%; background: #FFFFFF; --tx: 95px;   --ty: -20px;  animation-delay: 0.09s; }
                     .p-15 { left: 78%; background: #00FFA3; --tx: 55px;   --ty: -65px;  animation-delay: 0.12s; }
 
-                    /* 💥 СЛОЖНАЯ ТРЕХЭТАПНАЯ АНИМАЦИЯ */
                     @keyframes fireworkEpicLaunch {
-                        0% {
-                            transform: translateY(0);
-                            opacity: 0;
-                        }
-                        /* 1. ЭТАП: Вертикальный взлет со светящимся шлейфом */
-                        20% {
-                            transform: translateY(-40px);
-                            opacity: 1;
-                            height: 25px;
-                            width: 3px;
-                            border-radius: 2px;
-                        }
-                        /* 2. ЭТАП: Точка детонации и яркая вспышка */
-                        23% {
-                            transform: translateY(-44px) scale(3.5);
-                            opacity: 1;
-                            height: 4px;
-                            width: 4px;
-                            border-radius: 50%;
-                        }
-                        /* 3. ЭТАП: Долгий и широкий разлет осколков салюта */
-                        100% {
-                            transform: translate(var(--tx), var(--ty)) scale(2.0);
-                            opacity: 0;
-                        }
+                        0% { transform: translateY(0); opacity: 0; }
+                        20% { transform: translateY(-40px); opacity: 1; height: 25px; width: 3px; border-radius: 2px; }
+                        23% { transform: translateY(-44px) scale(3.5); opacity: 1; height: 4px; width: 4px; border-radius: 50%; }
+                        100% { transform: translate(var(--tx), var(--ty)) scale(2.0); opacity: 0; }
                     }
                 </style>
 
-                <!-- Текст заголовка с неоновыми значками, свечением и смещением слова EXCHANGE вправо -->
                 <div class="gradient-animated-text">
-                    ROUTER: MEMEX DEFI PROTOCOL 
-                    <span style="
-                        color: #00FFA3; 
-                        -webkit-text-fill-color: #00FFA3; 
-                        text-shadow: 0 0 10px #00FFA3, 0 0 20px rgba(0, 255, 163, 0.6); 
-                        font-weight: 900; 
-                        display: inline-block;
-                        margin-left: 12px; /* 👈 Этот отступ аккуратно смещает слово вправо */
-                    ">
-                        EXCHANGE⚡
-                    </span>
+                    ROUTER: MEMEX DEFI 
+                    <span style="color: #00FFA3; -webkit-text-fill-color: #00FFA3; text-shadow: 0 0 10px #00FFA3, 0 0 20px rgba(0, 255, 163, 0.6); font-weight: 900; display: inline-block; margin-left: 6px;">EXCHANGE⚡</span>
                 </div>
 
-                <!-- Изолированный слой ракет и салютов -->
                 <div class="firework-container">
                     <div class="fw-particle p-1"></div><div class="fw-particle p-2"></div><div class="fw-particle p-3"></div><div class="fw-particle p-4"></div><div class="fw-particle p-5"></div>
                     <div class="fw-particle p-6"></div><div class="fw-particle p-7"></div><div class="fw-particle p-8"></div><div class="fw-particle p-9"></div><div class="fw-particle p-10"></div>
                     <div class="fw-particle p-11"></div><div class="fw-particle p-12"></div><div class="fw-particle p-13"></div><div class="fw-particle p-14"></div><div class="fw-particle p-15"></div>
                 </div>
                 
-                <!-- ☰ Точная векторная иконка меню -->
                 <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; opacity: 0.95; position: relative; z-index: 5;">
                     <circle cx="50" cy="50" r="48" fill="#0A0B0E" stroke="#1C1D24" stroke-width="2"/>
                     <defs>
                         <linearGradient id="menuLinesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#00FFA3" />
-                            <stop offset="50%" stop-color="#00AEEF" />
-                            <stop offset="100%" stop-color="#A846FA" />
+                            <stop offset="0%" stop-color="#00FFA3" /><stop offset="50%" stop-color="#00AEEF" /><stop offset="100%" stop-color="#A846FA" />
                         </linearGradient>
                     </defs>
                     <rect x="26" y="34" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
@@ -381,8 +352,6 @@
                     <rect x="26" y="60" width="48" height="5.5" rx="2.75" fill="url(#menuLinesGrad)"/>
                 </svg>
             </div>
-            
-            <!-- 💥 АНИМИРОВАННЫЙ CSS-БЛОК ДЛЯ ЭФФЕКТА ЗВЕЗД В СТИЛЕ QUICKSWAP -->
             <style>
                 .quick-stars-btn {
                     position: relative;
@@ -411,7 +380,6 @@
                     border-color: rgba(171, 196, 255, 0.3);
                     transform: translateY(-1px);
                 }
-                /* Контейнер для звезд */
                 .star-field {
                     position: absolute;
                     top: 0;
@@ -422,18 +390,9 @@
                     opacity: 0;
                     transition: opacity 0.3s ease-in-out;
                 }
-                .quick-stars-btn:hover .star-field {
-                    opacity: 1;
-                }
-                /* Базовый класс для одиночной звезды */
-                .quick-star {
-                    position: absolute;
-                    width: 12px;
-                    height: 12px;
-                    transform: scale(0);
-                    animation: starFloat infinite ease-in-out;
-                }
-                /* Индивидуальные позиции, задержки и анимации звезд в стиле QuickSwap */
+                .quick-stars-btn:hover .star-field { opacity: 1; }
+                .quick-star { position: absolute; width: 12px; height: 12px; transform: scale(0); animation: starFloat infinite ease-in-out; }
+                
                 .star-1 { top: 15%; left: 10%; color: #39dcff; animation-duration: 2s; }
                 .star-2 { top: 65%; left: 18%; color: #ff9d6c; animation-duration: 2.5s; animation-delay: 0.3s; }
                 .star-3 { top: 20%; left: 40%; color: #c7f284; animation-duration: 1.8s; animation-delay: 0.1s; }
@@ -441,10 +400,7 @@
                 .star-5 { top: 15%; left: 78%; color: #ffeb3b; animation-duration: 2.4s; animation-delay: 0.2s; }
                 .star-6 { top: 60%; left: 88%; color: #00ffa3; animation-duration: 2.1s; animation-delay: 0.4s; }
 
-                .quick-stars-btn:hover .quick-star {
-                    transform: scale(1);
-                }
-
+                .quick-stars-btn:hover .quick-star { transform: scale(1); }
                 @keyframes starFloat {
                     0% { transform: scale(0) rotate(0deg) translateY(0px); opacity: 0; }
                     50% { transform: scale(1) rotate(90deg) translateY(-4px); opacity: 1; }
@@ -452,15 +408,9 @@
                 }
             </style>
 
-            <!-- КНОПКА С ИНТЕГРИРОВАННЫМИ ЗВЕЗДАМИ -->
-            <a 
-                href="https://raydium.io/swap/?inputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&outputMint=sol&referrer=3ntDiLs2kg8c7NdtBDvsRw3h5DiDQi3ajK5JPVZEdc6u" 
-                target="_self" 
-                class="quick-stars-btn"
-            >
-                <!-- Слой анимированных разноцветных звезд -->
+            <!-- КНОПКА 1: RAYDIUM -->
+            <a href="https://raydium.io" target="_self" class="quick-stars-btn">
                 <div class="star-field">
-                    <!-- Каждая SVG звезда представляет собой 4-конечную звезду с QuickSwap -->
                     <svg class="quick-star star-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
@@ -468,30 +418,20 @@
                     <svg class="quick-star star-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
-                
-                <!-- Векторный точный логотип Райдиума с градиентом -->
-                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block;">
+                <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; flex-shrink: 0;">
                     <defs>
                         <linearGradient id="rayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#39dcff" />
-                            <stop offset="100%" stop-color="#9a4bfa" />
+                            <stop offset="0%" stop-color="#39dcff" /><stop offset="100%" stop-color="#9a4bfa" />
                         </linearGradient>
                     </defs>
                     <path d="M50 5L90 28.1V74.4L50 97.5L10 74.4V28.1L50 5Z" stroke="url(#rayGradient)" stroke-width="7" stroke-linejoin="round"/>
                     <path d="M36 32V68M36 32H54C60 32 64 35 64 41C64 47 60 50 54 50H36M50 50L64 68" stroke="url(#rayGradient)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
                     <circle cx="72" cy="28" r="4" fill="#39dcff" />
                 </svg>
-                
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px;">Raydium</span>
             </a>
-
-                       <!-- КНОПКА 2: OKX WALLET С ПОЛНЫМ ИСПРАВЛЕННЫМ ЛОГОТИПОМ ИЗ 5 КВАДРАТОВ -->
-            <a 
-                href="https://web3.okx.com/join/WLAKOS30051977" 
-                target="_self" 
-                class="quick-stars-btn"
-                style="margin-top: 12px;"
-            >
+            <!-- КНОПКА 2: OKX WALLET -->
+            <a href="https://okx.com" target="_self" class="quick-stars-btn" style="margin-top: 12px;">
                 <div class="star-field">
                     <svg class="quick-star star-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
@@ -500,29 +440,14 @@
                     <svg class="quick-star star-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
-
-                <!-- 🟢 ГЕОМЕТРИЧЕСКИ ТОЧНЫЙ SVG-ЛОГОТИП OKX (СТРУКТУРА ЗАКРЫТА) -->
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
-                    <!-- Ярко-салатовый круг-основа -->
                     <circle cx="12" cy="12" r="12" fill="#C7F284"/>
-                    <!-- 5 черных пропорциональных квадратов образующих букву Х -->
-                    <rect x="5.5" y="5.5" width="3.5" height="3.5" fill="#000000"/>
-                    <rect x="15.0" y="5.5" width="3.5" height="3.5" fill="#000000"/>
-                    <rect x="10.25" y="10.25" width="3.5" height="3.5" fill="#000000"/>
-                    <rect x="5.5" y="15.0" width="3.5" height="3.5" fill="#000000"/>
-                    <rect x="15.0" y="15.0" width="3.5" height="3.5" fill="#000000"/>
+                    <rect x="5.5" y="5.5" width="3.5" height="3.5" fill="#000000"/><rect x="15.0" y="5.5" width="3.5" height="3.5" fill="#000000"/><rect x="10.25" y="10.25" width="3.5" height="3.5" fill="#000000"/><rect x="5.5" y="15.0" width="3.5" height="3.5" fill="#000000"/><rect x="15.0" y="15.0" width="3.5" height="3.5" fill="#000000"/>
                 </svg>
-                
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">OKX Wallet</span>
             </a>
-            
-            <!-- КНОПКА 3: SUSHISWAP С ТОЧНЫМ НАПРАВЛЕНИЕМ ЛОГОТИПА И ЗВЕЗДАМИ -->
-            <a 
-                href="https://www.sushi.com/ethereum/swap?referrer=0xC90bdCf2aE8C318Beb74EfcB92298EbFedB94e80" 
-                target="_self" 
-                class="quick-stars-btn"
-                style="margin-top: 12px;"
-            >
+                        <!-- КНОПКА 3: SUSHISWAP -->
+            <a href="https://sushi.com" target="_self" class="quick-stars-btn" style="margin-top: 12px;">
                 <div class="star-field">
                     <svg class="quick-star star-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
@@ -531,46 +456,18 @@
                     <svg class="quick-star star-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
-
-                <!-- 🍣 ОФИЦИАЛЬНЫЙ ЛОГОТИП SUSHI С ТОЧНЫМ НАКЛОНОМ КАК НА КАРТИНКЕ -->
                 <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
                     <defs>
-                        <!-- Линейный градиент корпуса ролла: от синего к розовому слева направо по диагонали -->
-                        <linearGradient id="sushiGradPerfect" x1="15%" y1="15%" x2="85%" y2="85%">
-                            <stop offset="0%" stop-color="#3B66F5" />
-                            <stop offset="45%" stop-color="#A846FA" />
-                            <stop offset="100%" stop-color="#FF3E94" />
-                        </linearGradient>
-                        <!-- Внутренний градиент тени для глубины нори -->
-                        <linearGradient id="sushiNoriGrad" x1="100%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#2D3A8A" />
-                            <stop offset="100%" stop-color="#4A5CC4" />
-                        </linearGradient>
+                        <linearGradient id="sushiGradPerfect" x1="15%" y1="15%" x2="85%" y2="85%"><stop offset="0%" stop-color="#3B66F5" /><stop offset="45%" stop-color="#A846FA" /><stop offset="100%" stop-color="#FF3E94" /></linearGradient>
+                        <linearGradient id="sushiNoriGrad" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#2D3A8A" /><stop offset="100%" stop-color="#4A5CC4" /></linearGradient>
                     </defs>
-                    
-                    <!-- Объемный наклонный корпус ролла (смотрит срезом вверх и влево) -->
                     <path d="M80,35 C85,45 85,65 65,80 C45,95 25,90 20,80 L20,55 C25,65 45,70 65,55 C85,40 80,35 80,35 Z" fill="url(#sushiGradPerfect)"/>
-                    
-                    <!-- Рисовая овальная основа среза ролла -->
                     <ellipse cx="52" cy="46" rx="32" ry="22" fill="#FFFFFF" transform="rotate(32 52 46)" stroke="url(#sushiGradPerfect)" stroke-width="1.5"/>
-                    
-                    <!-- Синяя начинка (нори) -->
                     <ellipse cx="52" cy="46" rx="18" ry="12" fill="url(#sushiNoriGrad)" transform="rotate(32 52 46)"/>
-                    
-                    <!-- Светлый центр ролла -->
                     <ellipse cx="52" cy="46" rx="10" ry="6" fill="#FFFFFF" transform="rotate(32 52 46)"/>
                 </svg>
-                
-                <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">Sushiswap</span>
-            </a> 
-            
-             <!-- КНОПКА 4: SWAPZONE С ТОЧНЫМ НЕОНОВЫМ ЛОГОТИПОМ И ЗВЕЗДАМИ -->
-            <a 
-                href="https://swapzone.io/de/buy/eur/btc" 
-                target="_self" 
-                class="quick-stars-btn"
-                style="margin-top: 12px;"
-            >
+            <!-- КНОПКА 4: SWAPZONE -->
+            <a href="https://swapzone.io" target="_self" class="quick-stars-btn" style="margin-top: 12px;">
                 <div class="star-field">
                     <svg class="quick-star star-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
@@ -579,31 +476,18 @@
                     <svg class="quick-star star-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
-
-                <!-- 📡 ТОЧНЫЙ ОФИЦИАЛЬНЫЙ ЛОГОТИП SWAPZONE ИЗ ИЗОБРАЖЕНИЯ -->
                 <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
-                    <!-- Три диагональные неоновые линии-антенны -->
                     <line x1="18" y1="46" x2="48" y2="34" stroke="#00AEEF" stroke-width="4.5" stroke-linecap="round"/>
                     <line x1="21" y1="61" x2="52" y2="42" stroke="#00AEEF" stroke-width="4.5" stroke-linecap="round"/>
                     <line x1="28" y1="74" x2="58" y2="49" stroke="#00AEEF" stroke-width="4.5" stroke-linecap="round"/>
-                    
-                    <!-- Основной внешний круг спутника -->
                     <circle cx="62" cy="38" r="16" stroke="#00AEEF" stroke-width="4.5"/>
-                    
-                    <!-- Внутренняя дуга для придания объема полусферы -->
                     <path d="M52,44 C52,36 58,30 66,30" stroke="#00AEEF" stroke-width="4.5" stroke-linecap="round"/>
                 </svg>
-                
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">Swapzone</span>
             </a>
 
-                                    <!-- КНОПКА 5: EDGEX С ТОЧНЫМ ГЕОМЕТРИЧЕСКИМ ЛОГОТИПОМ И ЗВЕЗДАМИ -->
-            <a 
-                href="https://pro.edgex.exchange/ru-RU/referral/WLAKOS30051977" 
-                target="_self" 
-                class="quick-stars-btn"
-                style="margin-top: 12px;"
-            >
+            <!-- КНОПКА 5: EDGEX -->
+            <a href="https://edgex.exchange" target="_self" class="quick-stars-btn" style="margin-top: 12px;">
                 <div class="star-field">
                     <svg class="quick-star star-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
@@ -612,27 +496,16 @@
                     <svg class="quick-star star-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
-
-                <!-- 🌐 ТОЧНЫЙ ОФИЦИАЛЬНЫЙ ЛОГОТИП EDGEX ИЗ ИЗОБРАЖЕНИЯ -->
                 <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
-                    <!-- Левая восходящая грань -->
                     <path d="M44 22 L18 78 L26 78 L50 34 Z" fill="#FFFFFF"/>
-                    <!-- Правая нисходящая грань -->
                     <path d="M50 28 L76 84 L84 84 L58 28 Z" fill="#FFFFFF" opacity="0.9"/>
-                    <!-- Нижняя горизонтальная грань -->
                     <path d="M22 84 L72 84 L68 76 L32 76 Z" fill="#FFFFFF" opacity="0.95"/>
                 </svg>
-                
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">edgeX</span>
             </a>
-                                    <!-- КНОПКА 6: ASTER С ПРЕМИАЛЬНЫМ ГЕОМЕТРИЧЕСКИМ ЛОГОТИПОМ И ЗВЕЗДАМИ -->
-            <a 
-                href="https://www.asterdex.com/en/referral/1eC7CF" 
-                target="_self" 
-                class="quick-stars-btn"
-                style="margin-top: 12px;"
-            >
-                <!-- Слой анимированных разноцветных звезд при наведении -->
+
+            <!-- КНОПКА 6: ASTER С УЛУЧШЕННЫМ SVG-ЛОГОТИПОМ -->
+            <a href="https://asterdex.com" target="_self" class="quick-stars-btn" style="margin-top: 12px;">
                 <div class="star-field">
                     <svg class="quick-star star-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
@@ -641,25 +514,22 @@
                     <svg class="quick-star star-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                     <svg class="quick-star star-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg>
                 </div>
-
-                <!-- 🌐 ПРЕМИАЛЬНЫЙ SVG-ЛОГОТИП ASTER С ИДЕАЛЬНОЙ ГЕОМЕТРИЕЙ ШВОВ -->
                 <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://w3.org" style="display: block; position: relative; z-index: 2; flex-shrink: 0;">
-                    <!-- Левый верхний сектор -->
                     <path d="M47,5 C47,26.5 26.5,47 5,47 C5,23.8 23.8,5 47,5 Z" fill="#FCD3B6"/>
-                    <!-- Правый верхний сектор -->
                     <path d="M53,5 C53,26.5 73.5,47 95,47 C95,23.8 76.2,5 53,5 Z" fill="#FCD3B6"/>
-                    <!-- Правый нижний сектор -->
                     <path d="M53,95 C53,73.5 73.5,53 95,53 C95,76.2 76.2,95 53,95 Z" fill="#FCD3B6"/>
-                    <!-- Левый нижний сектор (Рассеченный дополнительной дугой по оригиналу) -->
                     <path d="M47,95 C47,73.5 26.5,53 5,53 C5,76.2 23.8,95 47,95 Z" fill="#FCD3B6"/>
                     <path d="M41.5,53.5 C43,49.5 49.5,43 53.5,41.5 C49,49 49,49 41.5,53.5 Z" fill="#13141A"/>
                 </svg>
-                
                 <span style="font-family: system-ui, -apple-system, sans-serif; letter-spacing: 0.3px; position: relative; z-index: 2; color: #FFFFFF;">ASTER</span>
             </a>
 
-   <div class="footer-fixed" style="color: #FFFFFF; font-weight: 600; font-size: 12px; letter-spacing: 0.3px;">
-        © 2026 <a href="https://github.com/wlakos/wlakos/blob/main/README.md" target="_self" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">MEMEX DeFi Protocol</a>. <a href="https://github.com/wlakos/memes-assets/blob/main/verification.md" target="_self" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">All rights reserved.</a> Support Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">30051977wlakos@gmail.com</a> | Ecosystem: <a href="https://app.memex.gg" target="_self" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">app.memex.gg</a>
+        </div>
+    </main>
+
+    <!-- АДАПТИВНЫЙ ЗАКРЕПЛЕННЫЙ ПОДВАЛ -->
+    <div class="footer-fixed">
+        © 2026 <a href="https://github.com" target="_self" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">MEMEX DeFi Protocol</a>. <a href="https://github.com" target="_self" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">All rights reserved.</a> Support Official Team Contact: <a href="mailto:30051977wlakos@gmail.com" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">30051977wlakos@gmail.com</a> | Ecosystem: <a href="https://memex.gg" target="_self" style="color: #C7F284; text-decoration: none; transition: 0.2s;" onmouseover="this.style.opacity='0.85';" onmouseout="this.style.opacity='1';">app.memex.gg</a>
     </div>
 
 </body>
