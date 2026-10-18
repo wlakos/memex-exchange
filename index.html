@@ -286,18 +286,21 @@
             MEMEX <span>DeFi</span>
         </a>
         <nav>
-             <style>
-        /* Жесткие автономные стили для мобильных телефонов, чтобы три кнопки стояли в ряд */
+            <style>
+        /* Мобильная адаптация: выстраиваем три кнопки в ровную красивую линию */
         @media (max-width: 768px) {
             .custom-nav-block {
+                display: flex !important;
                 flex-direction: row !important;
                 justify-content: center !important;
-                gap: 6px !important; /* Минимальный зазор, чтобы всё влезло на экраны любых смартфонов */
-                width: 100% !important;
+                align-items: center !important;
+                gap: 8px !important; /* Небольшой зазор, чтобы элементы не переносились */
+                margin: 0 auto !important;
+                padding: 0 !important;
             }
             .custom-nav-block a, .custom-nav-block .copy-ca-btn {
-                font-size: 11px !important; /* Компактный аккуратный шрифт для телефонов */
-                padding: 8px 6px !important; /* Удобная зона для нажатия пальцем */
+                font-size: 11px !important; /* Аккуратный мобильный шрифт */
+                padding: 6px 8px !important; /* Удобная зона для нажатия */
             }
             .custom-nav-block svg {
                 width: 12px !important;
@@ -306,16 +309,16 @@
         }
     </style>
 
-    <nav class="custom-nav-block" style="display: flex; gap: 24px; font-size: 14px; font-weight: 600; align-items: center; position: relative;">
+    <nav class="custom-nav-block" style="display: flex; gap: 20px; font-size: 14px; font-weight: 600; align-items: center; position: relative;">
         
-        <!-- 📋 1. КНОПКА КОПИРОВАНИЯ СМАРТ-КОНТРАКТА (CA) -->
+        <!-- 📋 1. ЛАКОНИЧНАЯ КНОПКА CONTRACT (БЕЗ ЦИФР) -->
         <div class="copy-ca-btn" onclick="executeContractCopy(this)" style="
             color: #9CA3AF; 
             cursor: pointer; 
             padding: 10px 12px; 
             display: inline-flex; 
             align-items: center; 
-            gap: 6px; 
+            gap: 5px; 
             transition: color 0.2s ease-in-out;
             position: relative;
             user-select: none;
@@ -326,7 +329,7 @@
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
-            <span>CA: FLCZ...ZeXs</span>
+            <span>CONTRACT</span>
             
             <!-- Анимированное неоновое уведомление "COPIED!" -->
             <div class="copy-toast-popup" style="
