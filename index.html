@@ -208,37 +208,76 @@
 </head>
 <body>
 
-           <!-- 💥 ИСПРАВЛЕННЫЙ БЛОК: ИДЕАЛЬНЫЙ БЕСШОВНЫЙ КРУГ БЕЗ РЫВКОВ -->
+               <!-- 💥 НОВЫЙ БЛОК: ИДЕАЛЬНЫЙ АВТО-СЛАЙДЕР МАРКЕТИНГОВЫХ ФРАЗ БЕЗ ДЁРГАНИЙ -->
     <style>
-        .ticker {
-            display: flex !important;
-            white-space: nowrap !important;
-            animation: marquee 12s linear infinite !important; /* Оптимальная скорость для длинного цикла */
+        /* Оболочка слайдера на всю ширину */
+        .ticker-wrap-slider {
+            width: 100%;
+            background-color: #111c14;
+            border-bottom: 1px solid #14291b;
+            padding: 8px 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* Общие стили для текста */
+        .slide-item {
+            position: absolute;
+            font-size: 12px;
+            font-weight: 700;
+            color: #9CA3AF;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+            opacity: 0; /* Изначально скрыты */
+            animation: phraseLoop 12s infinite linear; /* Общий цикл анимации на 12 секунд */
+        }
+
+        /* Фирменный салатовый цвет для неоновых акцентов */
+        .slide-item span { 
+            color: #C7F284; 
+            margin-left: 6px; 
+        }
+
+        /* ⏱ Тайминги для плавного поочередного появления (каждая фраза горит по 4 секунды) */
+        .slide-1 { animation-delay: 0s; }
+        .slide-2 { animation-delay: 4s; }
+        .slide-3 { animation-delay: 8s; }
+
+        /* 🎬 Сложная математика плавной анимации: Появление (FadeIn) -> Удержание -> Исчезновение (FadeOut) */
+        @keyframes phraseLoop {
+            0% { opacity: 0; transform: translateY(5px); }
+            5% { opacity: 1; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(0); }
+            35% { opacity: 0; transform: translateY(-5px); }
+            100% { opacity: 0; }
+        }
+
+        /* Оптимизация размера шрифта для совсем маленьких экранов смартфонов */
+        @media (max-width: 480px) {
+            .slide-item {
+                font-size: 10.5px;
+            }
         }
     </style>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <!-- Цикл 1 -->
-            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
-            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
-            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
-            
-            <!-- Цикл 2 -->
-            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
-            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
-            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
-            
-            <!-- Цикл 3 (Жесткий запас для мобильных экранов) -->
-            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
-            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
-            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
-            
-            <!-- Цикл 4 (Финальная склейка без рывков) -->
-            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
-            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
-            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
-        </div>
+    <div class="ticker-wrap-slider">
+        <!-- Фраза №1 -->
+        <div class="slide-item slide-1">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
+        
+        <!-- Фраза №2 -->
+        <div class="slide-item slide-2">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
+        
+        <!-- Фраза №3 -->
+        <div class="slide-item slide-3">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
     </div>
     <!-- 💥 КОНЕЦ БЛОКА -->
                             <!-- АДАПТИВНАЯ ШАПКА САЙТА -->
