@@ -208,24 +208,36 @@
 </head>
 <body>
 
-        <!-- 💥 НАЧАЛО БЛОКА: УСКОРЕННАЯ БЕГУЩАЯ СТРОКА И ЕЁ СТИЛИ -->
+           <!-- 💥 ИСПРАВЛЕННЫЙ БЛОК: ИДЕАЛЬНЫЙ БЕСШОВНЫЙ КРУГ БЕЗ РЫВКОВ -->
     <style>
-        /* Жестко задаем скорость анимации в 3 раза быстрее (8 секунд вместо 25) */
         .ticker {
             display: flex !important;
             white-space: nowrap !important;
-            animation: marquee 8s linear infinite !important; /* 👈 Сверхбыстрая скорость */
+            animation: marquee 12s linear infinite !important; /* Оптимальная скорость для длинного цикла */
         }
     </style>
 
     <div class="ticker-wrap">
         <div class="ticker">
-            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol⚡<span>ONLINE⚡</span></div>
-            <div class="ticker-item">Buy MEMEX / SOL⚡<span>⚡⚡⚡</span></div>
-            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback⚡<span>ONLINE⚡</span></div>
+            <!-- Цикл 1 -->
+            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
+            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
+            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
             
-            <!-- Дублирование цикла для обеспечения идеального бесшовного круга -->
-            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol⚡<span>ONLINE⚡</span></div>        
+            <!-- Цикл 2 -->
+            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
+            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
+            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
+            
+            <!-- Цикл 3 (Жесткий запас для мобильных экранов) -->
+            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
+            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
+            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
+            
+            <!-- Цикл 4 (Финальная склейка без рывков) -->
+            <div class="ticker-item">$MEMEX — is a native token of DeFi Protocol<span>ONLINE⚡</span></div>
+            <div class="ticker-item">Buy MEMEX / SOL<span>⚡⚡⚡</span></div>
+            <div class="ticker-item">50% of Protocol revenue goes to $MEMEX Buyback<span>ONLINE⚡</span></div>
         </div>
     </div>
     <!-- 💥 КОНЕЦ БЛОКА -->
