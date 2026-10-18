@@ -318,7 +318,17 @@
         }
     </style>
 
-    <nav class="custom-nav-block" style="display: flex; gap: 20px; font-size: 14px; font-weight: 600; align-items: center; position: relative;">
+        <nav class="custom-nav-block" style="
+        display: flex; 
+        gap: 20px; 
+        font-size: 14px; 
+        font-weight: 600; 
+        align-items: center; 
+        position: relative;
+        margin-left: auto !important;   /* 👈 ЖЕСТКИЙ ЦЕНТР СЛЕВА */
+        margin-right: auto !important;  /* 👈 ЖЕСТКИЙ ЦЕНТР СПРАВА */
+    ">
+
         
         <!-- 📋 1. ЛАКОНИЧНАЯ КНОПКА CONTRACT (БЕЗ ЦИФР) -->
         <div class="copy-ca-btn" onclick="executeContractCopy(this)" style="
