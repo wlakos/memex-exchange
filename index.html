@@ -22,7 +22,7 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.1 (ANTI-BOUNCE & SECURE SCROLL) -->
+    <!-- PRODUCTION READY VERSION 12.4 (EXACT CENTER RESTORED) -->
     <style>
         /* 🔒 ЗАМОРАЖИВАЕМ КОРНЕВОЙ БРАУЗЕР И ОТКЛЮЧАЕМ РЕЗИНОВЫЙ ЭФФЕКТ */
         html {
@@ -43,9 +43,9 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             box-sizing: border-box;
             overflow-x: hidden;
-            overflow-y: auto; /* Разрешаем контролируемый скролл только тут */
-            overscroll-behavior-y: contain; /* Удерживаем скролл внутри body */
-            -webkit-overflow-scrolling: touch; /* Плавная инерция на iPhone */
+            overflow-y: auto; /* Контролируемый скролл внутри body */
+            overscroll-behavior-y: contain;
+            -webkit-overflow-scrolling: touch;
             -webkit-tap-highlight-color: transparent;
             display: flex;
             flex-direction: column;
@@ -95,6 +95,7 @@
         header nav a:hover { color: #FFFFFF; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); white-space: nowrap; }
         
+        /* 🎯 ПОЛНЫЙ ВОЗВРАТ ТВОИХ ОРИГИНАЛЬНЫХ НАСТРОЕК ЦЕНТРИРОВАНИЯ */
         main {
             display: flex;
             flex-direction: row;
@@ -102,9 +103,9 @@
             justify-content: center;
             align-items: flex-start;
             gap: 40px;
-            padding: 40px 20px 100px 20px; /* Добавили нижний отступ 100px, чтобы контент не перекрывался фиксированным футером */
+            padding: 40px 20px 140px 20px; /* Отступ снизу изменен под футер, остальное родное */
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
-            flex: 1 0 auto; /* Позволяет мейну растягиваться по контенту вниз */
+            flex: 1;
             width: 100%;
             box-sizing: border-box;
         }
@@ -159,7 +160,6 @@
             background-color: #13141A;
             box-sizing: border-box;
             z-index: 9999;
-            flex-shrink: 0;
         }
 
         /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ ДЛЯ ВСЕХ ТЕЛЕФОНОВ В МИРЕ */
