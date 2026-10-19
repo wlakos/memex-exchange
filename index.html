@@ -22,27 +22,42 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
+    <!-- PRODUCTION READY VERSION 12.1 (ANTI-BOUNCE & SECURE SCROLL) -->
     <style>
+        /* 🔒 ЗАМОРАЖИВАЕМ КОРНЕВОЙ БРАУЗЕР И ОТКЛЮЧАЕМ РЕЗИНОВЫЙ ЭФФЕКТ */
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
+            overscroll-behavior-y: none;
+        }
+
         body {
             margin: 0;
-            padding: 0 0 60px 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
             box-sizing: border-box;
             overflow-x: hidden;
+            overflow-y: auto; /* Разрешаем контролируемый скролл только тут */
+            overscroll-behavior-y: contain; /* Удерживаем скролл внутри body */
+            -webkit-overflow-scrolling: touch; /* Плавная инерция на iPhone */
             -webkit-tap-highlight-color: transparent;
+            display: flex;
+            flex-direction: column;
         }
+
         .ticker-wrap {
             width: 100%;
             background-color: #111c14;
             border-bottom: 1px solid #14291b;
             overflow: hidden;
             padding: 6px 0;
+            flex-shrink: 0;
         }
         .ticker {
             display: flex;
@@ -70,6 +85,7 @@
             background-color: #13141A;
             border-bottom: 1px solid #1C1D24;
             gap: 15px;
+            flex-shrink: 0;
         }
         header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; flex-shrink: 0; }
         header .logo:hover { opacity: 0.8; }
@@ -86,9 +102,9 @@
             justify-content: center;
             align-items: flex-start;
             gap: 40px;
-            padding: 40px 20px;
+            padding: 40px 20px 100px 20px; /* Добавили нижний отступ 100px, чтобы контент не перекрывался фиксированным футером */
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
-            flex: 1;
+            flex: 1 0 auto; /* Позволяет мейну растягиваться по контенту вниз */
             width: 100%;
             box-sizing: border-box;
         }
@@ -143,6 +159,7 @@
             background-color: #13141A;
             box-sizing: border-box;
             z-index: 9999;
+            flex-shrink: 0;
         }
 
         /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ ДЛЯ ВСЕХ ТЕЛЕФОНОВ В МИРЕ */
