@@ -22,42 +22,27 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.4 (EXACT CENTER RESTORED) -->
+    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
     <style>
-        /* 🔒 ЗАМОРАЖИВАЕМ КОРНЕВОЙ БРАУЗЕР И ОТКЛЮЧАЕМ РЕЗИНОВЫЙ ЭФФЕКТ */
-        html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            overscroll-behavior: none;
-            overscroll-behavior-y: none;
-        }
-
         body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
+            padding: 0 0 60px 0;
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            box-sizing: border-box;
-            overflow-x: hidden;
-            overflow-y: auto; /* Контролируемый скролл внутри body */
-            overscroll-behavior-y: contain;
-            -webkit-overflow-scrolling: touch;
-            -webkit-tap-highlight-color: transparent;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
-
         .ticker-wrap {
             width: 100%;
             background-color: #111c14;
             border-bottom: 1px solid #14291b;
             overflow: hidden;
             padding: 6px 0;
-            flex-shrink: 0;
         }
         .ticker {
             display: flex;
@@ -85,7 +70,6 @@
             background-color: #13141A;
             border-bottom: 1px solid #1C1D24;
             gap: 15px;
-            flex-shrink: 0;
         }
         header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: #FFFFFF; transition: 0.2s; flex-shrink: 0; }
         header .logo:hover { opacity: 0.8; }
@@ -95,7 +79,6 @@
         header nav a:hover { color: #FFFFFF; }
         header .status { font-size: 13px; font-weight: 700; color: #C7F284; padding: 6px 14px; border-radius: 12px; background-color: rgba(199, 242, 132, 0.1); border: 1px solid rgba(199, 242, 132, 0.2); white-space: nowrap; }
         
-        /* 🎯 ПОЛНЫЙ ВОЗВРАТ ТВОИХ ОРИГИНАЛЬНЫХ НАСТРОЕК ЦЕНТРИРОВАНИЯ */
         main {
             display: flex;
             flex-direction: row;
@@ -103,7 +86,7 @@
             justify-content: center;
             align-items: flex-start;
             gap: 40px;
-            padding: 40px 20px 140px 20px; /* Отступ снизу изменен под футер, остальное родное */
+            padding: 40px 20px;
             background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
             flex: 1;
             width: 100%;
