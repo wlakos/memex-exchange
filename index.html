@@ -22,11 +22,20 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
+    <!-- PRODUCTION READY VERSION 12.5 (SAFE MOBILE ANTI-BOUNCE) -->
     <style>
+        /* 🔒 ИЗОЛИРОВАННАЯ ФИКСАЦИЯ РЕЗИНОВОГО ЭФФЕКТА (БЕЗ СДВИГА КНОПОК) */
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Отключаем системное дерганье браузера */
+            overscroll-behavior: none; /* Запрещаем отскок холста */
+            overscroll-behavior-y: none;
+        }
+
         body {
             margin: 0;
-            padding: 0 0 60px 0;
+            padding: 0 0 60px 0; /* Полностью твой оригинальный отступ */
             background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -34,9 +43,15 @@
             flex-direction: column;
             min-height: 100vh;
             box-sizing: border-box;
+            
+            /* Разрешаем жестко контролируемый скролл внутри body */
             overflow-x: hidden;
+            overflow-y: auto; 
+            overscroll-behavior-y: contain; /* Удерживаем скролл, чтобы он не уходил к кошельку */
+            -webkit-overflow-scrolling: touch; /* Нативная плавная инерция для мобилок */
             -webkit-tap-highlight-color: transparent;
         }
+        
         .ticker-wrap {
             width: 100%;
             background-color: #111c14;
