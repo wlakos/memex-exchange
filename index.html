@@ -22,19 +22,12 @@
         });
     </script>
 
-     <!-- PRODUCTION READY VERSION 12.8 (NATURAL SCROLL & SEAMLESS BG) -->
+    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
     <style>
-        html {
-            /* Перекрашиваем системный фон отскока в цвет сайта */
-            background-color: #090A0E; 
-            height: 100%;
-        }
-
         body {
             margin: 0;
             padding: 0 0 60px 0;
-            /* Растягиваем фон, чтобы при отскоке кошелька не вылезала пустота */
-            background: #090A0E radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%) no-repeat fixed;
+            background-color: #090A0E;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             display: flex;
@@ -94,8 +87,7 @@
             align-items: flex-start;
             gap: 40px;
             padding: 40px 20px;
-            /* Убрали локальный градиент отсюда, так как он теперь красиво растянут на весь body */
-            background: transparent;
+            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
             flex: 1;
             width: 100%;
             box-sizing: border-box;
