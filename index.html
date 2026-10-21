@@ -25,6 +25,13 @@
     <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
     <style>
         body {
+            position: fixed; /* ⚡ КЛЮЧЕВОЙ ХАК: полностью блокирует системный скролл браузера */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0 0 60px 0;
             background-color: #090A0E;
@@ -32,9 +39,12 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
             box-sizing: border-box;
+            
+            /* 🚀 Включаем внутренний правильный скролл, который не дергает кошелек */
             overflow-x: hidden;
+            overflow-y: scroll; 
+            -webkit-overflow-scrolling: touch;
             -webkit-tap-highlight-color: transparent;
         }
         .ticker-wrap {
