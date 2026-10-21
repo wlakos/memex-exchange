@@ -22,29 +22,26 @@
         });
     </script>
 
-    <!-- PRODUCTION READY VERSION 12.0 (CLEAN WITH LINK REBATE) -->
+     <!-- PRODUCTION READY VERSION 12.8 (NATURAL SCROLL & SEAMLESS BG) -->
     <style>
-        body {
-            position: fixed; /* ⚡ КЛЮЧЕВОЙ ХАК: полностью блокирует системный скролл браузера */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
+        html {
+            /* Перекрашиваем системный фон отскока в цвет сайта */
+            background-color: #090A0E; 
             height: 100%;
+        }
+
+        body {
             margin: 0;
             padding: 0 0 60px 0;
-            background-color: #090A0E;
+            /* Растягиваем фон, чтобы при отскоке кошелька не вылезала пустота */
+            background: #090A0E radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%) no-repeat fixed;
             color: #FFFFFF;
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
             box-sizing: border-box;
-            
-            /* 🚀 Включаем внутренний правильный скролл, который не дергает кошелек */
             overflow-x: hidden;
-            overflow-y: scroll; 
-            -webkit-overflow-scrolling: touch;
             -webkit-tap-highlight-color: transparent;
         }
         .ticker-wrap {
@@ -97,7 +94,8 @@
             align-items: flex-start;
             gap: 40px;
             padding: 40px 20px;
-            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090a0e 70%);
+            /* Убрали локальный градиент отсюда, так как он теперь красиво растянут на весь body */
+            background: transparent;
             flex: 1;
             width: 100%;
             box-sizing: border-box;
